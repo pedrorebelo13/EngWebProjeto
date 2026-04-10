@@ -1,0 +1,174 @@
+{
+    "sigla": "ENGWEB2024",
+    "titulo": "Engenharia Web",
+    "docentes": [
+        {
+            "nome": "José Carlos Ramalho",
+            "foto": "jcr-keep.jpeg",
+            "categoria": "Professor/Investigador/Empresário",
+            "filiacao": "Dep. Informática - Universidade do Minho",
+            "email": "jcr@di.uminho.pt",
+            "webpage": "http://www.di.uminho.pt/~jcr"
+        },
+        {
+            "nome": "Tiago Manuel Queirós Barata",
+            "foto": "tiago.jpg",
+            "categoria": "Professor Convidado",
+            "filiacao": "Dep. Informática - Universidade do Minho",
+            "email": "d13753@di.uminho.pt"
+        }
+    ],
+    "horario": {
+        "teoricas": ["segunda das 14h às 16h, sala Ed.2 - 0.05"],
+        "praticas": [
+            "Turno 1: segunda das 16h às 18h, sala Ed.1 - 1.20",
+            "Turno 3: segunda das 16h às 18h, sala Ed.1 - 2.25",
+            "Turno 2: terça das 13h às 15h, sala Ed.1 - 2.17"
+        ]
+    },
+    "avaliacao": [
+        "8 Trabalhos de casa (20%)",
+        "1 Projeto em grupo até 3 elementos (35%)[nota mínima de 10 val.]",
+        "1 Teste escrito (45%)[nota mínima de 10 val.]"
+    ],
+    "datas": {
+        "teste": "???",
+        "exame": "???",
+        "projeto": "???"
+    },
+    "aulas": [
+        {
+            "tipo": "T",
+            "data": "2024-02-05",
+            "sumario": [
+                "Apresentação da disciplina.",
+                "Introdução ao HTML.",
+                "Introdução ao CSS: o W3.css.",
+                "Breve introdução às linguagens de amotação: MD, CSV, JSON, XML, HTML.",
+                "Alguns exercícios."
+            ]
+        },
+        {
+            "tipo": "P",         
+            "data": "2024-02-05",
+            "sumario": [
+                "Criação dum repositório Git para a UC: EngWeb2024",
+                "Criação de subpastas no repositório: TPC1...TPC8, Teste e Projeto",
+                "Criação de um README.md na pasta principal com: 1. Pequena introdução textual; 2. Nome, id e foto do dono.",
+                "Acrescentar um README.md na pasta TPC1 com o manifesto do trabalho: Título/Descrição, Data de início e data de fim, Resumo do trabalho, Lista de resultados.",
+                "Análise do dataset emd.json sobre Exames Médicos Desportivos;",
+                "Definir a estrutura de um website de exploração do dataset: Página principal - lista de dados consultáveis; Listagem dos EMD: Data, nome, modalidade, resultado; Listagem das modalidades: lista alfabética de modalidades; Listagem dos clubes: ...",
+                "Página do EMD: página com toda a informação do EMD;",
+                "Página da modalidade: nome da modalidade e lista de EMD associados a essa modalidade;",
+                "Página do clube: idem...",
+                "Criar uma ou várias scripts em Python para gerar o website a partir do dataset.",
+                "TPC1: ",
+                "[No site da UC](https://epl.di.uminho.pt/~jcr/AULAS/EngWeb2024):",
+                "Descarregar o material: link do aviso da página principal;",
+                "Construir um website com a lista das ruas na página principal;",
+                "Cada alunos deverá depois construir a página de duas ruas à escolha (pode fazer mais se quiser) e estas devem estar ligadas à página principal (devem incluir toda a informação, fotos inclusive)."
+            ]
+        },
+        {
+            "tipo": "T",
+            "data": "2024-02-19",
+            "sumario": [
+                "Introdução à criação de API de dados.",
+                "O módulo [json-server](https://docs.google.com/presentation/d/1aOXUJdPVV0us7d0Ynd3dZkU-MY3Ndqo_fkNPL-sv_VU/edit?usp=sharing) e a sua utilização na construção rápida de API.",
+                "Introdução à [criação de serviços com o nodejs](https://docs.google.com/presentation/d/1wvMG2xCzzV_DOD6Z3sJ4BJtTXHUwY3I-USS_6-OEaQk/edit?usp=sharing)."
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2024-02-19",
+            "sumario": [
+                ""
+            ]
+        },
+        {
+            "tipo": "T",
+            "data": "2024-02-26",
+            "sumario": [
+                "[Tutorial](https://docs.google.com/presentation/d/1qXOXaIR_6MjjgsikXKYnu_0h4JE-ON5YcweAFwqsWAs/edit?usp=sharing) sobre o npm.",
+                "Exemplo: criação de um serviço sobre o dataset de alunos.",
+                "Utilização do módulo axios para fazer pedidos: GET, POST, PUT, DELETE.",
+                "Criação de um serviço sobre o dataset de alunos servido pelo json-server."
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2024-02-26",
+            "sumario": [
+                "Implementação do caso de estudo: [mordidas de animais no estado do Louisiana nos EUA](https://drive.google.com/file/d/1vzsYAVV0C_bpGYY0OUscP3_qzZCzUsug/view?usp=sharing).",
+                "1. Preparar o dataset para o json-server;",
+                "2. Colocar o json-server a servir as coleções;", 
+                "3. Testar com alguns pedidos via browser ou Postman;", 
+                "4. Criar um serviço para servir a página principal: /mordidas;",
+                "5. Criar um serviço para servir as outras páginas: /mordidas/id;",
+                "6. Acrescentar estilo às páginas com o w3.css e preparar o serviço para servir a folha de estilo."
+            ]
+        },
+        {
+            "tipo": "T",
+            "data": "2024-03-04",
+            "sumario": [
+                "[Tutorial](https://docs.google.com/presentation/d/1qXOXaIR_6MjjgsikXKYnu_0h4JE-ON5YcweAFwqsWAs/edit?usp=sharing) sobre o npm.",
+                "Fluxo das operações de CRUD;",
+                "HTML Forms: estrutura, criação;",
+                "Envio de informação com HTML Forms: GET e POST;",
+                "Recuperação da informação do body do pedido;",
+                "Tratamento de recursos estáticos: detetar e servir.",
+                "Apresentação de um exemplo."
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2024-03-04",
+            "sumario": [
+                "Identificação das páginas web que irão compor a App de gestão de alunos da UC (operações de CRUD): 1)Formulários de criação e de alteração de aluno (Create e Update); 2) Formulário ou Botão para apagar aluno (Delete); 3) Página de Listagem  de alunos (Retrieve); 4) Página de Consulta de aluno (Retrieve).",
+                "Criação dos formulários e das páginas de resposta a estes;",
+                "Criar um módulo templates.js com as templates das páginas;",
+                "Programação do serviço principal.",
+                "Material para a aula: [Esqueleto do serviço](./semana4/alunos_server_skeleton.js), [Módulo static](./semana4/static.js), [Pasta public](./semana4/public), [Templates das páginas HTML](./semana4/templates.js)."
+            ]
+        },
+        {
+            "tipo": "T",
+            "data": "2024-03-18",
+            "sumario": [
+                "[Tutorial sobre MongoDB e a sua linguagem de query](https://docs.google.com/presentation/d/1uGek1QZNOiZFXamjNK_Fifrp-CK9MPe21jqpjtdqs-4/edit?usp=sharing);",
+                "Como montar uma API de dados sobre o MongoDB: ORM e mongoose."
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2024-03-18",
+            "sumario": [
+                "Substituição da API de dados montada com o json-server por uma API de dados contruída sobre o MongoDB: App de Gestão de Alunos."
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2024-04-02",
+            "sumario": [
+                "Continuação da aula anterior."
+            ]
+        },
+        {
+            "tipo": "T",
+            "data": "2024-04-08",
+            "sumario": [
+                "Introdução à programação do lado do cliente;",
+                "A framework jQuery;",
+                "Apresentação e análise de vários exemplos."
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2024-04-08",
+            "sumario": [
+                "Resolução de uma ficha de aferição."
+            ]
+        }
+    ]
+}

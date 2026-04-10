@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  .w3-card-4
+    header.w3-container.w3-black
+      h1
+        span.w3-serif Lista de Unidades Curriculares  
+    
+    .w3-container
+      a.w3-button.w3-text-blue.w3-hover-blue.w3-round.w3-margin-top(href='/uc/ucs/new' style='font-weight: bold;') Adicionar Nova Unidade Curricular +
+      
+      - var nextSiglaOrder = (currentSort === 'sigla' && currentOrder === 'asc') ? 'desc' : 'asc'
+      a.w3-button.w3-text-indigo.w3-hover-indigo.w3-margin-top.w3-round(href=`/uc/ucs?sort=sigla&order=${nextSiglaOrder}` style='font-weight: bold;') Ordenar por Sigla #{currentSort === 'sigla' && currentOrder === 'asc' ? '↑' : '↓'}
+      
+      - var nextAnoOrder = (currentSort === 'ano' && currentOrder === 'asc') ? 'desc' : 'asc'
+      a.w3-button.w3-text-indigo.w3-hover-indigo.w3-margin-top.w3-round(href=`/uc/ucs?sort=ano&order=${nextAnoOrder}` style='font-weight: bold;') Ordenar por Ano #{currentSort === 'ano' && currentOrder === 'asc' ? '↑' : '↓'}
+    .w3-container
+      table.w3-table-all.w3-margin-top
+        thead
+          tr
+            th Sigla
+            th Disciplina
+            th Ano 
+            th Link
+        tbody
+          each t in list
+            tr
+              td= t.sigla
+              td= t.titulo
+              td= t.ano
+              td
+                a.w3-button.w3-teal(href=`/uc/ucs/${t.id}`) Ver Website
+      a.w3-button.w3-teal.w3-margin-top(href='/uc') Voltar

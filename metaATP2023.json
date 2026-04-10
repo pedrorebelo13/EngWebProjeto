@@ -1,0 +1,285 @@
+{
+    "sigla": "ATP2023",
+    "titulo": "Algoritmos e Técnicas de Programação",
+    "docentes": [
+        {
+            "nome": "José Carlos Ramalho",
+            "foto": "jcr-keep.jpeg",
+            "categoria": "Professor/Investigador/Empresário",
+            "filiacao": "Dep. Informática - Universidade do Minho",
+            "email": "jcr@di.uminho.pt",
+            "webpage": "http://www.di.uminho.pt/~jcr"
+        },
+        {
+            "nome": "Luís Filipe Cunha",
+            "foto": "lfc-di.jpeg",
+            "categoria": "Professor Convidado",
+            "filiacao": "Dep. Informática - Universidade do Minho",
+            "email": "lfc@di.uminho.pt",
+            "webpage": ""
+        }
+    ],
+    "horario": {
+        "teoricas": ["quinta das 14h às 16h, sala Ed.1 - 0.04"],
+        "praticas": [
+            "Turno 1: segunda das 14h às 16h, sala Ed. 7 - 1.09",
+            "Turno 2: terça das 14h às 16h, sala Ed. 7 - 1.09",
+            "Turno 3: terça das 16h às 18h, sala Ed. 7 - 1.09"
+        ]
+    },
+    "avaliacao": [
+        "8 Trabalhos de casa (20%)",
+        "1 Projeto em grupo até 3 elementos (30%)[nota mínima de 10 val.]",
+        "1 Teste escrito (40%)[nota mínima de 10 val.]"
+    ],
+    "datas": {
+        "teste": "7 de Dezembro (17h-20h); salas Ed.2: 0.01 e 0.05",
+        "exame": "16 de Janeiro (14h-17h); sala Ed.2: 1.15",
+        "projeto": "primeira semana de Janeiro"
+    },
+    "aulas": [
+        {
+            "tipo": "T",
+            "data": "2023-09-14",
+            "sumario": [
+                "Apresentação da disciplina."
+            ]
+        },
+        {
+            "tipo": "T",         
+            "data": "2023-09-21",
+            "sumario": [
+                "Introdução à arquitetura dum computador: canais de entrada e saída, unidade central de processamento e unidades de armazenamento.",
+                "Tipos de dados: inteiros e reais.",
+                "Operações e operadores sobre tipos numéricos.",
+                "Operações de IO: input e print.",
+                "[Slides apresentados na aula.](./aulas-ex-feitos/ATP2023.pdf)"
+            ]
+        },
+        {
+            "tipo": "T",            
+            "data": "2023-09-28",
+            "sumario": [
+                "Tipos de dados estruturados: listas e strings.",
+                "Principais métodos e operações.",
+                "[Notebook criado durante a aula.](./aulas-ex-feitos/AulaT3-20230928.ipynb.zip)"
+            ]
+        },
+        {
+            "tipo": "T",        
+            "data": "2023-10-12",
+            "sumario": [
+                "Tipos de dados estruturados: listas e tuplos.",
+                "Principais métodos e operações.",
+                "Leitura e escrita de ficheiros.",
+                "[Notebook criado durante a aula.](./aulas-ex-feitos/AulaT4.zip)"
+            ]
+        },
+        {
+            "tipo": "T",            
+            "data": "2023-10-19",
+            "sumario": [
+                "Tipos de dados estruturados: dicionários.",
+                "Principais métodos e operações.",
+                "Criação de distribuições.",
+                "Criação de gráficos com a biblioteca matplotlib.",
+                "[Notebook criado durante a aula.](./aulas-ex-feitos/AulaT5-20231019.ipynb.zip)"
+            ]
+        },
+        {
+            "tipo": "T",            
+            "data": "2023-10-26",
+            "sumario": [
+                "Tipos de dados estruturados: dicionários e listas.",
+                "Processamento de datasets em ficheiro.",
+                "O formato JSON e a respetiva biblioteca Python.",
+                "Criação de gráficos com a biblioteca matplotlib para distribuições.",
+                "[Notebook criado durante a aula.](./aulas-ex-feitos/AulaT6-20231026.ipynb.zip)",
+                "[Dataset dos EMD em JSON.](./aulas-ex-feitos/datasets/emd.json)",
+                "[Dataset dos EMD em CSV.](./aulas-ex-feitos/datasets/emd.csv)"
+            ]
+        },
+        {
+            "tipo": "T",
+            "data": "2023-11-02",
+            "sumario": [
+                "Introdução à especificação de algoritmos recursivos: Fibonacci e Factorial.",
+                "Conversão de algoritmos iterativos em recursivos e vice-versa."
+            ]
+        },
+        {
+            "tipo": "T",
+            "data": "2023-11-09",
+            "sumario": [
+                "Apresentação do projeto e respetivo kit.",
+                "[Kit para o projeto.](./aulas-ex-feitos/projeto-2023.zip)",
+                "Desenvolvimento de uma aplicação para gerir uma pequena base de dados de EMD: 1) Operações CRUD sobre o modelo; 2) Cálculo de algumas distribuições e sua visualização gráfica, ... 3) Configuração e manipulação de gráficos com o matplotlib.",
+                "[Material base da aula.](./aulas-ex-feitos/AulaT8-20231109.ipynb.zip)"
+            ]
+        },
+        {
+            "tipo": "T",
+            "data": "2023-11-16",
+            "sumario": [
+                "Introdução à utilização de interfaces gráficas para programas em Python.",
+                "O módulo PySimpleGUI: estrutura, componentes disponíveis, modelo de comportamento.",
+                "[Material base da aula.](./aulas-ex-feitos/AulaT9-20231116.ipynb.zip)"
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2023-09-11/12",
+            "sumario": [
+                "Instalação do ambiente de trabalho: VS Code, Python, ...",
+                "Resolução de exercícios com [programação visual](https://blockly.games)."
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2023-09-18/19",
+            "sumario": [
+                "Resolução de exercícios de programação visual em Scratch 3.",
+                "[Guião para a aula prática](./aulas-ex-feitos/AulaP2-20230918.pdf).",
+                "[Explorando_o_Scratch_1.4](./aulas-ex-feitos/biblio/Explorando_o_Scratch_1.4_.pdf).",
+                "[Manual do Scratch](./aulas-ex-feitos/biblio/manual-scratch.pdf).",
+                "[Manual Apoio 1](./aulas-ex-feitos/biblio/ManualApoio1.pdf).",
+                "[Manual Apoio 2](./aulas-ex-feitos/biblio/ManualApoio2.pdf).",
+                "[Scratch3 Comunidad atenea](./aulas-ex-feitos/biblio/Scratch3-Comunidadatenea.pdf).",
+                "Algumas soluções do TP1: [Quadrado](./aulas-ex-feitos/P2-soluções/quadrado.sb3), [Poligono](./aulas-ex-feitos/P2-soluções/poligono.sb3), [Movimento](./aulas-ex-feitos/P2-soluções/movimento-sprite.sb3), [Par ou Ímpar](./aulas-ex-feitos/P2-soluções/parOuImpar.sb3), [Divisores](./aulas-ex-feitos/P2-soluções/divisores.sb3)."
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2023-09-25/26",
+            "sumario": [
+                "[Guião para a aula prática](./aulas-ex-feitos/AulaP3-20230925.ipynb.zip)."
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2023-10-02/03",
+            "sumario": [
+                "Resolução de exercícios sobre modelação e operações com listas.",
+                "[Guião para a aula prática](./aulas-ex-feitos/AulaP4-20231002.ipynb.zip)."
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2023-10-09/10",
+            "sumario": [
+                "Resolução de exercícios sobre modelação e operações com listas e listas de listas.",
+                "[Guião para a aula prática](./aulas-ex-feitos/AulaP5-20231009.ipynb.zip)."
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2023-10-16/17",
+            "sumario": [
+                "Resolução de exercícios sobre modelação e operações sobre ficheiros, listas e tuplos.",
+                "[Guião para a aula prática](./aulas-ex-feitos/AulaP6-20231016.ipynb.zip).",
+                "[Dataset para o TPC](./aulas-ex-feitos/datasets/diabetes_prediction_dataset.csv.zip)."
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2023-10-23/24",
+            "sumario": [
+                "Resolução de exercícios sobre modelação e operações sobre ficheiros e estruturas de dados.",
+                "[Guião para a aula prática](./aulas-ex-feitos/AulaP7-20231023.ipynb.zip)."
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2023-10-30/31",
+            "sumario": [
+                "Resolução de exercícios visando a aferição de conhecimentos.",
+                "[Guião para a aula prática](./aulas-ex-feitos/AulaP8-20231030.ipynb.zip)."
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2023-11-06/07",
+            "sumario": [
+                "Resolução de exercícios com algoritmos recursivos.",
+                "[Guião para a aula prática](./aulas-ex-feitos/AulaP9-20231106.ipynb.zip)."
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2023-11-13/14",
+            "sumario": [
+                "Resolução de exercícios com algoritmos sobre strings, listas e dicionários.",
+                "[Guião para a aula prática](./aulas-ex-feitos/AulaP10-20231113.ipynb.zip)."
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2023-11-20/21",
+            "sumario": [
+                "Resolução de exercícios com algoritmos sobre interfaces gráficas.",
+                "[Guião para a aula prática](./aulas-ex-feitos/AulaP11-20231120.ipynb.zip)."
+            ]
+        }
+        ,
+        {
+            "tipo": "T",
+            "data": "2023-11-23",
+            "sumario": [
+                "Alguns algoritmos envolvendo tipos estruturados de dados.",
+                "Módulo OS e a manipulação do sistema de ficheiros a partir de uma aplicação.",
+                "[Guião para a aula prática](./aulas-ex-feitos/AulaT10-20231123.ipynb.zip)."
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2023-11-27/28",
+            "sumario": [
+                "Resolução de exercícios com algoritmos cobrindo toda a matéria.",
+                "[Guião para a aula prática](./aulas-ex-feitos/AulaP12-20231127.ipynb.zip)."
+            ]
+        },
+        {
+            "tipo": "T",
+            "data": "2023-11-30",
+            "sumario": [
+                "Funções de ordem superior (FOS).",
+                "As funções map, filter e reduce.",
+                "Introdução à construção de catamorfismos: abstração sobre o modelo.",
+                "[Guião para a aula prática](./aulas-ex-feitos/AulaT11-20231130.ipynb.zip)."
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2023-12-04/05",
+            "sumario": [
+                "Resolução de exercícios com algoritmos cobrindo toda a matéria com particular incidência em dicionários.",
+                "[Guião para a aula prática](./aulas-ex-feitos/AulaP13-20231204.ipynb.zip)."
+            ]
+        },
+        {
+            "tipo": "T",
+            "data": "2023-12-07",
+            "sumario": [
+                "Teste de avaliação (17h-20h) nas salas do Ed.2: 0.01 e 0.05."
+            ]
+        },
+        {
+            "tipo": "P",
+            "data": "2023-12-11/12",
+            "sumario": [
+                "Resolução do teste de avaliação.",
+                "[Teste em PDF](./aulas-ex-feitos/atp2023-normal.pdf)."
+            ]
+        },
+        {
+            "tipo": "T",
+            "data": "2023-12-14",
+            "sumario": [
+                "Classes, objetos e instâncias em Python.",
+                "Estrutura de uma classe: atributos e métodos.",
+                "Construção e visualização de classes.",
+                "Implementação de alguns exemplos: stock e lista de compras."
+            ]
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  .w3-card-4
+    header.w3-container.w3-black
+      h1 #{uc.sigla} - #{uc.titulo}
+
+    .w3-container
+      table.w3-table-all.w3-margin-top
+        tr
+          th Sigla
+          td= uc.sigla
+        tr
+          th Disciplina
+          td= uc.titulo
+        tr
+          th Ano
+          td= uc.ano
+      a.w3-button.w3-teal.w3-margin-top(href='/uc/ucs') Voltar

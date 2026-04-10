@@ -1,0 +1,165 @@
+{
+    "sigla": "RPCW2024",
+    "titulo": "Representação e Processamento de Conhecimento na Web",
+    "docentes": [
+        {
+            "nome": "José Carlos Ramalho",
+            "foto": "jcr-keep.jpeg",
+            "categoria": "Professor/Investigador/Empresário",
+            "filiacao": "Dep. Informática - Universidade do Minho",
+            "email": "jcr@di.uminho.pt",
+            "webpage": "http://www.di.uminho.pt/~jcr"
+        }
+    ],
+    "horario": {
+        "teoricas": ["terça das 16h às 17h, sala Ed.1 - 1.25"],
+        "praticas": ["terça das 17h às 19h, sala Ed.1 - 1.25"]
+    },
+    "avaliacao": [
+        "8 Trabalhos de casa (20%)",
+        "1 Projeto em grupo até 3 elementos (35%)[nota mínima de 10 val.]",
+        "1 Teste escrito (45%)[nota mínima de 10 val.]"
+    ],
+    "datas": {
+        "teste": "???",
+        "exame": "???",
+        "projeto": "???"
+    },
+    "aulas": [
+        {
+            "tipo": "T",
+            "data": "2024-02-06",
+            "sumario": [
+                "Apresentação da disciplina: [Link para o documento na cloud](https://docs.google.com/presentation/d/1Kt1WXyC-CCoMRcdaMINL93P9uFr6D616bi4JwpzBDuk/edit?usp=sharing)",
+                "Introdução ao conceito de Ontologia: [Link para o documento na cloud](https://docs.google.com/presentation/d/1oIBC0F6Lc5rlEoRIDu-rqIE98ZOBNRNw3vChWtTO-EU/edit?usp=sharing)",
+                "Mapeamento de um modelo em JSON para uma Ontologia OWL.",
+                "Criação de ontologias com o Protégé."
+            ]
+        },
+        {
+            "tipo": "TP",
+            "data": "2024-02-06",
+            "sumario": [
+                "Desenvolvimento de ontologias com o Protégé.",
+                "Processamento de ontologias no formato Turtle: TTL.",
+                "Resolução de alguns exercícios.",
+                "TPC1: 1) Descarregar o [dataset plantas.json](./datasets/plantas.json); 2) Analisá-lo; 3) Converter para TTL."
+            ]
+        },
+        {
+            "tipo": "T",
+            "data": "2024-02-20",
+            "sumario": [
+                "Desenvolvimento de ontologias com o Protégé: a tutorial da Pizza."
+            ]
+        },
+        {
+            "tipo": "TP",
+            "data": "2024-02-20",
+            "sumario": [
+                "Resolução de alguns exercícios.",
+                "TPC2: 1) Descarregar o [dataset db.json](./datasets/db.json) correspondente a uma escola de música; 2) Analisá-lo; 3) Criar o modelo ontológico; 4) Povoar o modelo com os dados."
+            ]
+        },
+        {
+            "tipo": "T",
+            "data": "2024-02-27",
+            "sumario": [
+                "Introdução ao SPARQL."
+            ]
+        },
+        {
+            "tipo": "TP",
+            "data": "2024-02-27",
+            "sumario": [
+                "Resolução de alguns exercícios: História de Portugal.",
+                "TPC3: 1) Descarregar o [dataset mapa-virtual.json](./datasets/mapa-virtual.json) correspondente a um mapa com ligações entre cidades; 2) Analisá-lo; 3) Criar o modelo ontológico; 4) Povoar o modelo com os dados."
+            ]
+        },
+        {
+            "tipo": "T",
+            "data": "2024-03-05",
+            "sumario": [
+                "[Tutorial do GraphDB](https://docs.google.com/presentation/d/16TjEwAGemjgGQ1c3inpaUBcB5vIwcZuvw-1f2DR-OO8/edit?usp=sharing), resolvendo as queries SPARQL pedidas;",
+                "Explicação sobre a API REST do GraphDB: Help/REST;",
+                "Como criar um serviço web usando a API do GraphDB."
+            ]
+        },
+        {
+            "tipo": "TP",
+            "data": "2024-03-05",
+            "sumario": [
+                "Criação de uma [App web para a Tabela Periódica](./apps/tabperiodica.zip).",
+                "TPC4: Tabela Periódica (completar a App desenvolvida na aula)",
+                "- elementos.html",
+                    "1. Acrescentar c/ o grupo;",
+                    "2. Grupo é link para página de grupo;",
+                    "3. O na ou o nome são links para a página do elemento;",
+                "- grupos.html",
+                    "1. lista os grupos",               
+                "- grupo.html",
+                    "1. inform. do grupo;",
+                    "2. lista de lementos.",
+                "- elemento.html",
+                    "1. inform. do elemento."
+            ]
+        },
+        {
+            "tipo": "T",
+            "data": "2024-03-12",
+            "sumario": [
+                "Introdução à Linked Open Data: a DBPedia e outros.",
+                "[Tutorial sobre a DBpedia: queries SPARQL](https://docs.google.com/presentation/d/1JUllfe5QK2HMu_squPbLjXN88Nz3FedR72wber6USJ8/edit?usp=sharing);",
+                "Como extrair informação da DBPedia através de um programa em Python."
+            ]
+        },
+        {
+            "tipo": "TP",
+            "data": "2024-03-12",
+            "sumario": [
+                "Extração de um dataset da DBPedia sobre modalidades desportivas e respetivos atletas.",
+                "TPC5: Cinema (colheita de um dataset da DBPedia)",
+                "- Filmes:",
+                    "- Toda a informação relacionada com o filme: título, data de lançamento, realização, produção, elenco...",
+                "- Atores, Produtores, Escritores, Músicos:",
+                    "- nome e outros dados pessoais, lista de filmes",               
+                "- Outras categorias que achar interessantes."
+            ]
+        },
+        {
+            "tipo": "T",
+            "data": "2024-03-19",
+            "sumario": [
+                "Introdução ao processamento de ontologias em Python com o RDFLib."
+            ]
+        },
+        {
+            "tipo": "TP",
+            "data": "2024-03-19",
+            "sumario": [
+                "Especificação no Protégé de uma ontologia sobre cinema (usando todo o conhecimento adquirido no TPC5.",
+                "Conversão em Python usando o RDFLib de alguns indivíduos extraídos no TPC5 para a nova ontologia em TTL.",
+                "TPC6: Construção de um megarepositório sobre cinema",
+                "1. Conversão do dataset do TPC5 para o formato da nova ontologia;",
+                "2. Importação do TTL obtido no [repositório criado pelo docente](http://epl.di.uminho.pt:7200/repositories/cinema2024);",
+                "3. Criação de um frontend web com o flask para explorar o repositório."
+            ]
+        },
+        {
+            "tipo": "T",
+            "data": "2024-04-02",
+            "sumario": [
+                "Introdução ao protocolo OAIpmh.",
+                "Harvesting de alguns repositórios.",
+                "Introdução ao processamento de XML em Python."
+            ]
+        },
+        {
+            "tipo": "TP",
+            "data": "2024-04-02",
+            "sumario": [
+                "Harvesting do repositorium."
+            ]
+        }
+    ]
+}
