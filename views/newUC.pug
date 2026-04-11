@@ -5,35 +5,112 @@ block content
     header.w3-container.w3-purple
       h2= uc ? `Editar UC #${uc.id}` : "Nova UC"
     
-    form.w3-container.w3-padding-16(method="POST" action=uc ? `/uc/edit/${uc.id}` : "/uc")
+    form.w3-container.w3-padding-16(method="POST" action=uc ? `/uc/ucs/${uc.id}` : "/uc/ucs")
       fieldset
         legend Metadata
         if uc 
           input(type="hidden" name="id" value=uc.id)
         
         label Sigla 
-        input.w3-input.w3-round(type="text" name="sigla" value=uc ? uc.sigla : "")
+        input.w3-input.w3-round(type="text" name="sigla" value=uc ? uc.sigla : "" required)
         
         label Título
-        input.w3-input.w3-round(type="text" name="titulo" value=uc ? uc.titulo : "")
+        input.w3-input.w3-round(type="text" name="titulo" value=uc ? uc.titulo : "" required)
 
         label Ano
-        input.w3-input.w3-round(type="text" name="ano" value=uc ? uc.ano : "")
+        input.w3-input.w3-round(type="number" name="ano" value=uc ? uc.ano : "" required)
 
-        label Docentes
-        input.w3-input.w3-round(type="text" name="docentes" value=uc ? uc.docentes : "")
+        fieldset#docentes-container.w3-margin-top
+          legend Docentes
+          if uc && uc.docentes && uc.docentes.length > 0
+            each docente, index in uc.docentes
+              .w3-border.w3-padding.w3-margin-bottom
+                h6 Docente ##{index + 1}
+                  if index > 0
+                    button.w3-btn.w3-red.w3-small.w3-right(type="button" onclick="this.parentElement.parentElement.remove()") X
+                input.w3-input.w3-round.w3-margin-bottom(type="text" name=`docentes[${index}][nome]` value=docente.nome placeholder="Nome do Responsável" required)
+                input.w3-input.w3-round.w3-margin-bottom(type="text" name=`docentes[${index}][categoria]` value=docente.categoria placeholder="Categoria (ex: Professor/Investigador/Empresário)" required)
+                input.w3-input.w3-round.w3-margin-bottom(type="text" name=`docentes[${index}][filiacao]` value=docente.filiacao placeholder="Filiação (ex: DI-UM)" required)
+                input.w3-input.w3-round.w3-margin-bottom(type="email" name=`docentes[${index}][email]` value=docente.email placeholder="Email Institucional" required)
+                input.w3-input.w3-round(type="webpage" name=`docentes[${index}][webpage]` value=docente.webpage || "" placeholder="Página Web (opcional)")
+          else
+            .w3-border.w3-padding.w3-margin-bottom
+              h6 Primeiro Docente (Obrigatório)
+              input.w3-input.w3-round.w3-margin-bottom(type="text" name="docentes[0][nome]" placeholder="Nome do Responsável" required)
+              input.w3-input.w3-round.w3-margin-bottom(type="text" name="docentes[0][categoria]" placeholder="Categoria (ex: Professor/Investigador/Empresário)" required)
+              input.w3-input.w3-round.w3-margin-bottom(type="text" name="docentes[0][filiacao]" placeholder="Filiação (ex: DI-UM)" required)
+              input.w3-input.w3-round.w3-margin-bottom(type="email" name="docentes[0][email]" placeholder="Email Institucional" required)
+              input.w3-input.w3-round(type="webpage" name="docentes[0][webpage]" placeholder="Página Web (opcional)")
+        button.w3-btn.w3-light-grey.w3-margin-bottom(type="button" onclick="addDocente()") + Adicionar Outro Docente
 
-        label Horario
-        input.w3-input.w3-round(type="text" name="horario" value=uc ? uc.horario : "")
+        fieldset.w3-margin-top
+          legend Base de Horário e Avaliação
+          input.w3-input.w3-round.w3-margin-bottom(type="text" name="horario[teoricas][]" placeholder="Horário das Teóricas (ex: Seg 10h)" value=(uc && uc.horario && uc.horario.teoricas && uc.horario.teoricas.length > 0) ? uc.horario.teoricas.join(', ') : "" required)
+          input.w3-input.w3-round.w3-margin-bottom(type="text" name="horario[praticas][]" placeholder="Horário das Práticas (ex: Ter 14h)" value=(uc && uc.horario && uc.horario.praticas && uc.horario.praticas.length > 0) ? uc.horario.praticas.join(', ') : "" required)
+          input.w3-input.w3-round(type="text" name="avaliacao[]" placeholder="Método de Avaliação (ex: Teste Final)" value=(uc && uc.avaliacao && uc.avaliacao.length > 0) ? uc.avaliacao.join(', ') : "" required)
 
-        label Avaliação
-        input.w3-input.w3-round(type="text" name="avaliação" value=uc ? uc.avaliação : "")
+        fieldset.w3-margin-top
+          legend Datas de Avaliação
+          input.w3-input.w3-round.w3-margin-bottom(type="text" name="datas[teste]" placeholder="Data do Teste (opcional)" value=(uc && uc.datas && uc.datas.teste) ? uc.datas.teste : "")
+          input.w3-input.w3-round.w3-margin-bottom(type="text" name="datas[exame]" placeholder="Data do Exame (opcional)" value=(uc && uc.datas && uc.datas.exame) ? uc.datas.exame : "")
+          input.w3-input.w3-round(type="text" name="datas[projeto]" placeholder="Data do Projeto (opcional)" value=(uc && uc.datas && uc.datas.projeto) ? uc.datas.projeto : "")
 
-        label Datas 
-        input.w3-input.w3-round(type="text" name="datas" value=uc ? uc.datas : "")
-        
-        label Aulas 
-        input.w3-input.w3-round(type="text" name="aulas" value=uc ? uc.aulas : "")
+        fieldset#aulas-container.w3-margin-top
+          legend Aulas
+          if uc && uc.aulas && uc.aulas.length > 0
+            each aula, index in uc.aulas
+              .w3-border.w3-padding.w3-margin-bottom
+                h6 Aula ##{index + 1}
+                  if index > 0
+                    button.w3-btn.w3-red.w3-small.w3-right(type="button" onclick="this.parentElement.parentElement.remove()") X
+                input.w3-input.w3-round.w3-margin-bottom(type="text" name=`aulas[${index}][tipo]` value=aula.tipo placeholder="Tipo (ex: T, TP, PL)" required)
+                input.w3-input.w3-round.w3-margin-bottom(type="text" name=`aulas[${index}][data]` value=aula.data placeholder="Data (ex: 2024-02-12)" required)
+                input.w3-input.w3-round(type="text" name=`aulas[${index}][sumario][]` value=(aula.sumario ? aula.sumario.join(', ') : "") placeholder="Sumário da Aula" required)
+          else
+            .w3-border.w3-padding.w3-margin-bottom
+              h6 Registo da Primeira Aula
+              input.w3-input.w3-round.w3-margin-bottom(type="text" name="aulas[0][tipo]" placeholder="Tipo (ex: T, TP, PL)" required)
+              input.w3-input.w3-round.w3-margin-bottom(type="text" name="aulas[0][data]" placeholder="Data (ex: 2024-02-12)" required)
+              input.w3-input.w3-round(type="text" name="aulas[0][sumario][]" placeholder="Sumário da Aula" required)
+        button.w3-btn.w3-light-grey.w3-margin-bottom(type="button" onclick="addAula()") + Adicionar Outra Aula
+
+        fieldset.w3-margin-top
+          legend Detalhes do Website
+          input.w3-input.w3-round.w3-margin-bottom(type="text" name="website[tipo]" placeholder="Tipo de Website (ex: A, B, C)" value=(uc && uc.website && uc.website.tipo) ? uc.website.tipo : "" required)
+          input.w3-input.w3-round(type="text" name="website[corPrincipal]" placeholder="Cor Principal (ex: azul, vermelho)" value=(uc && uc.website && uc.website.corPrincipal) ? uc.website.corPrincipal : "" required)
       
       button.w3-btn.w3-purple.w3-margin-top(type="submit")= uc ? "Update" : "Insert"
-      a.w3-btn.w3-grey.w3-margin-top.w3-margin-left(href="/") Cancel
+      a.w3-btn.w3-grey.w3-margin-top.w3-margin-left(href= uc ? `/uc/ucs/${uc._id}` : "/uc/ucs") Cancel
+
+  script.
+    let docenteCount = #{uc && uc.docentes ? uc.docentes.length : 1};
+    function addDocente() {
+      const container = document.getElementById('docentes-container');
+      const html = `
+        <div class="w3-border w3-padding w3-margin-bottom">
+          <h6>Docente #${docenteCount + 1} <button type="button" class="w3-btn w3-red w3-small w3-right" onclick="this.parentElement.parentElement.remove()">X</button></h6>
+          <input class="w3-input w3-round w3-margin-bottom" type="text" name="docentes[${docenteCount}][nome]" placeholder="Nome do Responsável" required>
+          <input class="w3-input w3-round w3-margin-bottom" type="text" name="docentes[${docenteCount}][categoria]" placeholder="Categoria" required>
+          <input class="w3-input w3-round w3-margin-bottom" type="text" name="docentes[${docenteCount}][filiacao]" placeholder="Filiação" required>
+          <input class="w3-input w3-round w3-margin-bottom" type="email" name="docentes[${docenteCount}][email]" placeholder="Email Institucional" required>
+          <input class="w3-input w3-round" type="webpage" name="docentes[${docenteCount}][webpage]" placeholder="Página Web (opcional)">
+        </div>
+      `;
+      container.insertAdjacentHTML('beforeend', html);
+      docenteCount++;
+    }
+
+    let aulaCount = #{uc && uc.aulas ? uc.aulas.length : 1};
+    function addAula() {
+      const container = document.getElementById('aulas-container');
+      const html = `
+        <div class="w3-border w3-padding w3-margin-bottom">
+          <h6>Aula #${aulaCount + 1} <button type="button" class="w3-btn w3-red w3-small w3-right" onclick="this.parentElement.parentElement.remove()">X</button></h6>
+          <input class="w3-input w3-round w3-margin-bottom" type="text" name="aulas[${aulaCount}][tipo]" placeholder="Tipo (ex: T, TP, PL)" required>
+          <input class="w3-input w3-round w3-margin-bottom" type="text" name="aulas[${aulaCount}][data]" placeholder="Data" required>
+          <input class="w3-input w3-round" type="text" name="aulas[${aulaCount}][sumario][]" placeholder="Sumário da Aula" required>
+        </div>
+      `;
+      container.insertAdjacentHTML('beforeend', html);
+      aulaCount++;
+    }

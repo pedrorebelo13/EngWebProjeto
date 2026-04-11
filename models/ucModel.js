@@ -4,7 +4,7 @@ const ucSchema = new mongoose.Schema({
     _id: { type: String, required: true },
     sigla: { type: String, required: true, unique: true },
     titulo: { type: String, required: true},
-    ano: { type: String, required: true },
+    ano: { type: Number, required: true },
     docentes: [{
         nome: { type: String, required: true },
         foto: { type: String },
@@ -28,6 +28,10 @@ const ucSchema = new mongoose.Schema({
         data: { type: String, required: true },
         sumario : [{ type: String, required: true }],
     }],
+    website: {
+        tipo: { type: String, required: true },
+        corPrincipal: { type: String, required: true }
+    }
 });
 
 const UC = mongoose.model('UC', ucSchema, 'ucs');

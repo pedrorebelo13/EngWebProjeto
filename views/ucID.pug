@@ -16,4 +16,26 @@ block content
         tr
           th Ano
           td= uc.ano
-      a.w3-button.w3-teal.w3-margin-top(href='/uc/ucs') Voltar
+      a.w3-button.w3-teal.w3-margin-top.w3-round.w3-margin-bottom(href='/uc/ucs') Voltar
+      a.w3-button.w3-blue.w3-margin-top.w3-margin-left.w3-round.w3-margin-bottom(href=`/uc/ucs/${uc.id}/edit`) Editar
+      button.w3-button.w3-red.w3-margin-top.w3-margin-left.w3-round.w3-margin-bottom(onclick=`deleteUC('${uc.id}')`) Apagar
+
+  script.
+    function deleteUC(id) {
+      if (confirm("Tens a certeza que queres apagar esta UC?")) {
+        fetch('/uc/ucs/' + id, {
+          method: 'DELETE'
+        })
+        .then(response => {
+          if (response.ok) {
+            window.location.href = '/uc/ucs?deleted=true'; // Redireciona e avisa do sucesso
+          } else {
+            alert("Erro ao apagar a UC.");
+          }
+        })
+        .catch(error => {
+          console.error("Erro:", error);
+          alert("Ocorreu um erro de rede ao tentar apagar a UC.");
+        });
+      }
+    }

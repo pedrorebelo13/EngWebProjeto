@@ -2,6 +2,17 @@ extends layout
 
 block content
   .w3-card-4
+    if success
+      .w3-panel.w3-green.w3-display-container.w3-margin(style='position:relative;')
+        span.w3-button.w3-display-topright(style='font-size:24px;' onclick="this.parentElement.style.display='none'") &times;
+        h3 Sucesso!
+        p A nova Unidade Curricular foi adicionada à base de dados.
+    if deleted
+      .w3-panel.w3-red.w3-display-container.w3-margin(style='position:relative;')
+        span.w3-button.w3-display-topright(style='font-size:24px;' onclick="this.parentElement.style.display='none'") &times;
+        h3 Sucesso!
+        p A Unidade Curricular foi apagada da base de dados.
+
     header.w3-container.w3-black
       h1
         span.w3-serif Lista de Unidades Curriculares  
@@ -29,5 +40,5 @@ block content
               td= t.titulo
               td= t.ano
               td
-                a.w3-button.w3-teal(href=`/uc/ucs/${t.id}`) Ver Website
-      a.w3-button.w3-teal.w3-margin-top(href='/uc') Voltar
+                a.w3-button.w3-teal.w3-round(href=`/uc/ucs/${t.id}`) Ver Website
+      a.w3-button.w3-teal.w3-margin-top.w3-round(href='/uc') Voltar
