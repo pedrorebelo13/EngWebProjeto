@@ -13,6 +13,24 @@ function loadJson(fileName) {
 
 function normalizeUc(rawUc) {
     const yearMatch = rawUc.sigla && rawUc.sigla.match(/(\d{4})$/);
+    const aulas = Array.isArray(rawUc.aulas) ? rawUc.aulas : [];
+
+    const normalizedAulas = aulas
+        .map(aula => {
+            const sumario = Array.isArray(aula.sumario)
+                ? aula.sumario.map(entry => String(entry).trim()).filter(Boolean)
+                : [];
+
+            if (sumario.length === 0) {
+                return null;
+            }
+
+            return {
+                ...aula,
+                sumario
+            };
+        })
+        .filter(Boolean);
 
     return {
         _id: rawUc.sigla,
@@ -23,7 +41,7 @@ function normalizeUc(rawUc) {
         horario: rawUc.horario || { teoricas: [], praticas: [] },
         avaliacao: rawUc.avaliacao || [],
         datas: rawUc.datas || {},
-        aulas: rawUc.aulas || [],
+        aulas: normalizedAulas,
         website: {
             tipo: rawUc.website?.tipo || 'A',
             corPrincipal: rawUc.website?.corPrincipal || rawUc.website?.['cor principal'] || 'blue'
