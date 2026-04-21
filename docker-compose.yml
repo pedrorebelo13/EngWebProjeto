@@ -1,0 +1,24 @@
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "16000:16000"
+    environment:
+      PORT: 16000
+      MONGO_URL: mongodb://mongo:27017/projetoEW
+      JWT_SECRET: 2026-04-13
+      JWT_EXPIRES_IN: 1h
+    depends_on:
+      - mongo
+
+volumes:
+  mongo_data:

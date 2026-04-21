@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .w3-card-4.w3-margin
+    header.w3-container.w3-green
+      h2 Registo de Utilizador
+
+    if error
+      .w3-panel.w3-red.w3-margin
+        p= error
+
+    form.w3-container.w3-padding-16(method='POST' action='/auth/register')
+      label Nome
+      input.w3-input.w3-round.w3-margin-bottom(type='text' name='name' required)
+
+      label Email
+      input.w3-input.w3-round.w3-margin-bottom(type='email' name='email' required)
+
+      label Password
+      input.w3-input.w3-round.w3-margin-bottom(type='password' name='password' required)
+
+      button.w3-btn.w3-green(type='submit') Registar
+      a.w3-btn.w3-grey.w3-margin-left(href='/auth/login') Já tenho conta

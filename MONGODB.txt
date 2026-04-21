@@ -1,0 +1,9 @@
+Começar o mongos: 
+sudo service mongod start
+Ver o estado(clicar 'q' para sair): 
+sudo service mongod status
+Abre o cliente interativo do mongoDB para testar a ligação(escrever 'quit' para sair): 
+mongosh
+
+-- rodar proj 
+node app.js 
