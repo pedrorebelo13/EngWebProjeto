@@ -1,15 +1,21 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 const app = express();
 const ucRouter = require('./routes/ucRouter');
 const authRouter = require('./routes/authRouter');
+const authMiddleware = require('./middleware/authMiddleware');
+const upload = require('./config/multer');
 const path = require('path');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(authMiddleware);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.use(express.static(path.join(__dirname, 'public')));
+app.locals.upload = upload;
+app.use(express.static(path.join(__dirname, 'views', 'public')));
 
 // 1. Conexão ao MongoDB
 const nomeBD = "projetoEW"

@@ -13,18 +13,29 @@ block content
         h3 Sucesso!
         p A Unidade Curricular foi apagada da base de dados.
 
-    header.w3-container.w3-black
-      h1
-        span.w3-serif Lista de Unidades Curriculares  
+    header.w3-container.w3-black(style='display: flex; justify-content: space-between; align-items: center; padding: 16px 16px;')
+      h1(style='margin: 0; flex: 1;')
+        span.w3-serif Lista de Unidades Curriculares
+      if user
+        div(style='position: relative; flex-shrink: 0;')
+          button.profile-btn.w3-button.w3-round(onclick='toggleProfile()' style='font-size: 24px;') 👤
+          div#profileMenu.w3-dropdown-content.w3-bar-block.w3-border(style='display:none; position:absolute; right:0; top:100%; background-color:#f1f1f1; z-index:10; min-width:200px;')
+            .w3-bar-item
+              strong=user.name
+              br
+              small=user.email
+            .w3-bar-item.w3-border-top
+              form.w3-bar-item(action='/auth/logout' method='POST' style='padding: 0;')
+                button.w3-button.w3-block.w3-text-left.w3-text-red.w3-hover-red(type='submit') Logout
     
     .w3-container
-      a.w3-button.w3-text-blue.w3-hover-blue.w3-round.w3-margin-top(href='/uc/ucs/new' style='font-weight: bold;') Adicionar Nova Unidade Curricular +
+      a.w3-button.w3-border.w3-text-blue.w3-hover-blue.w3-round.w3-margin-top(href='/uc/ucs/new' style='font-weight: bold;') Adicionar Nova Unidade Curricular +
       
       - var nextSiglaOrder = (currentSort === 'sigla' && currentOrder === 'asc') ? 'desc' : 'asc'
-      a.w3-button.w3-text-indigo.w3-hover-indigo.w3-margin-top.w3-round(href=`/uc/ucs?sort=sigla&order=${nextSiglaOrder}` style='font-weight: bold;') Ordenar por Sigla #{currentSort === 'sigla' && currentOrder === 'asc' ? '↑' : '↓'}
+      a.w3-button.w3-border.w3-text-indigo.w3-hover-indigo.w3-margin-top.w3-margin-left.w3-round(href=`/uc/ucs?sort=sigla&order=${nextSiglaOrder}` style='font-weight: bold;') Ordenar por Sigla #{currentSort === 'sigla' && currentOrder === 'asc' ? '↑' : '↓'}
       
       - var nextAnoOrder = (currentSort === 'ano' && currentOrder === 'asc') ? 'desc' : 'asc'
-      a.w3-button.w3-text-indigo.w3-hover-indigo.w3-margin-top.w3-round(href=`/uc/ucs?sort=ano&order=${nextAnoOrder}` style='font-weight: bold;') Ordenar por Ano #{currentSort === 'ano' && currentOrder === 'asc' ? '↑' : '↓'}
+      a.w3-button.w3-border.w3-text-indigo.w3-hover-indigo.w3-margin-top.w3-margin-left.w3-round(href=`/uc/ucs?sort=ano&order=${nextAnoOrder}` style='font-weight: bold;') Ordenar por Ano #{currentSort === 'ano' && currentOrder === 'asc' ? '↑' : '↓'}
     .w3-container
       table.w3-table-all.w3-margin-top
         thead
@@ -42,3 +53,22 @@ block content
               td
                 a.w3-button.w3-teal.w3-round(href=`/uc/ucs/${t._id}`) Ver Website
       a.w3-button.w3-teal.w3-margin-top.w3-round(href='/uc') Voltar
+
+  script.
+    function toggleProfile() {
+      const menu = document.getElementById('profileMenu');
+      if (menu.style.display === 'none') {
+        menu.style.display = 'block';
+      } else {
+        menu.style.display = 'none';
+      }
+    }
+    
+    // Fechar o menu ao clicar fora
+    document.addEventListener('click', function(event) {
+      const menu = document.getElementById('profileMenu');
+      const button = event.target.closest('button');
+      if (!button && menu && menu.style.display === 'block') {
+        menu.style.display = 'none';
+      }
+    });

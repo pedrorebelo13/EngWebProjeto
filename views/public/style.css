@@ -1,0 +1,32 @@
+.profile-btn {
+  background-color: white !important;
+  color: black !important;
+  transition: background-color 0.3s ease;
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.profile-btn:hover {
+  background-color: #cccccc !important;
+  color: black !important;
+}
+
+/* Estilos para o seletor de cores */
+.color-option {
+  transition: all 0.2s ease;
+}
+
+.color-option input:checked + span {
+  box-shadow: 0 0 0 4px #333 !important;
+  transform: scale(1.1);
+}
+
+.color-option:hover span {
+  transform: scale(1.05);
+}
