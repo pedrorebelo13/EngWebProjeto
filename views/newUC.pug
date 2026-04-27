@@ -84,8 +84,16 @@ block content
         button.w3-btn.w3-light-grey.w3-margin-bottom(type="button" onclick="addAula()") + Adicionar Outra Aula
 
         fieldset.w3-margin-top
-          legend Detalhes do Website
-          input.w3-input.w3-round.w3-margin-bottom(type="text" name="website[tipo]" placeholder="Tipo de Website (ex: A, B, C)" value=(uc && uc.website && uc.website.tipo) ? uc.website.tipo : "" required)
+          legend Tipo do Website
+          label Escolhe o tipo (A, B ou C)
+          #website-type-picker.w3-margin-top.w3-margin-bottom
+            - var websiteTypes = [{ value: 'A', img: '/images/opcA.png' }, { value: 'B', img: '/images/opcB.png' }, { value: 'C', img: '/images/opcC.png' }];
+            each item, idx in websiteTypes
+              label.website-type-option
+                input(type="radio" name="website[tipo]" value=item.value checked=(uc && uc.website && uc.website.tipo === item.value) required=(idx === 0))
+                span.website-type-card
+                  img.website-type-image(src=item.img alt=`Exemplo do tipo ${item.value}`)
+                  span.website-type-label Tipo #{item.value}
           
           label Cor Principal
           #color-picker.w3-margin-top

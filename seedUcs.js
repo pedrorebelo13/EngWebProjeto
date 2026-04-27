@@ -52,10 +52,16 @@ function normalizeUc(rawUc) {
 async function main() {
     await mongoose.connect(mongoHost);
 
+    const existingCount = await ucModel.countDocuments();
+    if (existingCount > 0) {
+        console.log(`Coleção ucs já contém ${existingCount} documentos. Seed ignorado.`);
+        await mongoose.disconnect();
+        return;
+    }
+
     const files = ['metaATP2023.json', 'metaENGWEB2024.json', 'metaRPCW2024.json'];
     const ucs = files.map(fileName => normalizeUc(loadJson(fileName)));
 
-    await ucModel.deleteMany({});
     await ucModel.insertMany(ucs);
 
     console.log(`Inseridas ${ucs.length} UCs na coleção ucs.`);
