@@ -32,6 +32,60 @@ const swaggerDefinition = {
           message: { type: 'string' }
         }
       },
+      Docente: {
+        type: 'object',
+        required: ['nome', 'categoria', 'filiacao', 'email'],
+        properties: {
+          nome: { type: 'string' },
+          foto: { type: 'string' },
+          categoria: { type: 'string' },
+          filiacao: { type: 'string' },
+          email: { type: 'string', format: 'email' },
+          webpage: { type: 'string' }
+        }
+      },
+      Horario: {
+        type: 'object',
+        properties: {
+          teoricas: {
+            type: 'array',
+            items: { type: 'string' }
+          },
+          praticas: {
+            type: 'array',
+            items: { type: 'string' }
+          }
+        }
+      },
+      Datas: {
+        type: 'object',
+        properties: {
+          teste: { type: 'string' },
+          exame: { type: 'string' },
+          projeto: { type: 'string' }
+        }
+      },
+      Aula: {
+        type: 'object',
+        required: ['tipo', 'data', 'sumario'],
+        properties: {
+          tipo: { type: 'string' },
+          data: { type: 'string' },
+          sumario: {
+            type: 'array',
+            items: { type: 'string' },
+            minItems: 1
+          }
+        }
+      },
+      Website: {
+        type: 'object',
+        required: ['tipo', 'corPrincipal'],
+        properties: {
+          tipo: { type: 'string' },
+          corPrincipal: { type: 'string' }
+        }
+      },
       UserRegister: {
         type: 'object',
         required: ['name', 'email', 'password'],
@@ -65,13 +119,52 @@ const swaggerDefinition = {
           }
         }
       },
+      Uc: {
+        type: 'object',
+        properties: {
+          _id: { type: 'string' },
+          sigla: { type: 'string' },
+          titulo: { type: 'string' },
+          ano: { type: 'integer' },
+          docentes: {
+            type: 'array',
+            items: { $ref: '#/components/schemas/Docente' }
+          },
+          horario: { $ref: '#/components/schemas/Horario' },
+          avaliacao: {
+            type: 'array',
+            items: { type: 'string' }
+          },
+          datas: { $ref: '#/components/schemas/Datas' },
+          aulas: {
+            type: 'array',
+            items: { $ref: '#/components/schemas/Aula' }
+          },
+          website: { $ref: '#/components/schemas/Website' }
+        }
+      },
       UcInput: {
         type: 'object',
         required: ['sigla', 'titulo', 'ano'],
         properties: {
           sigla: { type: 'string' },
           titulo: { type: 'string' },
-          ano: { type: 'integer' }
+          ano: { type: 'integer' },
+          docentes: {
+            type: 'array',
+            items: { $ref: '#/components/schemas/Docente' }
+          },
+          horario: { $ref: '#/components/schemas/Horario' },
+          avaliacao: {
+            type: 'array',
+            items: { type: 'string' }
+          },
+          datas: { $ref: '#/components/schemas/Datas' },
+          aulas: {
+            type: 'array',
+            items: { $ref: '#/components/schemas/Aula' }
+          },
+          website: { $ref: '#/components/schemas/Website' }
         },
         additionalProperties: true
       }
