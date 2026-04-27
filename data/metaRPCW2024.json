@@ -1,6 +1,7 @@
 {
     "sigla": "RPCW2024",
     "titulo": "Representação e Processamento de Conhecimento na Web",
+    "ano": 2024,
     "docentes": [
         {
             "nome": "José Carlos Ramalho",
@@ -161,5 +162,9 @@
                 "Harvesting do repositorium."
             ]
         }
-    ]
+    ],
+    "website": {
+        "tipo": "C",
+        "cor principal": "verde"
+    }
 }

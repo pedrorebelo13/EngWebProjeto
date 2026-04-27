@@ -7,7 +7,7 @@ const nomeBD = 'projetoEW';
 const mongoHost = process.env.MONGO_URL || `mongodb://127.0.0.1:27017/${nomeBD}`;
 
 function loadJson(fileName) {
-    const filePath = path.join(__dirname, fileName);
+    const filePath = path.join(__dirname, 'data', fileName);
     return JSON.parse(fs.readFileSync(filePath, 'utf8'));
 }
 
