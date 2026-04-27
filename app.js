@@ -7,6 +7,8 @@ const authRouter = require('./routes/authRouter');
 const authMiddleware = require('./middleware/authMiddleware');
 const upload = require('./config/multer');
 const path = require('path');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -14,8 +16,8 @@ app.use(cookieParser());
 app.use(authMiddleware);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.locals.upload = upload;
-app.use(express.static(path.join(__dirname, 'views', 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // 1. Conexão ao MongoDB
 const nomeBD = "projetoEW"
