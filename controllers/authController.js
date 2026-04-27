@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const userModel = require('../models/userModel');
 
@@ -23,6 +24,7 @@ function createToken(user) {
     return jwt.sign(
         {
             sub: user._id.toString(),
+            username: user.username,
             email: user.email,
             name: user.name,
             role: user.role
@@ -54,30 +56,41 @@ const authController = {
 
     register: async function(req, res) {
         try {
-            const { name, email, password, role } = req.body;
+            const { username, name, email, password, role, filiacao } = req.body;
             const wantsJsonResponse = wantsJson(req);
+            const normalizedEmail = (email || '').trim().toLowerCase();
+            const normalizedUsername = (username || '').trim().toLowerCase();
 
-            if (!name || !email || !password) {
+            if (!normalizedUsername || !name || !normalizedEmail || !password) {
                 if (wantsJsonResponse) {
-                    return res.status(400).json({ error: 'Nome, email e password são obrigatórios.' });
+                    return res.status(400).json({ error: 'Username, nome, email e password são obrigatórios.' });
                 }
-                return res.status(400).render('register', { error: 'Nome, email e password são obrigatórios.' });
+                return res.status(400).render('register', { error: 'Username, nome, email e password são obrigatórios.' });
             }
 
-            const existingUser = await userModel.findOne({ email: email.toLowerCase() });
+            const existingUser = await userModel.findOne({
+                $or: [
+                    { email: normalizedEmail },
+                    { username: normalizedUsername }
+                ]
+            });
             if (existingUser) {
                 if (wantsJsonResponse) {
-                    return res.status(409).json({ error: 'Já existe um utilizador com esse email.' });
+                    return res.status(409).json({ error: 'Já existe um utilizador com esse email ou username.' });
                 }
-                return res.status(409).render('register', { error: 'Já existe um utilizador com esse email.' });
+                return res.status(409).render('register', { error: 'Já existe um utilizador com esse email ou username.' });
             }
 
+            const apiKey = crypto.randomBytes(24).toString('hex');
             const hashedPassword = await bcrypt.hash(password, 10);
             const newUser = new userModel({
+                username: normalizedUsername,
                 name,
-                email: email.toLowerCase(),
+                email: normalizedEmail,
+                filiacao: (filiacao || '').trim(),
                 password: hashedPassword,
-                role: 'user'
+                role: role === 'producer' ? 'producer' : 'consumer',
+                apiKey
             });
 
             await newUser.save();
@@ -89,10 +102,13 @@ const authController = {
                 return res.status(201).json({
                     message: 'Utilizador registado com sucesso.',
                     token,
+                    apiKey,
                     user: {
                         id: newUser._id,
+                        username: newUser.username,
                         name: newUser.name,
                         email: newUser.email,
+                        filiacao: newUser.filiacao,
                         role: newUser.role
                     }
                 });
@@ -110,17 +126,23 @@ const authController = {
 
     login: async function(req, res) {
         try {
-            const { email, password } = req.body;
+            const { identifier, password } = req.body;
             const wantsJsonResponse = wantsJson(req);
+            const normalizedIdentifier = (identifier || '').trim().toLowerCase();
 
-            if (!email || !password) {
+            if (!normalizedIdentifier || !password) {
                 if (wantsJsonResponse) {
-                    return res.status(400).json({ error: 'Email e password são obrigatórios.' });
+                    return res.status(400).json({ error: 'Username ou email e password são obrigatórios.' });
                 }
-                return res.status(400).render('login', { error: 'Email e password são obrigatórios.' });
+                return res.status(400).render('login', { error: 'Username ou email e password são obrigatórios.' });
             }
 
-            const user = await userModel.findOne({ email: email.toLowerCase() });
+            const user = await userModel.findOne({
+                $or: [
+                    { email: normalizedIdentifier },
+                    { username: normalizedIdentifier }
+                ]
+            });
             if (!user) {
                 if (wantsJsonResponse) {
                     return res.status(401).json({ error: 'Credenciais inválidas.' });
@@ -136,6 +158,9 @@ const authController = {
                 return res.status(401).render('login', { error: 'Credenciais inválidas.' });
             }
 
+            user.dataUltimoAcesso = new Date();
+            await user.save();
+
             const token = createToken(user);
             res.cookie('token', token, authCookieOptions());
 
@@ -145,8 +170,10 @@ const authController = {
                     token,
                     user: {
                         id: user._id,
+                        username: user.username,
                         name: user.name,
                         email: user.email,
+                        filiacao: user.filiacao,
                         role: user.role
                     }
                 });

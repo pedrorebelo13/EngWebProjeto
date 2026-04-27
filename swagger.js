@@ -18,6 +18,11 @@ const swaggerDefinition = {
         in: 'cookie',
         name: 'token'
       },
+      apiKeyAuth: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'x-api-key'
+      },
       bearerAuth: {
         type: 'http',
         scheme: 'bearer',
@@ -93,18 +98,21 @@ const swaggerDefinition = {
       },
       UserRegister: {
         type: 'object',
-        required: ['name', 'email', 'password'],
+        required: ['username', 'name', 'email', 'password'],
         properties: {
+          username: { type: 'string' },
           name: { type: 'string' },
           email: { type: 'string', format: 'email' },
-          password: { type: 'string', format: 'password' }
+          filiacao: { type: 'string' },
+          password: { type: 'string', format: 'password' },
+          role: { type: 'string', enum: ['producer', 'consumer'] }
         }
       },
       UserLogin: {
         type: 'object',
-        required: ['email', 'password'],
+        required: ['identifier', 'password'],
         properties: {
-          email: { type: 'string', format: 'email' },
+          identifier: { type: 'string' },
           password: { type: 'string', format: 'password' }
         }
       },
@@ -113,13 +121,16 @@ const swaggerDefinition = {
         properties: {
           message: { type: 'string' },
           token: { type: 'string' },
+          apiKey: { type: 'string' },
           user: {
             type: 'object',
             properties: {
               id: { type: 'string' },
+              username: { type: 'string' },
               name: { type: 'string' },
               email: { type: 'string', format: 'email' },
-              role: { type: 'string', enum: ['user', 'admin'] }
+              filiacao: { type: 'string' },
+              role: { type: 'string', enum: ['admin', 'producer', 'consumer'] }
             }
           }
         }
@@ -131,6 +142,8 @@ const swaggerDefinition = {
           sigla: { type: 'string' },
           titulo: { type: 'string' },
           ano: { type: 'integer' },
+          createdBy: { type: 'string' },
+          isPublic: { type: 'boolean' },
           docentes: {
             type: 'array',
             items: { $ref: '#/components/schemas/Docente' }
@@ -155,6 +168,7 @@ const swaggerDefinition = {
           sigla: { type: 'string' },
           titulo: { type: 'string' },
           ano: { type: 'integer' },
+          isPublic: { type: 'boolean' },
           docentes: {
             type: 'array',
             items: { $ref: '#/components/schemas/Docente' }

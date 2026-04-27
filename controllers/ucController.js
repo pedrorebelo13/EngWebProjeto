@@ -1,5 +1,50 @@
 const ucModel = require('../models/ucModel')
 
+const prefersJson = (req) => {
+    const acceptHeader = req.get('accept') || '';
+    return acceptHeader.includes('application/json');
+};
+
+const denyAccess = (req, res, message) => {
+    if (prefersJson(req)) {
+        return res.status(403).json({ error: message });
+    }
+
+    return res.status(403).send(message);
+};
+
+const canCreateUc = (user) => {
+    return user && (user.role === 'admin' || user.role === 'producer');
+};
+
+const canManageUc = (user, uc) => {
+    if (!user) {
+        return false;
+    }
+
+    if (user.role === 'admin') {
+        return true;
+    }
+
+    if (user.role === 'producer' && uc && uc.createdBy) {
+        return uc.createdBy.toString() === user.id;
+    }
+
+    return false;
+};
+
+const canViewUc = (user, uc) => {
+    if (!user) {
+        return false;
+    }
+
+    if (user.role === 'admin' || user.role === 'producer') {
+        return true;
+    }
+
+    return !!uc.isPublic;
+};
+
 const normalizeDateField = (dateValue) => {
     if (!dateValue) {
         return { value: null, hasSelection: false };
@@ -34,8 +79,18 @@ const normalizeDateField = (dateValue) => {
 const ucController = {
     createUC: async function(req, res) {
         try {
+            if (!canCreateUc(req.user)) {
+                return denyAccess(req, res, 'Acesso negado.');
+            }
+
             // Ponto 2: Atribuir a sigla ao _id automaticamente
             req.body._id = req.body.sigla;
+            req.body.createdBy = req.user.id;
+
+            if (typeof req.body.isPublic !== 'undefined') {
+                const rawValue = String(req.body.isPublic).toLowerCase();
+                req.body.isPublic = rawValue === 'true' || rawValue === 'on';
+            }
 
             if (req.body.datas) {
                 req.body.datas.teste = normalizeDateField(req.body.datas.teste).value;
@@ -55,6 +110,9 @@ const ucController = {
 
     newUCForm: async function(req, res) {
         try {
+            if (!canCreateUc(req.user)) {
+                return denyAccess(req, res, 'Acesso negado.');
+            }
             res.render('newUC');
         } catch (error) {
             res.status(500).json({ error: error.message });
@@ -67,8 +125,11 @@ const ucController = {
             if (!uc) {
                 res.status(404).json({ error: "UC não encontrada" });
             }
+            else if (!canManageUc(req.user, uc)) {
+                return denyAccess(req, res, 'Acesso negado.');
+            }
             else {
-                res.render('newUC', { uc: uc });
+                res.render('newUC', { uc: uc, user: req.user });
             }
         } catch (error) {
             res.status(500).json({ error: error.message });
@@ -85,7 +146,12 @@ const ucController = {
             let sortObj = {};
             sortObj[sortField] = sortOrder;
 
-            const ucs = await ucModel.find().sort(sortObj);
+            const filter = {};
+            if (req.user && req.user.role === 'consumer') {
+                filter.isPublic = true;
+            }
+
+            const ucs = await ucModel.find(filter).sort(sortObj);
             
             // Passar os dados e o estado atual para a view
             res.render('ucs', { 
@@ -107,6 +173,9 @@ const ucController = {
             if (!uc) {
                 res.status(404).json({ error: "UC não encontrada" });
             }
+            else if (!canViewUc(req.user, uc)) {
+                return denyAccess(req, res, 'Acesso negado.');
+            }
             else {
                 res.render('ucID', { uc: uc, user: req.user });
             }
@@ -117,6 +186,15 @@ const ucController = {
 
     updateUC: async function(req, res) {
         try {
+            const existingUC = await ucModel.findById(req.params.id);
+            if (!existingUC) {
+                return res.status(404).json({ error: "UC não encontrada" });
+            }
+
+            if (!canManageUc(req.user, existingUC)) {
+                return denyAccess(req, res, 'Acesso negado.');
+            }
+
             if (req.body.datas) {
                 const teste = normalizeDateField(req.body.datas.teste);
                 const exame = normalizeDateField(req.body.datas.exame);
@@ -140,13 +218,15 @@ const ucController = {
                     delete req.body.datas.projeto;
                 }
             }
+            if (typeof req.body.isPublic !== 'undefined') {
+                const rawValue = String(req.body.isPublic).toLowerCase();
+                req.body.isPublic = rawValue === 'true' || rawValue === 'on';
+            }
+
+            delete req.body.createdBy;
+
             const updatedUC = await ucModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
-            if (!updatedUC) {
-                res.status(404).json({ error: "UC não encontrada" });
-            }
-            else {
-                res.render('ucID', { uc: updatedUC });
-            }
+            res.render('ucID', { uc: updatedUC, user: req.user });
         } catch (error) {
             res.status(400).json({ error: error.message });
         }
@@ -154,13 +234,17 @@ const ucController = {
 
     deleteUC: async function(req, res) {
         try {
-            const deletedUC = await ucModel.findByIdAndDelete(req.params.id);
-            if (!deletedUC) {
-                res.status(404).json({ error: "UC não encontrada" });
+            const existingUC = await ucModel.findById(req.params.id);
+            if (!existingUC) {
+                return res.status(404).json({ error: "UC não encontrada" });
             }
-            else {
-                res.json({ message: "UC apagada com sucesso" });
+
+            if (!canManageUc(req.user, existingUC)) {
+                return denyAccess(req, res, 'Acesso negado.');
             }
+
+            await existingUC.deleteOne();
+            res.json({ message: "UC apagada com sucesso" });
         } catch (error) {
             res.status(500).json({ error: error.message });
         }

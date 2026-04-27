@@ -10,8 +10,8 @@ block content
         p= error
 
     form.w3-container.w3-padding-16(method='POST' action='/auth/login')
-      label Email
-      input.w3-input.w3-round.w3-margin-bottom(type='email' name='email' required)
+      label Username ou Email
+      input.w3-input.w3-round.w3-margin-bottom(type='text' name='identifier' required)
 
       label Password
       input.w3-input.w3-round.w3-margin-bottom(type='password' name='password' required)

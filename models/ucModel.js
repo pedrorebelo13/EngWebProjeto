@@ -5,6 +5,8 @@ const ucSchema = new mongoose.Schema({
     sigla: { type: String, required: true, unique: true },
     titulo: { type: String, required: true},
     ano: { type: Number, required: true },
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    isPublic: { type: Boolean, default: true },
     docentes: [{
         nome: { type: String, required: true },
         foto: { type: String },

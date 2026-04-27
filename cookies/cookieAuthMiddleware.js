@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const userModel = require('../models/userModel');
 
 const JWT_SECRET = process.env.JWT_SECRET || '2026-04-13';
 
@@ -7,7 +8,7 @@ function prefersJson(req) {
     return acceptHeader.includes('application/json');
 }
 
-function attachUserFromCookie(req, res, next) {
+async function attachUserFromCookie(req, res, next) {
     try {
         const token = req.cookies && req.cookies.token;
 
@@ -15,6 +16,7 @@ function attachUserFromCookie(req, res, next) {
             const decoded = jwt.verify(token, JWT_SECRET);
             req.user = {
                 id: decoded.sub,
+                username: decoded.username,
                 email: decoded.email,
                 name: decoded.name,
                 role: decoded.role
@@ -24,6 +26,27 @@ function attachUserFromCookie(req, res, next) {
     } catch (error) {
         // Invalid or expired token.
         res.clearCookie('token');
+    }
+
+    if (!req.user) {
+        try {
+            const apiKey = req.get('x-api-key');
+            if (apiKey) {
+                const user = await userModel.findOne({ apiKey });
+                if (user) {
+                    req.user = {
+                        id: user._id.toString(),
+                        username: user.username,
+                        email: user.email,
+                        name: user.name,
+                        role: user.role
+                    };
+                    res.locals.user = req.user;
+                }
+            }
+        } catch (error) {
+            // Ignore API key lookup errors.
+        }
     }
 
     return next();
