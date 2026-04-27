@@ -20,8 +20,9 @@
   },
   "homepage": "https://github.com/pedrorebelo13/EngWebProjeto#readme",
   "dependencies": {
-    "express": "^5.2.1",
     "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.6",
+    "express": "^5.2.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^9.4.1",
     "pug": "^3.0.4",

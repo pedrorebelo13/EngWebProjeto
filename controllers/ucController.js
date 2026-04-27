@@ -56,7 +56,8 @@ const ucController = {
                 currentSort: sortField, 
                 currentOrder: req.query.order || 'asc',
                 success: req.query.success === 'true', // Para sabermos se acabámos de criar algo
-                deleted: req.query.deleted === 'true'  // Para sabermos se apagámos algo
+                deleted: req.query.deleted === 'true',  // Para sabermos se apagámos algo
+                user: req.user // Passar informação do utilizador autenticado
             });
         } catch (error) {
             res.status(500).json({ error: error.message });
@@ -70,7 +71,7 @@ const ucController = {
                 res.status(404).json({ error: "UC não encontrada" });
             }
             else {
-                res.render('ucID', { uc: uc });
+                res.render('ucID', { uc: uc, user: req.user });
             }
         } catch (error) {
             res.status(500).json({ error: error.message });

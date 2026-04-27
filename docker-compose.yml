@@ -20,8 +20,7 @@ services:
     environment:
       MONGO_URL: mongodb://mongo:27017/projetoEW
     command: npm run seed
-    profiles:
-      - seed
+    restart: "no"
 
   app:
     build: .
@@ -34,7 +33,10 @@ services:
       JWT_SECRET: 2026-04-13
       JWT_EXPIRES_IN: 1h
     depends_on:
-      - mongo
+      mongo:
+        condition: service_healthy
+      seed:
+        condition: service_completed_successfully
 
 volumes:
   mongo_data:

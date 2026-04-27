@@ -46,7 +46,7 @@ const ucController = require('../controllers/ucController');
  *               $ref: '#/components/schemas/ErrorResponse'
  */
 // Nova UC
-router.post('/ucs', ucController.createUC); 
+router.post('/ucs', getUpload, processDocenteFotos, ucController.createUC); 
 
 /**
  * @openapi
@@ -188,8 +188,8 @@ router.get('/ucs', ucController.getAllUC);
 router.get('/ucs/:id', ucController.getUCById);
 
 // Alterar uma UC
-router.put('/ucs/:id', ucController.updateUC);
-router.post('/ucs/:id', ucController.updateUC);
+router.put('/ucs/:id', getUpload, processDocenteFotos, ucController.updateUC);
+router.post('/ucs/:id', getUpload, processDocenteFotos, ucController.updateUC);
 
 /**
  * @openapi

@@ -1,0 +1,103 @@
+.profile-btn {
+  background-color: white !important;
+  color: black !important;
+  transition: background-color 0.3s ease;
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.profile-btn:hover {
+  background-color: #cccccc !important;
+  color: black !important;
+}
+
+/* Estilos para o seletor de cores */
+.color-option {
+  transition: all 0.2s ease;
+}
+
+.color-option input:checked + span {
+  box-shadow: 0 0 0 3px #2196f3 !important;
+  transform: scale(1.1);
+}
+
+.color-option:hover span {
+  transform: scale(1.05);
+}
+
+#website-type-picker {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.website-type-option {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+
+.website-type-option input {
+  display: none;
+}
+
+.website-type-card {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.website-type-image {
+  width: 100%;
+  height: 240px;
+  object-fit: contain;
+  background-color: #f7f7f7;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.website-type-label {
+  display: block;
+  margin-top: 8px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.website-type-option:hover .website-type-card {
+  transform: translateY(-2px);
+}
+
+.website-type-option input:checked + .website-type-card {
+  border-color: #2196f3;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+}
+
+@media (max-width: 1024px) {
+  #website-type-picker {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .website-type-image {
+    height: 200px;
+  }
+}
+
+@media (max-width: 640px) {
+  #website-type-picker {
+    grid-template-columns: 1fr;
+  }
+
+  .website-type-image {
+    height: 220px;
+  }
+}

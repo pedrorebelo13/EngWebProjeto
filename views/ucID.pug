@@ -2,8 +2,19 @@ extends layout
 
 block content
   .w3-card-4
-    header.w3-container.w3-black
-      h1 #{uc.sigla} - #{uc.titulo}
+    header.w3-container.w3-black(style='display: flex; justify-content: space-between; align-items: center; padding: 16px 16px;')
+      h1(style='margin: 0; flex: 1;') #{uc.sigla} - #{uc.titulo}
+      if user
+        div(style='position: relative; flex-shrink: 0;')
+          button.profile-btn.w3-button.w3-round(onclick='toggleProfile()' style='font-size: 24px;') 👤
+          div#profileMenu.w3-dropdown-content.w3-bar-block.w3-border(style='display:none; position:absolute; right:0; top:100%; background-color:#f1f1f1; z-index:10; min-width:200px;')
+            .w3-bar-item
+              strong=user.name
+              br
+              small=user.email
+            .w3-bar-item.w3-border-top
+              form.w3-bar-item(action='/auth/logout' method='POST' style='padding: 0;')
+                button.w3-button.w3-block.w3-text-left.w3-text-red.w3-hover-red(type='submit') Logout
 
     .w3-container
       table.w3-table-all.w3-margin-top
@@ -39,3 +50,21 @@ block content
         });
       }
     }
+    
+    function toggleProfile() {
+      const menu = document.getElementById('profileMenu');
+      if (menu.style.display === 'none') {
+        menu.style.display = 'block';
+      } else {
+        menu.style.display = 'none';
+      }
+    }
+    
+    // Fechar o menu ao clicar fora
+    document.addEventListener('click', function(event) {
+      const menu = document.getElementById('profileMenu');
+      const button = event.target.closest('button');
+      if (!button && menu && menu.style.display === 'block') {
+        menu.style.display = 'none';
+      }
+    });
