@@ -19,9 +19,9 @@ const ucSchema = new mongoose.Schema({
     },
     avaliacao: [{ type: String, required: true }],
     datas: {
-        teste :{ type: String },
-        exame :{ type: String },
-        projeto :{ type: String }
+        teste :{ type: Date },
+        exame :{ type: Date },
+        projeto :{ type: Date }
     },
     aulas: [{
         tipo: { type: String, required: true },

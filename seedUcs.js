@@ -32,15 +32,80 @@ function normalizeUc(rawUc) {
         })
         .filter(Boolean);
 
+    const parseDate = (value, fallbackYear) => {
+        if (!value || typeof value !== 'string') {
+            return null;
+        }
+
+        const trimmed = value.trim();
+        if (!trimmed || trimmed === '???') {
+            return null;
+        }
+
+        if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
+            const parsed = new Date(trimmed);
+            return isNaN(parsed.getTime()) ? null : parsed;
+        }
+
+        const normalized = trimmed
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '');
+
+        const monthMap = {
+            janeiro: '01',
+            fevereiro: '02',
+            marco: '03',
+            abril: '04',
+            maio: '05',
+            junho: '06',
+            julho: '07',
+            agosto: '08',
+            setembro: '09',
+            outubro: '10',
+            novembro: '11',
+            dezembro: '12'
+        };
+
+        const dayMatch = normalized.match(/(\d{1,2})\s+de\s+([a-z]+)/);
+        if (dayMatch) {
+            const day = dayMatch[1].padStart(2, '0');
+            const month = monthMap[dayMatch[2]];
+            const year = fallbackYear || new Date().getFullYear();
+            if (month) {
+                const parsed = new Date(`${year}-${month}-${day}`);
+                return isNaN(parsed.getTime()) ? null : parsed;
+            }
+        }
+
+        const weekMatch = normalized.match(/primeira\s+semana\s+de\s+([a-z]+)/);
+        if (weekMatch) {
+            const month = monthMap[weekMatch[1]];
+            const year = fallbackYear || new Date().getFullYear();
+            if (month) {
+                const parsed = new Date(`${year}-${month}-01`);
+                return isNaN(parsed.getTime()) ? null : parsed;
+            }
+        }
+
+        return null;
+    };
+
+    const ucYear = rawUc.ano || (yearMatch ? Number(yearMatch[1]) : new Date().getFullYear());
+
     return {
         _id: rawUc.sigla,
         sigla: rawUc.sigla,
         titulo: rawUc.titulo,
-        ano: rawUc.ano || (yearMatch ? Number(yearMatch[1]) : new Date().getFullYear()),
+        ano: ucYear,
         docentes: rawUc.docentes || [],
         horario: rawUc.horario || { teoricas: [], praticas: [] },
         avaliacao: rawUc.avaliacao || [],
-        datas: rawUc.datas || {},
+        datas: {
+            teste: parseDate(rawUc.datas?.teste, ucYear),
+            exame: parseDate(rawUc.datas?.exame, ucYear),
+            projeto: parseDate(rawUc.datas?.projeto, ucYear)
+        },
         aulas: normalizedAulas,
         website: {
             tipo: rawUc.website?.tipo || 'A',

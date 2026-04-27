@@ -1,10 +1,47 @@
 const ucModel = require('../models/ucModel')
 
+const normalizeDateField = (dateValue) => {
+    if (!dateValue) {
+        return { value: null, hasSelection: false };
+    }
+
+    if (dateValue instanceof Date) {
+        return { value: isNaN(dateValue.getTime()) ? null : dateValue, hasSelection: true };
+    }
+
+    if (typeof dateValue === 'string') {
+        if (!dateValue.trim()) {
+            return { value: null, hasSelection: false };
+        }
+
+        const parsed = new Date(dateValue);
+        return { value: isNaN(parsed.getTime()) ? null : parsed, hasSelection: true };
+    }
+
+    const { dia, mes, ano } = dateValue;
+    if (!dia && !mes && !ano) {
+        return { value: null, hasSelection: false };
+    }
+
+    if (!dia || !mes || !ano) {
+        return { value: null, hasSelection: true };
+    }
+
+    const parsed = new Date(`${ano}-${mes}-${dia}`);
+    return { value: isNaN(parsed.getTime()) ? null : parsed, hasSelection: true };
+};
+
 const ucController = {
     createUC: async function(req, res) {
         try {
             // Ponto 2: Atribuir a sigla ao _id automaticamente
             req.body._id = req.body.sigla;
+
+            if (req.body.datas) {
+                req.body.datas.teste = normalizeDateField(req.body.datas.teste).value;
+                req.body.datas.exame = normalizeDateField(req.body.datas.exame).value;
+                req.body.datas.projeto = normalizeDateField(req.body.datas.projeto).value;
+            }
 
             const newUC = new ucModel(req.body);
             await newUC.save();
@@ -80,6 +117,29 @@ const ucController = {
 
     updateUC: async function(req, res) {
         try {
+            if (req.body.datas) {
+                const teste = normalizeDateField(req.body.datas.teste);
+                const exame = normalizeDateField(req.body.datas.exame);
+                const projeto = normalizeDateField(req.body.datas.projeto);
+
+                if (teste.hasSelection) {
+                    req.body.datas.teste = teste.value;
+                } else {
+                    delete req.body.datas.teste;
+                }
+
+                if (exame.hasSelection) {
+                    req.body.datas.exame = exame.value;
+                } else {
+                    delete req.body.datas.exame;
+                }
+
+                if (projeto.hasSelection) {
+                    req.body.datas.projeto = projeto.value;
+                } else {
+                    delete req.body.datas.projeto;
+                }
+            }
             const updatedUC = await ucModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
             if (!updatedUC) {
                 res.status(404).json({ error: "UC não encontrada" });

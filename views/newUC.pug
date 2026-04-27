@@ -11,14 +11,19 @@ block content
         if uc 
           input(type="hidden" name="id" value=uc.id)
         
-        label Sigla 
+        label Sigla (ex: EW2025)
         input.w3-input.w3-round(type="text" name="sigla" value=uc ? uc.sigla : "" required)
         
         label Título
         input.w3-input.w3-round(type="text" name="titulo" value=uc ? uc.titulo : "" required)
 
         label Ano
-        input.w3-input.w3-round(type="number" name="ano" value=uc ? uc.ano : "" required)
+        - var anos = [];
+        - for (var y = 2026; y >= 1976; y--) { anos.push(y); }
+        select.w3-select.w3-round(name="ano" required)
+          option(value="" disabled selected=!(uc && uc.ano)) Escolhe o ano
+          each ano in anos
+            option(value=ano selected=(uc && Number(uc.ano) === ano)) #{ano}
 
         fieldset#docentes-container.w3-margin-top
           legend Docentes
@@ -60,9 +65,69 @@ block content
 
         fieldset.w3-margin-top
           legend Datas de Avaliação
-          input.w3-input.w3-round.w3-margin-bottom(type="text" name="datas[teste]" placeholder="Data do Teste (opcional)" value=(uc && uc.datas && uc.datas.teste) ? uc.datas.teste : "")
-          input.w3-input.w3-round.w3-margin-bottom(type="text" name="datas[exame]" placeholder="Data do Exame (opcional)" value=(uc && uc.datas && uc.datas.exame) ? uc.datas.exame : "")
-          input.w3-input.w3-round(type="text" name="datas[projeto]" placeholder="Data do Projeto (opcional)" value=(uc && uc.datas && uc.datas.projeto) ? uc.datas.projeto : "")
+          - var dias = [];
+          - for (var d = 1; d <= 31; d++) { dias.push(d < 10 ? '0' + d : '' + d); }
+          - var meses = [];
+          - for (var m = 1; m <= 12; m++) { meses.push(m < 10 ? '0' + m : '' + m); }
+          - var anosDatas = [];
+          - for (var y = 2026; y >= 1976; y--) { anosDatas.push('' + y); }
+          - var testeValue = (uc && uc.datas && uc.datas.teste) ? uc.datas.teste : null;
+          - var testeDate = testeValue ? new Date(testeValue) : null;
+          - var testeIso = (testeDate && !isNaN(testeDate.getTime())) ? testeDate.toISOString().slice(0, 10) : '';
+          - var testeParts = testeIso ? testeIso.split('-') : [];
+          - var exameValue = (uc && uc.datas && uc.datas.exame) ? uc.datas.exame : null;
+          - var exameDate = exameValue ? new Date(exameValue) : null;
+          - var exameIso = (exameDate && !isNaN(exameDate.getTime())) ? exameDate.toISOString().slice(0, 10) : '';
+          - var exameParts = exameIso ? exameIso.split('-') : [];
+          - var projetoValue = (uc && uc.datas && uc.datas.projeto) ? uc.datas.projeto : null;
+          - var projetoDate = projetoValue ? new Date(projetoValue) : null;
+          - var projetoIso = (projetoDate && !isNaN(projetoDate.getTime())) ? projetoDate.toISOString().slice(0, 10) : '';
+          - var projetoParts = projetoIso ? projetoIso.split('-') : [];
+
+          label Data do Teste (opcional)
+          .date-picker.w3-margin-bottom
+            select.w3-select.w3-round(name="datas[teste][dia]")
+              option(value="" selected=!testeParts.length) Dia
+              each dia in dias
+                option(value=dia selected=(testeParts[2] === dia)) #{dia}
+            select.w3-select.w3-round(name="datas[teste][mes]")
+              option(value="" selected=!testeParts.length) Mes
+              each mes in meses
+                option(value=mes selected=(testeParts[1] === mes)) #{mes}
+            select.w3-select.w3-round(name="datas[teste][ano]")
+              option(value="" selected=!testeParts.length) Ano
+              each ano in anosDatas
+                option(value=ano selected=(testeParts[0] === ano)) #{ano}
+
+          label Data do Exame (opcional)
+          .date-picker.w3-margin-bottom
+            select.w3-select.w3-round(name="datas[exame][dia]")
+              option(value="" selected=!exameParts.length) Dia
+              each dia in dias
+                option(value=dia selected=(exameParts[2] === dia)) #{dia}
+            select.w3-select.w3-round(name="datas[exame][mes]")
+              option(value="" selected=!exameParts.length) Mes
+              each mes in meses
+                option(value=mes selected=(exameParts[1] === mes)) #{mes}
+            select.w3-select.w3-round(name="datas[exame][ano]")
+              option(value="" selected=!exameParts.length) Ano
+              each ano in anosDatas
+                option(value=ano selected=(exameParts[0] === ano)) #{ano}
+
+          label Data do Projeto (opcional)
+          .date-picker
+            select.w3-select.w3-round(name="datas[projeto][dia]")
+              option(value="" selected=!projetoParts.length) Dia
+              each dia in dias
+                option(value=dia selected=(projetoParts[2] === dia)) #{dia}
+            select.w3-select.w3-round(name="datas[projeto][mes]")
+              option(value="" selected=!projetoParts.length) Mes
+              each mes in meses
+                option(value=mes selected=(projetoParts[1] === mes)) #{mes}
+            select.w3-select.w3-round(name="datas[projeto][ano]")
+              option(value="" selected=!projetoParts.length) Ano
+              each ano in anosDatas
+                option(value=ano selected=(projetoParts[0] === ano)) #{ano}
 
         fieldset#aulas-container.w3-margin-top
           legend Aulas
@@ -72,13 +137,33 @@ block content
                 h6 Aula ##{index + 1}
                   if index > 0
                     button.w3-btn.w3-red.w3-small.w3-right(type="button" onclick="this.parentElement.parentElement.remove()") X
-                input.w3-input.w3-round.w3-margin-bottom(type="text" name=`aulas[${index}][tipo]` value=aula.tipo placeholder="Tipo (ex: T, TP, PL)" required)
+                label Tipo da Aula
+                .aula-type-picker.w3-margin-bottom
+                  label.w3-margin-right
+                    input.w3-radio(type="radio" name=`aulas[${index}][tipo]` value="T" required checked=(aula && aula.tipo === 'T'))
+                    span.w3-margin-left T
+                  label.w3-margin-right
+                    input.w3-radio(type="radio" name=`aulas[${index}][tipo]` value="TP" required checked=(aula && aula.tipo === 'TP'))
+                    span.w3-margin-left TP
+                  label
+                    input.w3-radio(type="radio" name=`aulas[${index}][tipo]` value="PL" required checked=(aula && aula.tipo === 'PL'))
+                    span.w3-margin-left PL
                 input.w3-input.w3-round.w3-margin-bottom(type="text" name=`aulas[${index}][data]` value=aula.data placeholder="Data (ex: 2024-02-12)" required)
                 input.w3-input.w3-round(type="text" name=`aulas[${index}][sumario][]` value=(aula.sumario ? aula.sumario.join(', ') : "") placeholder="Sumário da Aula" required)
           else
             .w3-border.w3-padding.w3-margin-bottom
               h6 Registo da Primeira Aula
-              input.w3-input.w3-round.w3-margin-bottom(type="text" name="aulas[0][tipo]" placeholder="Tipo (ex: T, TP, PL)" required)
+              label Tipo da Aula
+              .aula-type-picker.w3-margin-bottom
+                label.w3-margin-right
+                  input.w3-radio(type="radio" name="aulas[0][tipo]" value="T" required)
+                  span.w3-margin-left T
+                label.w3-margin-right
+                  input.w3-radio(type="radio" name="aulas[0][tipo]" value="TP" required)
+                  span.w3-margin-left TP
+                label
+                  input.w3-radio(type="radio" name="aulas[0][tipo]" value="PL" required)
+                  span.w3-margin-left PL
               input.w3-input.w3-round.w3-margin-bottom(type="text" name="aulas[0][data]" placeholder="Data (ex: 2024-02-12)" required)
               input.w3-input.w3-round(type="text" name="aulas[0][sumario][]" placeholder="Sumário da Aula" required)
         button.w3-btn.w3-light-grey.w3-margin-bottom(type="button" onclick="addAula()") + Adicionar Outra Aula
@@ -134,7 +219,21 @@ block content
       const html = `
         <div class="w3-border w3-padding w3-margin-bottom">
           <h6>Aula #${aulaCount + 1} <button type="button" class="w3-btn w3-red w3-small w3-right" onclick="this.parentElement.parentElement.remove()">X</button></h6>
-          <input class="w3-input w3-round w3-margin-bottom" type="text" name="aulas[${aulaCount}][tipo]" placeholder="Tipo (ex: T, TP, PL)" required>
+          <label>Tipo da Aula</label>
+          <div class="aula-type-picker w3-margin-bottom">
+            <label class="w3-margin-right">
+              <input class="w3-radio" type="radio" name="aulas[${aulaCount}][tipo]" value="T" required>
+              <span class="w3-margin-left">T</span>
+            </label>
+            <label class="w3-margin-right">
+              <input class="w3-radio" type="radio" name="aulas[${aulaCount}][tipo]" value="TP" required>
+              <span class="w3-margin-left">TP</span>
+            </label>
+            <label>
+              <input class="w3-radio" type="radio" name="aulas[${aulaCount}][tipo]" value="PL" required>
+              <span class="w3-margin-left">PL</span>
+            </label>
+          </div>
           <input class="w3-input w3-round w3-margin-bottom" type="text" name="aulas[${aulaCount}][data]" placeholder="Data" required>
           <input class="w3-input w3-round" type="text" name="aulas[${aulaCount}][sumario][]" placeholder="Sumário da Aula" required>
         </div>
