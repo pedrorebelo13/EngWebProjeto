@@ -1,0 +1,47 @@
+const jwt = require('jsonwebtoken');
+
+const JWT_SECRET = process.env.JWT_SECRET || '2026-04-13';
+
+function prefersJson(req) {
+    const acceptHeader = req.get('accept') || '';
+    return acceptHeader.includes('application/json');
+}
+
+function attachUserFromCookie(req, res, next) {
+    try {
+        const token = req.cookies && req.cookies.token;
+
+        if (token) {
+            const decoded = jwt.verify(token, JWT_SECRET);
+            req.user = {
+                id: decoded.sub,
+                email: decoded.email,
+                name: decoded.name,
+                role: decoded.role
+            };
+            res.locals.user = req.user;
+        }
+    } catch (error) {
+        // Invalid or expired token.
+        res.clearCookie('token');
+    }
+
+    return next();
+}
+
+function requireAuth(req, res, next) {
+    if (req.user) {
+        return next();
+    }
+
+    if (prefersJson(req)) {
+        return res.status(401).json({ error: 'Authentication required.' });
+    }
+
+    return res.redirect('/auth/login');
+}
+
+module.exports = {
+    attachUserFromCookie,
+    requireAuth
+};

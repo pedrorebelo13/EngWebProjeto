@@ -4,14 +4,14 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const ucRouter = require('./routes/ucRouter');
 const authRouter = require('./routes/authRouter');
-const authMiddleware = require('./middleware/authMiddleware');
+const { attachUserFromCookie } = require('./cookies/cookieAuthMiddleware');
 const upload = require('./config/multer');
 const path = require('path');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(authMiddleware);
+app.use(attachUserFromCookie);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.locals.upload = upload;

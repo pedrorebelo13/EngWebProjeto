@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ucController = require('../controllers/ucController');
+const { requireAuth } = require('../cookies/cookieAuthMiddleware');
 
 // Middleware para processar uploads de fotos de docentes
 const processDocenteFotos = (req, res, next) => {
@@ -27,10 +28,10 @@ const getUpload = (req, res, next) => {
 };
 
 // Nova UC
-router.post('/ucs', getUpload, processDocenteFotos, ucController.createUC); 
+router.post('/ucs', requireAuth, getUpload, processDocenteFotos, ucController.createUC); 
 
 // Formulário para nova UC
-router.get('/ucs/new', ucController.newUCForm);
+router.get('/ucs/new', requireAuth, ucController.newUCForm);
 
 // Listar UCs
 router.get('/ucs', ucController.getAllUC);
@@ -39,13 +40,13 @@ router.get('/ucs', ucController.getAllUC);
 router.get('/ucs/:id', ucController.getUCById);
 
 // Alterar uma UC
-router.put('/ucs/:id', getUpload, processDocenteFotos, ucController.updateUC);
-router.post('/ucs/:id', getUpload, processDocenteFotos, ucController.updateUC);
+router.put('/ucs/:id', requireAuth, getUpload, processDocenteFotos, ucController.updateUC);
+router.post('/ucs/:id', requireAuth, getUpload, processDocenteFotos, ucController.updateUC);
 
 // Formulário para editar uma UC
-router.get('/ucs/:id/edit', ucController.editUCForm);
+router.get('/ucs/:id/edit', requireAuth, ucController.editUCForm);
 
 // Apagar uma UC
-router.delete('/ucs/:id', ucController.deleteUC);
+router.delete('/ucs/:id', requireAuth, ucController.deleteUC);
 
 module.exports = router;
