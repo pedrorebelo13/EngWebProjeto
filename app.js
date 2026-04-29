@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const ucRouter = require('./routes/ucRouter');
 const authRouter = require('./routes/authRouter');
+const usersRouter = require('./routes/usersRouter');
 const { attachUserFromCookie } = require('./cookies/cookieAuthMiddleware');
 const upload = require('./config/multer');
 const path = require('path');
@@ -30,6 +31,7 @@ app.get('/', (req, res) => {
 
 app.use('/uc', ucRouter);
 app.use('/auth', authRouter);
+app.use('/users', usersRouter);
 
 const PORT = process.env.PORT || 16000
 app.listen(PORT, () => {

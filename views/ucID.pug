@@ -1,12 +1,16 @@
 extends layout
 
 block content
+  - var colorMap = { 'red': '#f54245', 'pink': '#e91e63', 'purple': '#9c27b0', 'deep-purple': '#673ab7', 'indigo': '#3f51b5', 'blue': '#2196f3', 'teal': '#009688', 'light-green': '#8bc34a', 'yellow': '#ffeb3b', 'orange': '#ff9800', 'brown': '#795548', 'white': '#ffffff', 'gray': '#9e9e9e', 'black': '#000000' };
+  - var getColor = (colorName) => colorMap[colorName] || colorName;
   .w3-card-4
     header.w3-container.w3-black(style='display: flex; justify-content: space-between; align-items: center; padding: 16px 16px;')
       h1(style='margin: 0; flex: 1;') #{uc.sigla} - #{uc.titulo}
       if user
-        div(style='position: relative; flex-shrink: 0;')
-          button.profile-btn.w3-button.w3-round(onclick='toggleProfile()' style='font-size: 24px;') 👤
+        div(style='position: relative; flex-shrink: 0; display: flex; gap: 10px; align-items: center;')
+          if user.role === 'admin'
+            a.w3-button.w3-black.w3-round.w3-hover-white.w3-margin-right.w3-border(href='/users/list' style='font-size: 14px; font-weight: bold;') Utilizadores         
+            button.profile-btn.w3-button.w3-round(onclick='toggleProfile()' style='font-size: 24px;') 👤
           div#profileMenu.w3-dropdown-content.w3-bar-block.w3-border(style='display:none; position:absolute; right:0; top:100%; background-color:#f1f1f1; z-index:10; min-width:200px;')
             .w3-bar-item
               strong=user.name
@@ -17,20 +21,13 @@ block content
                 button.w3-button.w3-block.w3-text-left.w3-text-red.w3-hover-red(type='submit') Logout
 
     .w3-container
-      table.w3-table-all.w3-margin-top
-        tr
-          th Sigla
-          td= uc.sigla
-        tr
-          th Disciplina
-          td= uc.titulo
-        tr
-          th Ano
-          td= uc.ano
-      a.w3-button.w3-teal.w3-margin-top.w3-round.w3-margin-bottom(href='/uc/ucs') Voltar
-      a.w3-button.w3-blue.w3-margin-top.w3-margin-left.w3-round.w3-margin-bottom(href=`/uc/ucs/${uc.id}/edit`) Editar
-      button.w3-button.w3-red.w3-margin-top.w3-margin-left.w3-round.w3-margin-bottom(onclick=`deleteUC('${uc.id}')`) Apagar
-
+      if uc.website.tipo == 'A'
+        include ./opcA.pug
+      else if uc.website.tipo == 'B'
+        include ./opcB.pug
+      else if uc.website.tipo == 'C'
+        include ./opcC.pug
+        
   script.
     function deleteUC(id) {
       if (confirm("Tens a certeza que queres apagar esta UC?")) {

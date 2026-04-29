@@ -1,0 +1,117 @@
+// Header com cor principal
+div(style=`background-color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; color: white; padding: 20px; margin-top: 20px;`)
+  h2(style='margin: 0; font-size: 28px;')= uc.sigla
+  p(style='margin: 5px 0; font-size: 14px; opacity: 0.9;')= uc.titulo
+
+// Info Cards
+div(style='display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;')
+  // Docentes Card
+  if uc.docentes && uc.docentes.length > 0
+    div(style='background-color: #f5f5f5; padding: 20px; border-left: 4px solid ' + getColor(uc.website.corPrincipal || '#17a2b8') + ';')
+      h4(style=`margin: 0 0 15px 0; color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; display: flex; align-items: center; gap: 8px;`)
+        span 👤
+        | Docentes
+      each docente in uc.docentes
+        div(style='margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #ddd;')
+          div(style='font-weight: bold; color: #333;')= docente.nome
+          small(style='color: #666; display: block; margin-top: 4px;')= docente.categoria || ''
+          if docente.email
+            small(style='color: ' + getColor(uc.website.corPrincipal || '#17a2b8') + '; display: block;')= docente.email
+
+  // Horário Card
+  if uc.horario
+    div(style='background-color: #f5f5f5; padding: 20px; border-left: 4px solid ' + getColor(uc.website.corPrincipal || '#17a2b8') + ';')
+      h4(style=`margin: 0 0 15px 0; color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; display: flex; align-items: center; gap: 8px;`)
+        span 🕐
+        | Horário
+      if uc.horario.teoricas && uc.horario.teoricas.length > 0
+        div(style='margin-bottom: 12px;')
+          strong(style='color: #333; display: block; margin-bottom: 6px;') Aulas Teóricas
+          ul(style='margin: 0; padding-left: 20px;')
+            each aula in uc.horario.teoricas
+              li(style='font-size: 13px; color: #555; margin-bottom: 4px;')= aula
+      if uc.horario.praticas && uc.horario.praticas.length > 0
+        div
+          strong(style='color: #333; display: block; margin-bottom: 6px;') Aulas Práticas
+          ul(style='margin: 0; padding-left: 20px;')
+            each aula in uc.horario.praticas
+              li(style='font-size: 13px; color: #555; margin-bottom: 4px;')= aula
+
+  // Avaliação Card
+  if uc.avaliacao && uc.avaliacao.length > 0
+    div(style='background-color: #f5f5f5; padding: 20px; border-left: 4px solid ' + getColor(uc.website.corPrincipal || '#17a2b8') + ';')
+      h4(style=`margin: 0 0 15px 0; color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; display: flex; align-items: center; gap: 8px;`)
+        span 📊
+        | Avaliação
+      ul(style='margin: 0; padding-left: 0; list-style: none;')
+        each item in uc.avaliacao
+          li(style='font-size: 13px; color: #555; margin-bottom: 8px; padding-left: 20px; position: relative;')
+            span(style='position: absolute; left: 0;') •
+            = item
+
+  // Datas Importantes Card
+  if uc.datas
+    div(style='background-color: #f5f5f5; padding: 20px; border-left: 4px solid ' + getColor(uc.website.corPrincipal || '#17a2b8') + ';')
+      h4(style=`margin: 0 0 15px 0; color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; display: flex; align-items: center; gap: 8px;`)
+        span 📅
+        | Datas Importantes
+      if uc.datas.teste
+        div(style='margin-bottom: 10px;')
+          strong(style='color: #333; display: block;') Teste escrito
+          span(style='color: #666; font-size: 13px;')= new Date(uc.datas.teste).toLocaleDateString('pt-PT')
+      if uc.datas.exame
+        div(style='margin-bottom: 10px;')
+          strong(style='color: #333; display: block;') Exame
+          span(style='color: #666; font-size: 13px;')= new Date(uc.datas.exame).toLocaleDateString('pt-PT')
+      if uc.datas.projeto
+        div
+          strong(style='color: #333; display: block;') Entrega do projeto
+          span(style='color: #666; font-size: 13px;')= new Date(uc.datas.projeto).toLocaleDateString('pt-PT')
+
+// Informações adicionais
+div(style='display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;')
+  div(style='background-color: #f5f5f5; padding: 16px; text-align: center;')
+    div(style='font-size: 12px; color: #999; text-transform: uppercase; font-weight: bold; margin-bottom: 8px;') Ano
+    div(style='font-size: 24px; font-weight: bold; color: ' + getColor(uc.website.corPrincipal || '#17a2b8') + ';')= uc.ano
+
+  div(style='background-color: #f5f5f5; padding: 16px; text-align: center;')
+    div(style='font-size: 12px; color: #999; text-transform: uppercase; font-weight: bold; margin-bottom: 8px;') Sigla
+    div(style='font-size: 18px; font-weight: bold; color: #333;')= uc.sigla
+
+// Seção de Aulas
+div(style=`margin-top: 20px; background-color: white; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);`)
+  div(style=`background-color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; color: white; padding: 16px 20px;`)
+    h3(style='margin: 0; font-size: 18px; display: flex; align-items: center; gap: 8px;')
+      span 📋
+      | Aulas
+  
+  div(style='max-height: 500px; overflow-y: auto;')
+    if uc.aulas && uc.aulas.length > 0
+      each aula in uc.aulas
+        div(style='padding: 16px 20px; border-bottom: 1px solid #eee; cursor: pointer; transition: background-color 0.2s;' onmouseover="this.style.backgroundColor='#f9f9f9'" onmouseout="this.style.backgroundColor='white'")
+          div(style='display: flex; gap: 12px; align-items: flex-start;')
+            span.w3-tag(style=`background-color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; color: white; padding: 8px 12px; font-weight: bold; min-width: 50px; text-align: center;`)
+              if aula.tipo == 'T'
+                | T
+              else if aula.tipo == 'TP'
+                | TP
+              else if aula.tipo == 'PL'
+                | PL
+              else
+                = aula.tipo
+            div(style='flex: 1;')
+              div(style='display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;')
+                strong(style='color: #333;')= aula.tema || 'Sem tema'
+                small(style='color: #999; font-size: 12px;')= aula.data ? new Date(aula.data).toLocaleDateString('pt-PT') : '-'
+              small(style='color: #666; display: block; line-height: 1.4;')
+                each sumario in aula.sumario
+                  div= sumario
+    else
+      div(style='padding: 20px; text-align: center; color: #999;')
+        p Sem aulas registadas
+
+// Botões de ação
+div(style='margin-top: 20px; display: flex; gap: 10px; padding: 20px 0;')
+  a.w3-button.w3-teal.w3-round(href='/uc/ucs' style='padding: 10px 20px;') Voltar
+  a.w3-button.w3-blue.w3-round(href=`/uc/ucs/${uc.id}/edit` style='padding: 10px 20px;') Editar
+  button.w3-button.w3-red.w3-round(onclick=`deleteUC('${uc.id}')` style='padding: 10px 20px;') Apagar

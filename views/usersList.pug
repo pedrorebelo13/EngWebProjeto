@@ -1,0 +1,59 @@
+extends layout
+
+block content
+  .w3-card-4
+    header.w3-container.w3-black(style='display: flex; justify-content: space-between; align-items: center; padding: 16px 16px;')
+      h1(style='margin: 0; flex: 1;')
+        span.w3-serif Lista de Utilizadores
+      if user
+        div(style='position: relative; flex-shrink: 0; display: flex; gap: 10px; align-items: center;')
+          if user.role === 'admin'
+            a.w3-button.w3-black.w3-round.w3-hover-white.w3-margin-right.w3-border(href='/users/list' style='font-size: 14px; font-weight: bold;') Utilizadores         
+            button.profile-btn.w3-button.w3-round(onclick='toggleProfile()' style='font-size: 24px;') 👤
+          div#profileMenu.w3-dropdown-content.w3-bar-block.w3-border(style='display:none; position:absolute; right:0; top:100%; background-color:#f1f1f1; z-index:10; min-width:200px;')
+            .w3-bar-item
+              strong=user.name
+              br
+              small=user.email
+            .w3-bar-item.w3-border-top
+              form.w3-bar-item(action='/auth/logout' method='POST' style='padding: 0;')
+                button.w3-button.w3-block.w3-text-left.w3-text-red.w3-hover-red(type='submit') Logout
+
+    .w3-container
+      table.w3-table-all.w3-margin-top
+        thead
+          tr
+            th Username
+            th Nome
+            th Email
+            th Filiação
+            th Role
+            th Registado em
+            th Último Acesso
+        tbody
+          each user in users
+            tr
+              td= user.username
+              td= user.name
+              td= user.email
+              td= user.filiacao || '-'
+              td
+                span.w3-tag(class=user.role === 'admin' ? 'w3-red' : user.role === 'producer' ? 'w3-orange' : 'w3-blue')= user.role
+              td= new Date(user.dataRegisto).toLocaleDateString('pt-PT') + ' ' + new Date(user.dataRegisto).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })
+              td= user.dataUltimoAcesso ? new Date(user.dataUltimoAcesso).toLocaleDateString('pt-PT') + ' ' + new Date(user.dataUltimoAcesso).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' }) : '-'
+
+    .w3-container.w3-margin-top
+            a.w3-button.w3-teal.w3-margin-top.w3-round.w3-margin-bottom(href='/uc/ucs') Voltar
+
+  script.
+    function toggleProfile() {
+      var menu = document.getElementById('profileMenu');
+      menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+    }
+
+    window.onclick = function(event) {
+      if (!event.target.matches('.profile-btn') && !event.target.closest('#profileMenu')) {
+        var menu = document.getElementById('profileMenu');
+        menu.style.display = 'none';
+      }
+    }

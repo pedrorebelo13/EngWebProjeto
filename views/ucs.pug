@@ -17,7 +17,9 @@ block content
       h1(style='margin: 0; flex: 1;')
         span.w3-serif Lista de Unidades Curriculares
       if user
-        div(style='position: relative; flex-shrink: 0;')
+        div(style='position: relative; flex-shrink: 0; display: flex; gap: 10px; align-items: center;')
+          if user.role === 'admin'
+            a.w3-button.w3-black.w3-round.w3-hover-white.w3-margin-right.w3-border(href='/users/list' style='font-size: 14px; font-weight: bold;') Utilizadores
           button.profile-btn.w3-button.w3-round(onclick='toggleProfile()' style='font-size: 24px;') 👤
           div#profileMenu.w3-dropdown-content.w3-bar-block.w3-border(style='display:none; position:absolute; right:0; top:100%; background-color:#f1f1f1; z-index:10; min-width:200px;')
             .w3-bar-item
@@ -52,7 +54,7 @@ block content
               td= t.ano
               td
                 a.w3-button.w3-teal.w3-round(href=`/uc/ucs/${t._id}`) Ver Website
-      a.w3-button.w3-teal.w3-margin-top.w3-round(href='/uc') Voltar
+      a.w3-button.w3-teal.w3-margin-top.w3-round.w3-margin-bottom(href='/uc') Voltar
 
   script.
     function toggleProfile() {

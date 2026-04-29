@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const mongoose = require('mongoose');
 const ucModel = require('./models/ucModel');
+const userModel = require('./models/userModel');
+const bcrypt = require('bcryptjs');
 
 const nomeBD = 'projetoEW';
 const mongoHost = process.env.MONGO_URL || `mongodb://127.0.0.1:27017/${nomeBD}`;
@@ -101,6 +103,7 @@ function normalizeUc(rawUc) {
         docentes: rawUc.docentes || [],
         horario: rawUc.horario || { teoricas: [], praticas: [] },
         avaliacao: rawUc.avaliacao || [],
+        isPublic: true,
         datas: {
             teste: parseDate(rawUc.datas?.teste, ucYear),
             exame: parseDate(rawUc.datas?.exame, ucYear),
@@ -116,6 +119,22 @@ function normalizeUc(rawUc) {
 
 async function main() {
     await mongoose.connect(mongoHost);
+
+    const adminExists = await userModel.findOne({ username: 'admin' });
+    if (!adminExists) {
+        const hashedPassword = await bcrypt.hash('admin', 10);
+        const adminUser = new userModel({
+            username: 'admin',
+            name: 'Administrador',
+            email: 'admin@admin.com',
+            password: hashedPassword,
+            role: 'admin'
+        });
+        await adminUser.save();
+        console.log('Utilizador admin criado com sucesso.');
+    } else {
+        console.log('Utilizador admin já existe.');
+    }
 
     const existingCount = await ucModel.countDocuments();
     if (existingCount > 0) {
