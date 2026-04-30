@@ -34,15 +34,23 @@ const canManageUc = (user, uc) => {
 };
 
 const canViewUc = (user, uc) => {
-    if (!user) {
+    if (!user || !uc) {
         return false;
     }
 
-    if (user.role === 'admin' || user.role === 'docente') {
+    if (user.role === 'admin') {
         return true;
     }
 
-    return !!uc.isPublic;
+    if (uc.isPublic) {
+        return true;
+    }
+
+    if (user.role === 'docente' && uc.createdBy) {
+        return uc.createdBy.toString() === user.id;
+    }
+
+    return false;
 };
 
 const normalizeDateField = (dateValue) => {
@@ -90,6 +98,15 @@ const ucController = {
             if (typeof req.body.isPublic !== 'undefined') {
                 const rawValue = String(req.body.isPublic).toLowerCase();
                 req.body.isPublic = rawValue === 'true' || rawValue === 'on';
+            }
+
+            if (req.body.website) {
+                if (!req.body.website.corPrincipal && existingUC.website && existingUC.website.corPrincipal) {
+                    req.body.website.corPrincipal = existingUC.website.corPrincipal;
+                }
+                if (!req.body.website.tipo && existingUC.website && existingUC.website.tipo) {
+                    req.body.website.tipo = existingUC.website.tipo;
+                }
             }
 
             if (req.body.datas) {
@@ -147,8 +164,15 @@ const ucController = {
             sortObj[sortField] = sortOrder;
 
             const filter = {};
-            if (req.user && req.user.role === 'aluno') {
-                filter.isPublic = true;
+            if (req.user) {
+                if (req.user.role === 'aluno') {
+                    filter.isPublic = true;
+                } else if (req.user.role === 'docente') {
+                    filter.$or = [
+                        { isPublic: true },
+                        { createdBy: req.user.id }
+                    ];
+                }
             }
 
             const ucs = await ucModel.find(filter).sort(sortObj);
