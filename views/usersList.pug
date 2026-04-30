@@ -30,22 +30,48 @@ block content
             th Role
             th Registado em
             th Último Acesso
+            th Ações
         tbody
-          each user in users
+          each u in users
             tr
-              td= user.username
-              td= user.name
-              td= user.email
-              td= user.filiacao || '-'
+              td= u.username
+              td= u.name
+              td= u.email
+              td= u.filiacao || '-'
               td
-                span.w3-tag(class=user.role === 'admin' ? 'w3-red' : user.role === 'producer' ? 'w3-orange' : 'w3-blue')= user.role
-              td= new Date(user.dataRegisto).toLocaleDateString('pt-PT') + ' ' + new Date(user.dataRegisto).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })
-              td= user.dataUltimoAcesso ? new Date(user.dataUltimoAcesso).toLocaleDateString('pt-PT') + ' ' + new Date(user.dataUltimoAcesso).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' }) : '-'
+                span.w3-tag(class=u.role === 'admin' ? 'w3-red' : u.role === 'docente' ? 'w3-orange' : 'w3-blue')= u.role
+              td= new Date(u.dataRegisto).toLocaleDateString('pt-PT') + ' ' + new Date(u.dataRegisto).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })
+              td= u.dataUltimoAcesso ? new Date(u.dataUltimoAcesso).toLocaleDateString('pt-PT') + ' ' + new Date(u.dataUltimoAcesso).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' }) : '-'
+              td
+                a.w3-button.w3-blue.w3-small.w3-round(href=`/users/${u._id}/edit`) Editar
+                if user && user.id && ('' + u._id) !== user.id
+                  button.w3-button.w3-red.w3-small.w3-round.w3-margin-left(onclick=`deleteUser('${u._id}')`) Apagar
 
     .w3-container.w3-margin-top
             a.w3-button.w3-teal.w3-margin-top.w3-round.w3-margin-bottom(href='/uc/ucs') Voltar
 
   script.
+    function deleteUser(id) {
+      if (confirm('Tens a certeza que queres apagar este utilizador?')) {
+        fetch('/users/' + id, {
+          method: 'DELETE',
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            window.location.reload();
+          } else {
+            alert('Erro ao apagar o utilizador.');
+          }
+        })
+        .catch(error => {
+          console.error('Erro:', error);
+          alert('Ocorreu um erro de rede ao tentar apagar o utilizador.');
+        });
+      }
+    }
     function toggleProfile() {
       var menu = document.getElementById('profileMenu');
       menu.style.display = menu.style.display === 'none' ? 'block' : 'none';

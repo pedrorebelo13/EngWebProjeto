@@ -14,7 +14,7 @@ const denyAccess = (req, res, message) => {
 };
 
 const canCreateUc = (user) => {
-    return user && (user.role === 'admin' || user.role === 'producer');
+    return user && (user.role === 'admin' || user.role === 'docente');
 };
 
 const canManageUc = (user, uc) => {
@@ -26,7 +26,7 @@ const canManageUc = (user, uc) => {
         return true;
     }
 
-    if (user.role === 'producer' && uc && uc.createdBy) {
+    if (user.role === 'docente' && uc && uc.createdBy) {
         return uc.createdBy.toString() === user.id;
     }
 
@@ -38,7 +38,7 @@ const canViewUc = (user, uc) => {
         return false;
     }
 
-    if (user.role === 'admin' || user.role === 'producer') {
+    if (user.role === 'admin' || user.role === 'docente') {
         return true;
     }
 
@@ -147,7 +147,7 @@ const ucController = {
             sortObj[sortField] = sortOrder;
 
             const filter = {};
-            if (req.user && req.user.role === 'consumer') {
+            if (req.user && req.user.role === 'aluno') {
                 filter.isPublic = true;
             }
 

@@ -105,7 +105,7 @@ const swaggerDefinition = {
           email: { type: 'string', format: 'email' },
           filiacao: { type: 'string' },
           password: { type: 'string', format: 'password' },
-          role: { type: 'string', enum: ['producer', 'consumer'] }
+          role: { type: 'string', enum: ['docente', 'aluno'] }
         }
       },
       UserLogin: {
@@ -130,7 +130,7 @@ const swaggerDefinition = {
               name: { type: 'string' },
               email: { type: 'string', format: 'email' },
               filiacao: { type: 'string' },
-              role: { type: 'string', enum: ['admin', 'producer', 'consumer'] }
+              role: { type: 'string', enum: ['admin', 'docente', 'aluno'] }
             }
           }
         }

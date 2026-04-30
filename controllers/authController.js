@@ -89,7 +89,7 @@ const authController = {
                 email: normalizedEmail,
                 filiacao: (filiacao || '').trim(),
                 password: hashedPassword,
-                role: role === 'producer' ? 'producer' : 'consumer',
+                role: role === 'docente' ? 'docente' : 'aluno',
                 apiKey
             });
 

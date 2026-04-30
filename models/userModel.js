@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true, trim: true, lowercase: true },
     filiacao: { type: String, default: '' },
     password: { type: String, required: true },
-    role: { type: String, enum: ['admin', 'producer', 'consumer'], default: 'consumer' },
+    role: { type: String, enum: ['admin', 'docente', 'aluno'], default: 'aluno' },
     dataRegisto: { type: Date, default: Date.now },
     dataUltimoAcesso: { type: Date },
     apiKey: { type: String, unique: true, sparse: true }

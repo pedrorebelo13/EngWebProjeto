@@ -21,7 +21,7 @@ async function main() {
     const { identifier, role } = parseArgs();
 
     if (!identifier) {
-        console.error('Usage: node makeAdmin.js <username-or-email> [--role=admin|producer|consumer]');
+        console.error('Usage: node makeAdmin.js <username-or-email> [--role=admin|docente|aluno]');
         process.exit(1);
     }
 
