@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const ucModel = require('./models/ucModel');
 const userModel = require('./models/userModel');
 const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
 
 const nomeBD = 'projetoEW';
 const mongoHost = process.env.MONGO_URL || `mongodb://127.0.0.1:27017/${nomeBD}`;
@@ -11,6 +12,86 @@ const mongoHost = process.env.MONGO_URL || `mongodb://127.0.0.1:27017/${nomeBD}`
 function loadJson(fileName) {
     const filePath = path.join(__dirname, 'data', fileName);
     return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+}
+
+function loadUsers() {
+    const filePath = path.join(__dirname, 'data', 'users.json');
+    if (!fs.existsSync(filePath)) {
+        return [];
+    }
+
+    const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    if (Array.isArray(data)) {
+        return data;
+    }
+
+    if (Array.isArray(data.users)) {
+        return data.users;
+    }
+
+    return [];
+}
+
+function isBcryptHash(value) {
+    return typeof value === 'string' && value.startsWith('$2');
+}
+
+async function seedUsers(users) {
+    const allowedRoles = new Set(['admin', 'docente', 'aluno']);
+    let created = 0;
+
+    for (const entry of users) {
+        if (!entry || typeof entry !== 'object') {
+            continue;
+        }
+
+        const username = (entry.username || '').trim().toLowerCase();
+        const name = (entry.name || '').trim();
+        const email = (entry.email || '').trim().toLowerCase();
+        const role = allowedRoles.has(entry.role) ? entry.role : 'aluno';
+        const filiacao = (entry.filiacao || '').trim();
+        const passwordValue = entry.password || entry.passwordHash;
+
+        if (!username || !name || !email || !passwordValue) {
+            console.warn(`Utilizador ignorado por falta de dados obrigatorios: ${username || email || 'desconhecido'}`);
+            continue;
+        }
+
+        const existingUser = await userModel.findOne({
+            $or: [
+                { username },
+                { email }
+            ]
+        });
+
+        if (existingUser) {
+            console.log(`Utilizador ${username} ja existe. Seed ignorado.`);
+            continue;
+        }
+
+        const hashedPassword = isBcryptHash(passwordValue)
+            ? passwordValue
+            : await bcrypt.hash(String(passwordValue), 10);
+
+        const apiKey = entry.apiKey
+            ? String(entry.apiKey).trim()
+            : crypto.randomBytes(24).toString('hex');
+
+        const newUser = new userModel({
+            username,
+            name,
+            email,
+            filiacao,
+            password: hashedPassword,
+            role,
+            apiKey
+        });
+
+        await newUser.save();
+        created++;
+    }
+
+    console.log(`Seed de utilizadores terminado. Criados: ${created}.`);
 }
 
 function normalizeUc(rawUc) {
@@ -120,20 +201,25 @@ function normalizeUc(rawUc) {
 async function main() {
     await mongoose.connect(mongoHost);
 
-    const adminExists = await userModel.findOne({ username: 'admin' });
-    if (!adminExists) {
-        const hashedPassword = await bcrypt.hash('admin', 10);
-        const adminUser = new userModel({
-            username: 'admin',
-            name: 'Administrador',
-            email: 'admin@admin.com',
-            password: hashedPassword,
-            role: 'admin'
-        });
-        await adminUser.save();
-        console.log('Utilizador admin criado com sucesso.');
+    const users = loadUsers();
+    if (users.length > 0) {
+        await seedUsers(users);
     } else {
-        console.log('Utilizador admin já existe.');
+        const adminExists = await userModel.findOne({ username: 'admin' });
+        if (!adminExists) {
+            const hashedPassword = await bcrypt.hash('admin', 10);
+            const adminUser = new userModel({
+                username: 'admin',
+                name: 'Administrador',
+                email: 'admin@admin.com',
+                password: hashedPassword,
+                role: 'admin'
+            });
+            await adminUser.save();
+            console.log('Utilizador admin criado com sucesso.');
+        } else {
+            console.log('Utilizador admin ja existe.');
+        }
     }
 
     const existingCount = await ucModel.countDocuments();

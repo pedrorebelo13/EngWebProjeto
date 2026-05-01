@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "name": "Administrador",
+      "email": "admin@admin.com",
+      "password": "admin",
+      "role": "admin",
+      "filiacao": ""
+    },
+    {
+      "username": "aluno",
+      "name": "Aluno",
+      "email": "aluno@aluno.com",
+      "password": "aluno",
+      "role": "aluno",
+      "filiacao": ""
+    },
+    {
+      "username": "docente",
+      "name": "Docente",
+      "email": "docente@docente.com",
+      "password": "docente",
+      "role": "docente",
+      "filiacao": ""
+    }
+  ]
+}
