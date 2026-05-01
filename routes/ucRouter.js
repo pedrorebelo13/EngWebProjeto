@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
 const ucController = require('../controllers/ucController');
 const { requireAuth } = require('../cookies/cookieAuthMiddleware');
 
@@ -82,6 +83,19 @@ const getUpload = (req, res, next) => {
     const upload = req.app.locals.upload;
     upload.any()(req, res, next);
 };
+
+const jsonUpload = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 2 * 1024 * 1024 },
+    fileFilter: (req, file, cb) => {
+        const isJsonMime = file.mimetype === 'application/json' || file.mimetype === 'text/json';
+        const isJsonName = file.originalname.toLowerCase().endsWith('.json');
+        if (isJsonMime || isJsonName) {
+            return cb(null, true);
+        }
+        return cb(new Error('Apenas ficheiros JSON sao permitidos.'));
+    }
+});
 
 // Nova UC
 router.post('/ucs', requireAuth, getUpload, processDocenteFotos, ucController.createUC); 
@@ -257,6 +271,13 @@ router.get('/ucs', requireAuth, ucController.getAllUC);
  */
 // Consultar uma UC
 router.get('/ucs/:id', requireAuth, ucController.getUCById);
+// Exportacoes
+router.get('/ucs/:id/export/docentes', requireAuth, ucController.exportDocentes);
+router.get('/ucs/:id/export/aulas', requireAuth, ucController.exportAulas);
+router.get('/ucs/:id/export/full', requireAuth, ucController.exportUcFull);
+// Importacoes
+router.post('/ucs/:id/import/aulas', requireAuth, jsonUpload.single('file'), ucController.importAulas);
+router.post('/ucs/:id/import/full', requireAuth, jsonUpload.single('file'), ucController.importUcFull);
 
 // Alterar uma UC
 router.put('/ucs/:id', requireAuth, getUpload, processDocenteFotos, ucController.updateUC);
