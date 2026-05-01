@@ -13,11 +13,16 @@ div(style=`display: flex; gap: 20px; margin-top: 20px; height: 700px;`)
           | Docentes
         ul(style='list-style: none; padding: 0; margin: 10px 0;')
           each docente in uc.docentes
-            li(style='padding: 8px 0; border-bottom: 1px solid #ddd;')
-              strong= docente.nome
-              if docente.email
-                br
-                small(style='color: #666;')= docente.email
+            li(style='padding: 12px 0; border-bottom: 1px solid #ddd; display: flex; gap: 10px; align-items: flex-start;')
+              if docente.foto
+                img(src=`/docentes-fotos/${docente.foto}` alt=docente.nome style='width: 50px; height: 50px; border-radius: 50%; object-fit: cover; flex-shrink: 0;')
+              else
+                div(style=`width: 50px; height: 50px; border-radius: 50%; background-color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;`)
+                  span 👤
+              div(style='flex: 1;')
+                strong(style='display: block;')= docente.nome
+                if docente.email
+                  small(style='color: #666; display: block; word-break: break-word;')= docente.email
 
     // Departamento/Filiação
     div(style='margin-bottom: 20px;')

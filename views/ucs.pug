@@ -31,13 +31,19 @@ block content
                 button.w3-button.w3-block.w3-text-left.w3-text-red.w3-hover-red(type='submit') Logout
     
     .w3-container
-      a.w3-button.w3-border.w3-text-blue.w3-hover-blue.w3-round.w3-margin-top(href='/uc/ucs/new' style='font-weight: bold;') Adicionar Nova Unidade Curricular +
-      
-      - var nextSiglaOrder = (currentSort === 'sigla' && currentOrder === 'asc') ? 'desc' : 'asc'
-      a.w3-button.w3-border.w3-text-indigo.w3-hover-indigo.w3-margin-top.w3-margin-left.w3-round(href=`/uc/ucs?sort=sigla&order=${nextSiglaOrder}` style='font-weight: bold;') Ordenar por Sigla #{currentSort === 'sigla' && currentOrder === 'asc' ? '↑' : '↓'}
-      
-      - var nextAnoOrder = (currentSort === 'ano' && currentOrder === 'asc') ? 'desc' : 'asc'
-      a.w3-button.w3-border.w3-text-indigo.w3-hover-indigo.w3-margin-top.w3-margin-left.w3-round(href=`/uc/ucs?sort=ano&order=${nextAnoOrder}` style='font-weight: bold;') Ordenar por Ano #{currentSort === 'ano' && currentOrder === 'asc' ? '↑' : '↓'}
+      div(style='display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-top: 15px;')
+        div(style='display: flex; gap: 10px; align-items: center;')
+          a.w3-button.w3-border.w3-text-blue.w3-hover-blue.w3-round(href='/uc/ucs/new' style='font-weight: bold;') Adicionar Nova Unidade Curricular +
+          
+          - var nextSiglaOrder = (currentSort === 'sigla' && currentOrder === 'asc') ? 'desc' : 'asc'
+          a.w3-button.w3-border.w3-text-indigo.w3-hover-indigo.w3-round(href=`/uc/ucs?sort=sigla&order=${nextSiglaOrder}` style='font-weight: bold;') Ordenar por Sigla #{currentSort === 'sigla' && currentOrder === 'asc' ? '↑' : '↓'}
+          
+          - var nextAnoOrder = (currentSort === 'ano' && currentOrder === 'asc') ? 'desc' : 'asc'
+          a.w3-button.w3-border.w3-text-indigo.w3-hover-indigo.w3-round(href=`/uc/ucs?sort=ano&order=${nextAnoOrder}` style='font-weight: bold;') Ordenar por Ano #{currentSort === 'ano' && currentOrder === 'asc' ? '↑' : '↓'}
+        
+        form(method='GET' action='/uc/ucs' style='display: flex; gap: 8px; align-items: center;')
+          input.w3-input.w3-border.w3-round(type='text' name='search' placeholder='Pesquisar por nome ou sigla...' value=search || '' style='width: 250px; padding: 8px 12px;')
+          button.w3-button.w3-indigo.w3-round(type='submit' style='font-weight: bold;') 🔍 Pesquisar
     .w3-container
       table.w3-table-all.w3-margin-top
         thead

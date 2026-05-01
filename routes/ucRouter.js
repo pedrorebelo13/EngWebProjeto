@@ -271,13 +271,6 @@ router.get('/ucs', requireAuth, ucController.getAllUC);
  */
 // Consultar uma UC
 router.get('/ucs/:id', requireAuth, ucController.getUCById);
-// Exportacoes
-router.get('/ucs/:id/export/docentes', requireAuth, ucController.exportDocentes);
-router.get('/ucs/:id/export/aulas', requireAuth, ucController.exportAulas);
-router.get('/ucs/:id/export/full', requireAuth, ucController.exportUcFull);
-// Importacoes
-router.post('/ucs/:id/import/aulas', requireAuth, jsonUpload.single('file'), ucController.importAulas);
-router.post('/ucs/:id/import/full', requireAuth, jsonUpload.single('file'), ucController.importUcFull);
 
 // Alterar uma UC
 router.put('/ucs/:id', requireAuth, getUpload, processDocenteFotos, ucController.updateUC);
