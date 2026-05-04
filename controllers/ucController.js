@@ -362,9 +362,6 @@ const ucController = {
             // Construir objeto de ordenação para o Mongoose
             let sortObj = {};
             sortObj[sortField] = sortOrder;
-            
-            const ucs = await ucModel.find(filterObj).sort(sortObj);
-
             const filter = {};
             if (req.user) {
                 if (req.user.role === 'aluno') {
@@ -376,6 +373,8 @@ const ucController = {
                     ];
                 }
             }
+
+            const ucs = await ucModel.find(filter).sort(sortObj);
             
             // Passar os dados e o estado atual para a view
             res.render('ucs', { 
@@ -397,6 +396,9 @@ const ucController = {
             const uc = await ucModel.findById(req.params.id);
             if (!uc) {
                 res.status(404).json({ error: "UC não encontrada" });
+            }
+            else if (!canViewUc(req.user, uc)) {
+                return denyAccess(req, res, 'Acesso negado.');
             }
             else {
                 res.render('ucID', { uc: uc, user: req.user });
