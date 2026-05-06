@@ -1,6 +1,13 @@
 extends layout
 
 block content
+  style.
+    .uc-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 16px; }
+    .uc-tab-btn { border: 1px solid #ccc; background: #f5f5f5; padding: 6px 12px; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: 12px; }
+    .uc-tab-btn.active { background: #673ab7; color: #fff; border-color: #673ab7; }
+    .uc-tab-panel { display: none; }
+    .uc-tab-panel.active { display: block; }
+
   .w3-card-4
     header.w3-container.w3-purple
       h2= uc ? `Editar UC #${uc.id}` : "Nova UC"
@@ -10,35 +17,45 @@ block content
         button.w3-btn.w3-purple(type="submit")= uc ? "Update" : "Insert"
         a.w3-btn.w3-grey(href= uc ? `/uc/ucs/${uc._id}` : "/uc/ucs") Cancel
 
-      fieldset
-        legend Metadata
-        if uc 
-          input(type="hidden" name="id" value=uc.id)
-        
-        label Sigla (ex: EW2025)
-        input.w3-input.w3-round(type="text" name="sigla" value=uc ? uc.sigla : "" required)
-        
-        label Título
-        input.w3-input.w3-round(type="text" name="titulo" value=uc ? uc.titulo : "" required)
+      div.uc-tabs
+        button.uc-tab-btn.active(type='button' data-tab='metadata') Metadata
+        button.uc-tab-btn(type='button' data-tab='docentes') Docentes
+        button.uc-tab-btn(type='button' data-tab='horario') Horario e Avaliacao
+        button.uc-tab-btn(type='button' data-tab='datas') Datas
+        button.uc-tab-btn(type='button' data-tab='aulas') Aulas
+        button.uc-tab-btn(type='button' data-tab='website') Website
 
-        label Ano
-        - var anos = [];
-        - for (var y = 2026; y >= 1976; y--) { anos.push(y); }
-        select.w3-select.w3-round(name="ano" required)
-          option(value="" disabled selected=!(uc && uc.ano)) Escolhe o ano
-          each ano in anos
-            option(value=ano selected=(uc && Number(uc.ano) === ano)) #{ano}
+      div.uc-tab-panel.active(data-tab='metadata')
+        fieldset
+          legend Metadata
+          if uc 
+            input(type="hidden" name="id" value=uc.id)
+          
+          label Sigla (ex: EW2025)
+          input.w3-input.w3-round(type="text" name="sigla" value=uc ? uc.sigla : "" required)
+          
+          label Título
+          input.w3-input.w3-round(type="text" name="titulo" value=uc ? uc.titulo : "" required)
 
-        fieldset.w3-margin-top
-          legend Visibilidade
-          label.w3-margin-right
-            input.w3-radio(type="radio" name="isPublic" value="true" checked=(!uc || uc.isPublic !== false))
-            span.w3-margin-left Pública (visível para todos os utilizadores)
-          label
-            input.w3-radio(type="radio" name="isPublic" value="false" checked=(uc && uc.isPublic === false))
-            span.w3-margin-left Privada (visível apenas para o docente criador e admin)
+          label Ano
+          - var anos = [];
+          - for (var y = 2026; y >= 1976; y--) { anos.push(y); }
+          select.w3-select.w3-round(name="ano" required)
+            option(value="" disabled selected=!(uc && uc.ano)) Escolhe o ano
+            each ano in anos
+              option(value=ano selected=(uc && Number(uc.ano) === ano)) #{ano}
 
-        fieldset#docentes-container.w3-margin-top
+          fieldset.w3-margin-top
+            legend Visibilidade
+            label.w3-margin-right
+              input.w3-radio(type="radio" name="isPublic" value="true" checked=(!uc || uc.isPublic !== false))
+              span.w3-margin-left Pública (visível para todos os utilizadores)
+            label
+              input.w3-radio(type="radio" name="isPublic" value="false" checked=(uc && uc.isPublic === false))
+              span.w3-margin-left Privada (visível apenas para o docente criador e admin)
+
+      div.uc-tab-panel(data-tab='docentes')
+        fieldset#docentes-container
           legend Docentes
           if uc && uc.docentes && uc.docentes.length > 0
             each docente, index in uc.docentes
@@ -70,13 +87,15 @@ block content
               input.w3-input.w3-round(type="file" name="docentes[0][foto]" accept="image/*")
         button.w3-btn.w3-light-grey.w3-margin-bottom(type="button" onclick="addDocente()") + Adicionar Outro Docente
 
-        fieldset.w3-margin-top
+      div.uc-tab-panel(data-tab='horario')
+        fieldset
           legend Base de Horário e Avaliação
           input.w3-input.w3-round.w3-margin-bottom(type="text" name="horario[teoricas][]" placeholder="Horário das Teóricas (ex: Seg 10h)" value=(uc && uc.horario && uc.horario.teoricas && uc.horario.teoricas.length > 0) ? uc.horario.teoricas.join(', ') : "" required)
           input.w3-input.w3-round.w3-margin-bottom(type="text" name="horario[praticas][]" placeholder="Horário das Práticas (ex: Ter 14h)" value=(uc && uc.horario && uc.horario.praticas && uc.horario.praticas.length > 0) ? uc.horario.praticas.join(', ') : "" required)
           input.w3-input.w3-round(type="text" name="avaliacao[]" placeholder="Método de Avaliação (ex: Teste Final)" value=(uc && uc.avaliacao && uc.avaliacao.length > 0) ? uc.avaliacao.join(', ') : "" required)
 
-        fieldset.w3-margin-top
+      div.uc-tab-panel(data-tab='datas')
+        fieldset
           legend Datas de Avaliação
           - var dias = [];
           - for (var d = 1; d <= 31; d++) { dias.push(d < 10 ? '0' + d : '' + d); }
@@ -142,7 +161,8 @@ block content
               each ano in anosDatas
                 option(value=ano selected=(projetoParts[0] === ano)) #{ano}
 
-        fieldset#aulas-container.w3-margin-top
+      div.uc-tab-panel(data-tab='aulas')
+        fieldset#aulas-container
           legend Aulas
           if uc && uc.aulas && uc.aulas.length > 0
             each aula, index in uc.aulas
@@ -181,7 +201,8 @@ block content
               input.w3-input.w3-round(type="text" name="aulas[0][sumario][]" placeholder="Sumário da Aula" required)
         button.w3-btn.w3-light-grey.w3-margin-bottom(type="button" onclick="addAula()") + Adicionar Outra Aula
 
-        fieldset.w3-margin-top
+      div.uc-tab-panel(data-tab='website')
+        fieldset
           legend Tipo do Website
           label Escolhe o tipo (A, B ou C)
           #website-type-picker.w3-margin-top.w3-margin-bottom
@@ -201,10 +222,6 @@ block content
               label.color-option(style=`margin: 8px; cursor: pointer; display: inline-flex;`)
                 input(type="radio" name="website[corPrincipal]" value=color style="display: none;" checked=(uc && uc.website && uc.website.corPrincipal === color))
                 span(style=`display: inline-block; width: 44px; height: 44px; border-radius: 50%; background-color: ${colorMap[color]}; border: 2px solid #ddd;` title=color)
-
-      
-      button.w3-btn.w3-purple.w3-margin-top(type="submit")= uc ? "Update" : "Insert"
-      a.w3-btn.w3-grey.w3-margin-top.w3-margin-left(href= uc ? `/uc/ucs/${uc._id}` : "/uc/ucs") Cancel
 
   script.
     let docenteCount = #{uc && uc.docentes ? uc.docentes.length : 1};
@@ -254,3 +271,28 @@ block content
       container.insertAdjacentHTML('beforeend', html);
       aulaCount++;
     }
+
+    function setUcTab(tabName) {
+      const tabs = document.querySelectorAll('.uc-tab-btn');
+      const panels = document.querySelectorAll('.uc-tab-panel');
+      tabs.forEach(btn => {
+        const isActive = btn.getAttribute('data-tab') === tabName;
+        btn.classList.toggle('active', isActive);
+      });
+      panels.forEach(panel => {
+        const isActive = panel.getAttribute('data-tab') === tabName;
+        panel.classList.toggle('active', isActive);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabs = document.querySelectorAll('.uc-tab-btn');
+      tabs.forEach(btn => {
+        btn.addEventListener('click', function() {
+          setUcTab(btn.getAttribute('data-tab'));
+        });
+      });
+      if (tabs.length) {
+        setUcTab(tabs[0].getAttribute('data-tab'));
+      }
+    });
