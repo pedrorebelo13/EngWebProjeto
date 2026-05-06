@@ -19,6 +19,24 @@ const ucSchema = new mongoose.Schema({
         teoricas :[{ type: String, required: true }],
         praticas: [{ type: String, required: true }],
     },
+    horarioNorm: {
+        teoricas: [{
+            raw: { type: String },
+            turno: { type: String },
+            dia: { type: String },
+            inicio: { type: String },
+            fim: { type: String },
+            sala: { type: String }
+        }],
+        praticas: [{
+            raw: { type: String },
+            turno: { type: String },
+            dia: { type: String },
+            inicio: { type: String },
+            fim: { type: String },
+            sala: { type: String }
+        }]
+    },
     avaliacao: [{ type: String, required: true }],
     datas: {
         teste :{ type: Date },

@@ -132,6 +132,24 @@ const normalizeStringArray = (value) => {
         .filter(Boolean);
 };
 
+const splitHorarioEntries = (value) => {
+    if (value === undefined || value === null) {
+        return [];
+    }
+
+    const raw = String(value).trim();
+    if (!raw) {
+        return [];
+    }
+
+    const parts = raw.split(/(?=Turno\s*\d+\s*:)/i).map(part => part.trim()).filter(Boolean);
+    if (parts.length > 1) {
+        return parts;
+    }
+
+    return [raw];
+};
+
 const normalizeDocentes = (value) => {
     if (value === undefined || value === null) {
         return undefined;
@@ -209,8 +227,111 @@ const normalizeHorario = (value) => {
         return undefined;
     }
 
-    const teoricas = normalizeStringArray(value.teoricas) || [];
-    const praticas = normalizeStringArray(value.praticas) || [];
+    const toArray = (input) => {
+        if (input === undefined || input === null) {
+            return [];
+        }
+        return Array.isArray(input) ? input : [input];
+    };
+
+    const teoricas = toArray(value.teoricas)
+        .flatMap(entry => splitHorarioEntries(entry))
+        .map(entry => String(entry).trim())
+        .filter(Boolean);
+
+    const praticas = toArray(value.praticas)
+        .flatMap(entry => splitHorarioEntries(entry))
+        .map(entry => String(entry).trim())
+        .filter(Boolean);
+
+    return { teoricas, praticas };
+};
+
+const normalizeTime = (hour, minute) => {
+    if (!hour) {
+        return '';
+    }
+    const h = String(hour).padStart(2, '0');
+    const m = String(minute || '00').padStart(2, '0');
+    return `${h}:${m}`;
+};
+
+const parseHorarioEntry = (value) => {
+    if (!value) {
+        return null;
+    }
+
+    const raw = String(value).trim();
+    if (!raw) {
+        return null;
+    }
+
+    const lower = raw.toLowerCase();
+    const turnoMatch = raw.match(/turno\s*\d+/i);
+    const turno = turnoMatch ? turnoMatch[0].trim() : '';
+
+    const dayMap = [
+        { regex: /segunda|seg\b|2a/, label: 'Segunda-Feira' },
+        { regex: /terca|terça|ter\b|3a/, label: 'Terca-Feira' },
+        { regex: /quarta|qua\b|4a/, label: 'Quarta-Feira' },
+        { regex: /quinta|qui\b|5a/, label: 'Quinta-Feira' },
+        { regex: /sexta|sex\b|6a/, label: 'Sexta-Feira' },
+        { regex: /sabado|sábado|sab\b/, label: 'Sabado' },
+        { regex: /domingo|dom\b/, label: 'Domingo' }
+    ];
+
+    let dia = '';
+    for (const entry of dayMap) {
+        if (entry.regex.test(lower)) {
+            dia = entry.label;
+            break;
+        }
+    }
+
+    const timeRegex = /(\d{1,2})(?:h|:)(\d{2})?/gi;
+    const times = [];
+    let match;
+    while ((match = timeRegex.exec(lower)) !== null) {
+        times.push(normalizeTime(match[1], match[2]));
+    }
+
+    const inicio = times[0] || '';
+    const fim = times[1] || '';
+
+    let sala = '';
+    const salaIndex = lower.indexOf('sala');
+    if (salaIndex >= 0) {
+        sala = raw.slice(salaIndex + 4).replace(/^[\s:\-–,]+/, '').trim();
+    } else if (raw.includes(',')) {
+        const parts = raw.split(',');
+        sala = parts[parts.length - 1].trim();
+    }
+
+    if (sala) {
+        sala = sala.replace(/[.,;]+$/g, '').trim();
+    }
+
+    const normalized = { raw };
+    if (turno) normalized.turno = turno;
+    if (dia) normalized.dia = dia;
+    if (inicio) normalized.inicio = inicio;
+    if (fim) normalized.fim = fim;
+    if (sala) normalized.sala = sala;
+
+    return normalized;
+};
+
+const buildHorarioNorm = (horario) => {
+    if (!horario) {
+        return undefined;
+    }
+
+    const teoricas = (horario.teoricas || []).map(parseHorarioEntry).filter(Boolean);
+    const praticas = (horario.praticas || []).map(parseHorarioEntry).filter(Boolean);
+
+    if (!teoricas.length && !praticas.length) {
+        return undefined;
+    }
 
     return { teoricas, praticas };
 };
@@ -293,19 +414,15 @@ const ucController = {
                 req.body.isPublic = rawValue === 'true' || rawValue === 'on';
             }
 
-            if (req.body.website) {
-                if (!req.body.website.corPrincipal && existingUC.website && existingUC.website.corPrincipal) {
-                    req.body.website.corPrincipal = existingUC.website.corPrincipal;
-                }
-                if (!req.body.website.tipo && existingUC.website && existingUC.website.tipo) {
-                    req.body.website.tipo = existingUC.website.tipo;
-                }
-            }
-
             if (req.body.datas) {
                 req.body.datas.teste = normalizeDateField(req.body.datas.teste).value;
                 req.body.datas.exame = normalizeDateField(req.body.datas.exame).value;
                 req.body.datas.projeto = normalizeDateField(req.body.datas.projeto).value;
+            }
+
+            if (req.body.horario) {
+                req.body.horario = normalizeHorario(req.body.horario);
+                req.body.horarioNorm = buildHorarioNorm(req.body.horario);
             }
 
             const newUC = new ucModel(req.body);
@@ -500,6 +617,7 @@ const ucController = {
                 isPublic: uc.isPublic,
                 docentes: uc.docentes || [],
                 horario: uc.horario || {},
+                horarioNorm: uc.horarioNorm || {},
                 avaliacao: uc.avaliacao || [],
                 datas: uc.datas || {},
                 aulas: uc.aulas || [],
@@ -580,12 +698,14 @@ const ucController = {
                 return res.status(400).send('A sigla do ficheiro nao coincide com a UC atual.');
             }
 
+            const horarioRaw = normalizeHorario(data.horario);
             const update = {
                 titulo: data.titulo ? String(data.titulo).trim() : undefined,
                 ano: data.ano !== undefined ? Number(data.ano) : undefined,
                 isPublic: data.isPublic !== undefined ? !!data.isPublic : undefined,
                 docentes: normalizeDocentes(data.docentes),
-                horario: normalizeHorario(data.horario),
+                horario: horarioRaw,
+                horarioNorm: buildHorarioNorm(horarioRaw),
                 avaliacao: normalizeStringArray(data.avaliacao),
                 datas: normalizeDatasImport(data.datas),
                 aulas: normalizeAulas(data.aulas),
@@ -610,6 +730,9 @@ const ucController = {
                     const praticas = appendArray(uc.horario ? uc.horario.praticas : [], update.horario.praticas || []);
                     uc.horario = { teoricas, praticas };
                 }
+                if (update.horario !== undefined) {
+                    uc.horarioNorm = buildHorarioNorm(uc.horario);
+                }
                 if (update.datas !== undefined) {
                     uc.datas = { ...uc.datas, ...update.datas };
                 }
@@ -631,6 +754,7 @@ const ucController = {
                 if (update.isPublic !== undefined) uc.isPublic = update.isPublic;
                 if (update.docentes !== undefined) uc.docentes = update.docentes;
                 if (update.horario !== undefined) uc.horario = update.horario;
+                if (update.horarioNorm !== undefined) uc.horarioNorm = update.horarioNorm;
                 if (update.avaliacao !== undefined) uc.avaliacao = update.avaliacao;
                 if (update.datas !== undefined) uc.datas = update.datas;
                 if (update.aulas !== undefined) uc.aulas = update.aulas;
@@ -656,6 +780,10 @@ const ucController = {
                 return res.status(404).json({ error: "UC não encontrada" });
             }
 
+            if (req.body.horario) {
+                req.body.horario = normalizeHorario(req.body.horario);
+                req.body.horarioNorm = buildHorarioNorm(req.body.horario);
+            }
 
             if (req.body.datas) {
                 const teste = normalizeDateField(req.body.datas.teste);

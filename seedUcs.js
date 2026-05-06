@@ -36,6 +36,135 @@ function isBcryptHash(value) {
     return typeof value === 'string' && value.startsWith('$2');
 }
 
+function splitHorarioEntries(value) {
+    if (value === undefined || value === null) {
+        return [];
+    }
+
+    const raw = String(value).trim();
+    if (!raw) {
+        return [];
+    }
+
+    const parts = raw.split(/(?=Turno\s*\d+\s*:)/i).map(part => part.trim()).filter(Boolean);
+    if (parts.length > 1) {
+        return parts;
+    }
+
+    return [raw];
+}
+
+function normalizeHorarioRaw(value) {
+    const horario = value || {};
+    const toArray = (input) => {
+        if (input === undefined || input === null) {
+            return [];
+        }
+        return Array.isArray(input) ? input : [input];
+    };
+
+    const teoricas = toArray(horario.teoricas)
+        .flatMap(entry => splitHorarioEntries(entry))
+        .map(entry => String(entry).trim())
+        .filter(Boolean);
+
+    const praticas = toArray(horario.praticas)
+        .flatMap(entry => splitHorarioEntries(entry))
+        .map(entry => String(entry).trim())
+        .filter(Boolean);
+
+    return { teoricas, praticas };
+}
+
+function normalizeTime(hour, minute) {
+    if (!hour) {
+        return '';
+    }
+    const h = String(hour).padStart(2, '0');
+    const m = String(minute || '00').padStart(2, '0');
+    return `${h}:${m}`;
+}
+
+function parseHorarioEntry(value) {
+    if (!value) {
+        return null;
+    }
+
+    const raw = String(value).trim();
+    if (!raw) {
+        return null;
+    }
+
+    const lower = raw.toLowerCase();
+    const turnoMatch = raw.match(/turno\s*\d+/i);
+    const turno = turnoMatch ? turnoMatch[0].trim() : '';
+
+    const dayMap = [
+        { regex: /segunda|seg\b|2a/, label: 'Segunda-Feira' },
+        { regex: /terca|terça|ter\b|3a/, label: 'Terca-Feira' },
+        { regex: /quarta|qua\b|4a/, label: 'Quarta-Feira' },
+        { regex: /quinta|qui\b|5a/, label: 'Quinta-Feira' },
+        { regex: /sexta|sex\b|6a/, label: 'Sexta-Feira' },
+        { regex: /sabado|sábado|sab\b/, label: 'Sabado' },
+        { regex: /domingo|dom\b/, label: 'Domingo' }
+    ];
+
+    let dia = '';
+    for (const entry of dayMap) {
+        if (entry.regex.test(lower)) {
+            dia = entry.label;
+            break;
+        }
+    }
+
+    const timeRegex = /(\d{1,2})(?:h|:)(\d{2})?/gi;
+    const times = [];
+    let match;
+    while ((match = timeRegex.exec(lower)) !== null) {
+        times.push(normalizeTime(match[1], match[2]));
+    }
+
+    const inicio = times[0] || '';
+    const fim = times[1] || '';
+
+    let sala = '';
+    const salaIndex = lower.indexOf('sala');
+    if (salaIndex >= 0) {
+        sala = raw.slice(salaIndex + 4).replace(/^[\s:\-–,]+/, '').trim();
+    } else if (raw.includes(',')) {
+        const parts = raw.split(',');
+        sala = parts[parts.length - 1].trim();
+    }
+
+    if (sala) {
+        sala = sala.replace(/[.,;]+$/g, '').trim();
+    }
+
+    const normalized = { raw };
+    if (turno) normalized.turno = turno;
+    if (dia) normalized.dia = dia;
+    if (inicio) normalized.inicio = inicio;
+    if (fim) normalized.fim = fim;
+    if (sala) normalized.sala = sala;
+
+    return normalized;
+}
+
+function buildHorarioNorm(horario) {
+    if (!horario) {
+        return undefined;
+    }
+
+    const teoricas = (horario.teoricas || []).map(parseHorarioEntry).filter(Boolean);
+    const praticas = (horario.praticas || []).map(parseHorarioEntry).filter(Boolean);
+
+    if (!teoricas.length && !praticas.length) {
+        return undefined;
+    }
+
+    return { teoricas, praticas };
+}
+
 async function seedUsers(users) {
     const allowedRoles = new Set(['admin', 'docente', 'aluno']);
     let created = 0;
@@ -97,6 +226,7 @@ async function seedUsers(users) {
 function normalizeUc(rawUc) {
     const yearMatch = rawUc.sigla && rawUc.sigla.match(/(\d{4})$/);
     const aulas = Array.isArray(rawUc.aulas) ? rawUc.aulas : [];
+    const horarioRaw = normalizeHorarioRaw(rawUc.horario || {});
 
     const normalizedAulas = aulas
         .map(aula => {
@@ -182,7 +312,8 @@ function normalizeUc(rawUc) {
         titulo: rawUc.titulo,
         ano: ucYear,
         docentes: rawUc.docentes || [],
-        horario: rawUc.horario || { teoricas: [], praticas: [] },
+        horario: horarioRaw,
+        horarioNorm: buildHorarioNorm(horarioRaw),
         avaliacao: rawUc.avaliacao || [],
         isPublic: true,
         datas: {

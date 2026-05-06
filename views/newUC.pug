@@ -22,7 +22,8 @@ block content
       div.uc-tabs
         button.uc-tab-btn.active(type='button' data-tab='metadata') Metadata
         button.uc-tab-btn(type='button' data-tab='docentes') Docentes
-        button.uc-tab-btn(type='button' data-tab='horario') Horario e Avaliacao
+        button.uc-tab-btn(type='button' data-tab='horario') Horario
+        button.uc-tab-btn(type='button' data-tab='avaliacao') Avaliacao
         button.uc-tab-btn(type='button' data-tab='datas') Datas
         button.uc-tab-btn(type='button' data-tab='aulas') Aulas
         button.uc-tab-btn(type='button' data-tab='website') Website
@@ -91,10 +92,94 @@ block content
 
       div.uc-tab-panel(data-tab='horario')
         fieldset
-          legend Base de Horário e Avaliação
-          input.w3-input.w3-round.w3-margin-bottom(type="text" name="horario[teoricas][]" placeholder="Horário das Teóricas (ex: Seg 10h)" value=(uc && uc.horario && uc.horario.teoricas && uc.horario.teoricas.length > 0) ? uc.horario.teoricas.join(', ') : "" required)
-          input.w3-input.w3-round.w3-margin-bottom(type="text" name="horario[praticas][]" placeholder="Horário das Práticas (ex: Ter 14h)" value=(uc && uc.horario && uc.horario.praticas && uc.horario.praticas.length > 0) ? uc.horario.praticas.join(', ') : "" required)
-          input.w3-input.w3-round(type="text" name="avaliacao[]" placeholder="Método de Avaliação (ex: Teste Final)" value=(uc && uc.avaliacao && uc.avaliacao.length > 0) ? uc.avaliacao.join(', ') : "" required)
+          legend Horário
+          - var splitTurnos = function(list) {
+          -   var out = [];
+          -   var arr = Array.isArray(list) ? list : (list ? [list] : []);
+          -   arr.forEach(function(item) {
+          -     if (!item) return;
+          -     var str = String(item).trim();
+          -     if (!str) return;
+          -     var parts = str.split(/(?=Turno\s*\d+\s*:)/i).map(function(p) { return p.trim(); }).filter(Boolean);
+          -     if (parts.length > 1) {
+          -       out = out.concat(parts);
+          -     } else {
+          -       out.push(str);
+          -     }
+          -   });
+          -   return out;
+          - };
+          - var teoricas = (uc && uc.horario && uc.horario.teoricas && uc.horario.teoricas.length > 0) ? splitTurnos(uc.horario.teoricas) : [''];
+          - var praticas = (uc && uc.horario && uc.horario.praticas && uc.horario.praticas.length > 0) ? splitTurnos(uc.horario.praticas) : [''];
+
+          h6 Aulas Teóricas (T)
+          #horario-teoricas
+            each slot, index in teoricas
+              - var hasValue = slot && String(slot).trim();
+              .w3-border.w3-padding.w3-margin-bottom.horario-item(data-kind='teoricas' data-required=(!hasValue))
+                h6 Horário T ##{index + 1}
+                  if index > 0
+                    button.w3-btn.w3-red.w3-small.w3-right(type="button" onclick="this.parentElement.parentElement.remove()") X
+                .w3-row-padding
+                  .w3-col.s12.m6.l3
+                    label Dia
+                    select.w3-select.w3-round.horario-dia(data-field='dia' required=(!hasValue))
+                      option(value='') Dia
+                      option(value='Segunda-Feira') Segunda-Feira
+                      option(value='Terca-Feira') Terça-Feira
+                      option(value='Quarta-Feira') Quarta-Feira
+                      option(value='Quinta-Feira') Quinta-Feira
+                      option(value='Sexta-Feira') Sexta-Feira
+                      option(value='Sabado') Sábado
+                      option(value='Domingo') Domingo
+                  .w3-col.s12.m6.l3
+                    label Início da aula
+                    input.w3-input.w3-round.horario-inicio(type="time" step="300" data-field='inicio' required=(!hasValue))
+                  .w3-col.s12.m6.l3
+                    label Fim da aula
+                    input.w3-input.w3-round.horario-fim(type="time" step="300" data-field='fim' required=(!hasValue))
+                  .w3-col.s12.m6.l3
+                    label Sala
+                    input.w3-input.w3-round.horario-sala(type="text" placeholder="Sala" data-field='sala' required=(!hasValue))
+                input(type="hidden" name="horario[teoricas][]" value=slot || '' data-original=slot || '')
+          button.w3-btn.w3-light-grey.w3-margin-bottom(type="button" onclick="addHorario('teoricas')") + Adicionar Horário T
+
+          h6 Aulas Práticas (TP)
+          #horario-praticas
+            each slot, index in praticas
+              - var hasValue = slot && String(slot).trim();
+              .w3-border.w3-padding.w3-margin-bottom.horario-item(data-kind='praticas' data-required=(!hasValue))
+                h6 Horário TP ##{index + 1}
+                  if index > 0
+                    button.w3-btn.w3-red.w3-small.w3-right(type="button" onclick="this.parentElement.parentElement.remove()") X
+                .w3-row-padding
+                  .w3-col.s12.m6.l3
+                    label Dia
+                    select.w3-select.w3-round.horario-dia(data-field='dia' required=(!hasValue))
+                      option(value='') Dia
+                      option(value='Segunda-Feira') Segunda-Feira
+                      option(value='Terca-Feira') Terça-Feira
+                      option(value='Quarta-Feira') Quarta-Feira
+                      option(value='Quinta-Feira') Quinta-Feira
+                      option(value='Sexta-Feira') Sexta-Feira
+                      option(value='Sabado') Sábado
+                      option(value='Domingo') Domingo
+                  .w3-col.s12.m6.l3
+                    label Início da aula
+                    input.w3-input.w3-round.horario-inicio(type="time" step="300" data-field='inicio' required=(!hasValue))
+                  .w3-col.s12.m6.l3
+                    label Fim da aula
+                    input.w3-input.w3-round.horario-fim(type="time" step="300" data-field='fim' required=(!hasValue))
+                  .w3-col.s12.m6.l3
+                    label Sala
+                    input.w3-input.w3-round.horario-sala(type="text" placeholder="Sala" data-field='sala' required=(!hasValue))
+                input(type="hidden" name="horario[praticas][]" value=slot || '' data-original=slot || '')
+          button.w3-btn.w3-light-grey.w3-margin-bottom(type="button" onclick="addHorario('praticas')") + Adicionar Horário TP
+
+      div.uc-tab-panel(data-tab='avaliacao')
+        fieldset
+          legend Avaliação
+          input.w3-input.w3-round(type="text" name="avaliacao[]" placeholder="Métodos de avaliação (ex: Teste Final, Projeto)" value=(uc && uc.avaliacao && uc.avaliacao.length > 0) ? uc.avaliacao.join(', ') : "" required)
 
       div.uc-tab-panel(data-tab='datas')
         fieldset
@@ -274,6 +359,157 @@ block content
       aulaCount++;
     }
 
+    function formatHorarioString(data) {
+      const parts = [];
+      if (data.dia) parts.push(`Dia: ${data.dia}`);
+      if (data.inicio) parts.push(`Inicio: ${data.inicio}`);
+      if (data.fim) parts.push(`Fim: ${data.fim}`);
+      if (data.sala) parts.push(`Sala: ${data.sala}`);
+      return parts.join(' | ');
+    }
+
+    function normalizeTime(hour, minute) {
+      if (hour === undefined || hour === null) return '';
+      const h = String(hour).padStart(2, '0');
+      const m = String(minute || '00').padStart(2, '0');
+      return `${h}:${m}`;
+    }
+
+    function parseHorarioString(text) {
+      if (!text) {
+        return { dia: '', inicio: '', fim: '', sala: '' };
+      }
+      const lower = text.toLowerCase();
+      const dayMap = [
+        { regex: /segunda|seg\b|2a/, label: 'Segunda-Feira' },
+        { regex: /terca|terça|ter\b|3a/, label: 'Terca-Feira' },
+        { regex: /quarta|qua\b|4a/, label: 'Quarta-Feira' },
+        { regex: /quinta|qui\b|5a/, label: 'Quinta-Feira' },
+        { regex: /sexta|sex\b|6a/, label: 'Sexta-Feira' },
+        { regex: /sabado|sábado|sab\b/, label: 'Sabado' },
+        { regex: /domingo|dom\b/, label: 'Domingo' }
+      ];
+      let dia = '';
+      for (const entry of dayMap) {
+        if (entry.regex.test(lower)) {
+          dia = entry.label;
+          break;
+        }
+      }
+
+      const timeRegex = /(\d{1,2})(?:h|:)(\d{2})?/gi;
+      const times = [];
+      let match;
+      while ((match = timeRegex.exec(lower)) !== null) {
+        times.push(normalizeTime(match[1], match[2]));
+      }
+      const inicio = times[0] || '';
+      const fim = times[1] || '';
+
+      let sala = '';
+      const salaIndex = lower.indexOf('sala');
+      if (salaIndex >= 0) {
+        sala = text.slice(salaIndex + 4).replace(/^[\s:\-–,]+/, '').trim();
+      } else if (text.includes(',')) {
+        const parts = text.split(',');
+        sala = parts[parts.length - 1].trim();
+      }
+
+      if (sala) {
+        sala = sala.replace(/[.,;]+$/g, '').trim();
+      }
+
+      return { dia, inicio, fim, sala };
+    }
+
+    function updateHorarioItem(item) {
+      const dia = item.querySelector('[data-field="dia"]').value;
+      const inicio = item.querySelector('[data-field="inicio"]').value;
+      const fim = item.querySelector('[data-field="fim"]').value;
+      const sala = item.querySelector('[data-field="sala"]').value.trim();
+      const hidden = item.querySelector('input[type="hidden"]');
+      const original = hidden.getAttribute('data-original') || '';
+      const mustComplete = item.getAttribute('data-required') === 'true';
+
+      if (dia && inicio && fim && sala) {
+        hidden.value = formatHorarioString({ dia, inicio, fim, sala });
+      } else if (!mustComplete && original) {
+        hidden.value = original;
+      } else {
+        hidden.value = '';
+      }
+    }
+
+    function initHorarioItem(item) {
+      const hidden = item.querySelector('input[type="hidden"]');
+      const original = hidden.value || hidden.getAttribute('data-original') || '';
+      if (original) {
+        const parsed = parseHorarioString(original);
+        if (parsed.dia) item.querySelector('[data-field="dia"]').value = parsed.dia;
+        if (parsed.inicio) item.querySelector('[data-field="inicio"]').value = parsed.inicio;
+        if (parsed.fim) item.querySelector('[data-field="fim"]').value = parsed.fim;
+        if (parsed.sala) item.querySelector('[data-field="sala"]').value = parsed.sala;
+      }
+      const inputs = item.querySelectorAll('[data-field]');
+      inputs.forEach(input => {
+        input.addEventListener('input', () => updateHorarioItem(item));
+        input.addEventListener('change', () => updateHorarioItem(item));
+      });
+    }
+
+    function initHorarioEditors() {
+      document.querySelectorAll('.horario-item').forEach(item => initHorarioItem(item));
+    }
+
+    function addHorario(kind) {
+      const container = document.getElementById(kind === 'teoricas' ? 'horario-teoricas' : 'horario-praticas');
+      const index = container.querySelectorAll('.horario-item').length + 1;
+      const label = kind === 'teoricas' ? 'T' : 'TP';
+      const dayOptions = [
+        { value: '', label: 'Dia' },
+        { value: 'Segunda-Feira', label: 'Segunda-Feira' },
+        { value: 'Terca-Feira', label: 'Terça-Feira' },
+        { value: 'Quarta-Feira', label: 'Quarta-Feira' },
+        { value: 'Quinta-Feira', label: 'Quinta-Feira' },
+        { value: 'Sexta-Feira', label: 'Sexta-Feira' },
+        { value: 'Sabado', label: 'Sábado' },
+        { value: 'Domingo', label: 'Domingo' }
+      ];
+      const optionsHtml = dayOptions.map(opt => `<option value="${opt.value}">${opt.label}</option>`).join('');
+      const wrapper = document.createElement('div');
+      wrapper.className = 'w3-border w3-padding w3-margin-bottom horario-item';
+      wrapper.setAttribute('data-kind', kind);
+      wrapper.setAttribute('data-required', 'true');
+      wrapper.innerHTML = `
+        <h6>Horario ${label} #${index}
+          <button type="button" class="w3-btn w3-red w3-small w3-right" onclick="this.parentElement.parentElement.remove()">X</button>
+        </h6>
+        <div class="w3-row-padding">
+          <div class="w3-col s12 m6 l3">
+            <label>Dia</label>
+            <select class="w3-select w3-round horario-dia" data-field="dia" required>
+              ${optionsHtml}
+            </select>
+          </div>
+          <div class="w3-col s12 m6 l3">
+            <label>Inicio da aula</label>
+            <input class="w3-input w3-round horario-inicio" type="time" step="300" data-field="inicio" required>
+          </div>
+          <div class="w3-col s12 m6 l3">
+            <label>Fim da aula</label>
+            <input class="w3-input w3-round horario-fim" type="time" step="300" data-field="fim" required>
+          </div>
+          <div class="w3-col s12 m6 l3">
+            <label>Sala</label>
+            <input class="w3-input w3-round horario-sala" type="text" placeholder="Sala" data-field="sala" required>
+          </div>
+        </div>
+        <input type="hidden" name="horario[${kind}][]" value="" data-original="">
+      `;
+      container.appendChild(wrapper);
+      initHorarioItem(wrapper);
+    }
+
     function setUcTab(tabName, store) {
       const tabs = document.querySelectorAll('.uc-tab-btn');
       const panels = document.querySelectorAll('.uc-tab-panel');
@@ -332,6 +568,7 @@ block content
       const form = document.querySelector('form');
       if (form) {
         form.addEventListener('submit', function(event) {
+          document.querySelectorAll('.horario-item').forEach(item => updateHorarioItem(item));
           if (!form.checkValidity()) {
             event.preventDefault();
             event.stopPropagation();
@@ -361,4 +598,6 @@ block content
 
         highlightInvalidTabs(form);
       }
+
+      initHorarioEditors();
     });
