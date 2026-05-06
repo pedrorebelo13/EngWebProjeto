@@ -347,21 +347,45 @@ const ucController = {
             const sortField = req.query.sort || 'sigla';
             const sortOrder = req.query.order === 'desc' ? -1 : 1;
 
-             // Construir objeto de filtro para pesquisa
-            let filterObj = {};
-            if (req.query.search) {
-                const searchRegex = new RegExp(req.query.search, 'i'); // 'i' para case-insensitive
-                filterObj = {
+            const searchValue = (req.query.search || '').trim();
+            const docenteValue = (req.query.docente || '').trim();
+            const anoValue = (req.query.ano || '').trim();
+
+            const searchFilters = [];
+            if (searchValue) {
+                const searchRegex = new RegExp(searchValue, 'i');
+                searchFilters.push({
                     $or: [
                         { sigla: searchRegex },
                         { titulo: searchRegex }
                     ]
-                };
+                });
             }
+
+            if (docenteValue) {
+                const docenteRegex = new RegExp(docenteValue, 'i');
+                searchFilters.push({
+                    $or: [
+                        { 'docentes.nome': docenteRegex },
+                        { 'docentes.email': docenteRegex },
+                        { 'docentes.filiacao': docenteRegex }
+                    ]
+                });
+            }
+
+            if (anoValue) {
+                const parsedAno = Number(anoValue);
+                if (!Number.isNaN(parsedAno)) {
+                    searchFilters.push({ ano: parsedAno });
+                }
+            }
+
+            const filterObj = searchFilters.length ? { $and: searchFilters } : {};
 
             // Construir objeto de ordenação para o Mongoose
             let sortObj = {};
             sortObj[sortField] = sortOrder;
+
             const filter = {};
             if (req.user) {
                 if (req.user.role === 'aluno') {
@@ -374,14 +398,20 @@ const ucController = {
                 }
             }
 
-            const ucs = await ucModel.find(filter).sort(sortObj);
+            const finalFilter = Object.keys(filterObj).length
+                ? (Object.keys(filter).length ? { $and: [filterObj, filter] } : filterObj)
+                : filter;
+
+            const ucs = await ucModel.find(finalFilter).sort(sortObj);
             
             // Passar os dados e o estado atual para a view
             res.render('ucs', { 
                 list: ucs, 
                 currentSort: sortField, 
                 currentOrder: req.query.order || 'asc',
-                search: req.query.search || '',
+                search: searchValue,
+                filterDocente: docenteValue,
+                filterAno: anoValue,
                 success: req.query.success === 'true', // Para sabermos se acabámos de criar algo
                 deleted: req.query.deleted === 'true',  // Para sabermos se apagámos algo
                 user: req.user // Passar informação do utilizador autenticado
