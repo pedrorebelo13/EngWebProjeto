@@ -27,6 +27,8 @@ block content
         button.uc-tab-btn(type='button' data-tab='datas') Datas
         button.uc-tab-btn(type='button' data-tab='aulas') Aulas
         button.uc-tab-btn(type='button' data-tab='website') Website
+        if uc && user && (user.role === 'admin' || user.role === 'docente')
+          button.uc-tab-btn(type='button' data-tab='importar') Importar
 
       div.uc-tab-panel.active(data-tab='metadata')
         fieldset
@@ -325,7 +327,7 @@ block content
                 span(style=`display: inline-block; width: 44px; height: 44px; border-radius: 50%; background-color: ${colorMap[color]}; border: 2px solid #ddd;` title=color)
 
     if uc && user && (user.role === 'admin' || user.role === 'docente')
-      .w3-container.w3-padding-16(style='border-top: 1px solid #eee;')
+      .w3-container.w3-padding-16.uc-tab-panel(data-tab='importar')
         h3(style='margin-top: 0;') Importar dados
         form(method='POST' action=`/uc/ucs/${uc.id}/import/aulas` enctype='multipart/form-data')
           div(style='display: flex; flex-wrap: wrap; gap: 8px; align-items: center;')
@@ -689,7 +691,8 @@ block content
           btn.classList.remove('has-error');
           return;
         }
-        const hasInvalid = !!panel.querySelector(':invalid');
+        const invalidElements = panel.querySelectorAll(':invalid');
+        const hasInvalid = Array.from(invalidElements).some(el => form && form.contains(el));
         btn.classList.toggle('has-error', hasInvalid);
       });
     }
