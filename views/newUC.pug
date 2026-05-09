@@ -324,6 +324,26 @@ block content
                 input(type="radio" name="website[corPrincipal]" value=color style="display: none;" checked=(uc && uc.website && uc.website.corPrincipal === color))
                 span(style=`display: inline-block; width: 44px; height: 44px; border-radius: 50%; background-color: ${colorMap[color]}; border: 2px solid #ddd;` title=color)
 
+    if uc && user && (user.role === 'admin' || user.role === 'docente')
+      .w3-container.w3-padding-16(style='border-top: 1px solid #eee;')
+        h3(style='margin-top: 0;') Importar dados
+        form(method='POST' action=`/uc/ucs/${uc.id}/import/aulas` enctype='multipart/form-data')
+          div(style='display: flex; flex-wrap: wrap; gap: 8px; align-items: center;')
+            span.w3-small Importar Aulas
+            select.w3-select.w3-border.w3-small(name='mode')
+              option(value='replace') Substituir
+              option(value='append') Acrescentar
+            input.w3-input.w3-border.w3-small(type='file' name='file' accept='application/json' required)
+            button.w3-button.w3-small.w3-teal(type='submit') Importar
+        form(method='POST' action=`/uc/ucs/${uc.id}/import/full` enctype='multipart/form-data' style='margin-top: 10px;')
+          div(style='display: flex; flex-wrap: wrap; gap: 8px; align-items: center;')
+            span.w3-small Importar UC Completa
+            select.w3-select.w3-border.w3-small(name='mode')
+              option(value='replace') Substituir
+              option(value='append') Acrescentar
+            input.w3-input.w3-border.w3-small(type='file' name='file' accept='application/json' required)
+            button.w3-button.w3-small.w3-teal(type='submit') Importar
+
   script.
     let docenteCount = #{uc && uc.docentes ? uc.docentes.length : 1};
     function addDocente() {

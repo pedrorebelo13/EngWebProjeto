@@ -140,35 +140,13 @@ div.uc-a-root
       else
         div(style='padding: 15px; text-align: center; color: #999;')
           p Sem aulas registadas
+
     
-    div(style='flex-shrink: 0; padding: 12px 15px; background-color: #f9f9f9; border-top: 1px solid #ddd; display: flex; gap: 10px;')
+    div(style='flex-shrink: 0; padding: 12px 15px; background-color: #f9f9f9; border-top: 1px solid #ddd; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;')
       a.w3-button.w3-teal.w3-round(href='/uc/ucs') Voltar
       if user && (user.role === 'admin' || user.role === 'docente')
         a.w3-button.w3-blue.w3-round(href=`/uc/ucs/${uc.id}/edit`) Editar
         button.w3-button.w3-red.w3-round(onclick=`deleteUC('${uc.id}')`) Apagar
-
-    if user && (user.role === 'admin' || user.role === 'docente')
-      details.w3-margin-top
-        summary.w3-button.w3-light-grey.w3-round Importar/Exportar
-        .w3-margin-top(style='display: flex; flex-wrap: wrap; gap: 8px;')
-          a.w3-button.w3-border.w3-small(href=`/uc/ucs/${uc.id}/export/docentes`) Exportar Docentes
-          a.w3-button.w3-border.w3-small(href=`/uc/ucs/${uc.id}/export/aulas`) Exportar Aulas
-          a.w3-button.w3-border.w3-small(href=`/uc/ucs/${uc.id}/export/full`) Exportar UC Completa
-        .w3-margin-top
-          form(method='POST' action=`/uc/ucs/${uc.id}/import/aulas` enctype='multipart/form-data')
-            div(style='display: flex; flex-wrap: wrap; gap: 8px; align-items: center;')
-              span.w3-small Importar Aulas
-              select.w3-select.w3-border.w3-small(name='mode')
-                option(value='replace') Substituir
-                option(value='append') Acrescentar
-              input.w3-input.w3-border.w3-small(type='file' name='file' accept='application/json' required)
-              button.w3-button.w3-small.w3-teal(type='submit') Importar
-        .w3-margin-top
-          form(method='POST' action=`/uc/ucs/${uc.id}/import/full` enctype='multipart/form-data')
-            div(style='display: flex; flex-wrap: wrap; gap: 8px; align-items: center;')
-              span.w3-small Importar UC Completa
-              select.w3-select.w3-border.w3-small(name='mode')
-                option(value='replace') Substituir
-                option(value='append') Acrescentar
-              input.w3-input.w3-border.w3-small(type='file' name='file' accept='application/json' required)
-              button.w3-button.w3-small.w3-teal(type='submit') Importar
+        a.w3-button.w3-border.w3-round(href=`/uc/ucs/${uc.id}/export/docentes`) Exportar Docentes
+        a.w3-button.w3-border.w3-round(href=`/uc/ucs/${uc.id}/export/aulas`) Exportar Aulas
+        a.w3-button.w3-border.w3-round(href=`/uc/ucs/${uc.id}/export/full`) Exportar UC
