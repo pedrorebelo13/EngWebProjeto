@@ -63,6 +63,7 @@ const usersController = {
             const { username, name, email, filiacao, role, password } = req.body;
             const normalizedUsername = (username || '').trim().toLowerCase();
             const normalizedEmail = (email || '').trim().toLowerCase();
+            const docenteAprovado = req.body.docenteAprovado === 'on' || req.body.docenteAprovado === 'true';
 
             if (!normalizedUsername || !name || !normalizedEmail) {
                 return res.status(400).send('Username, nome e email são obrigatórios.');
@@ -85,6 +86,11 @@ const usersController = {
             targetUser.email = normalizedEmail;
             targetUser.filiacao = (filiacao || '').trim();
             targetUser.role = role === 'admin' || role === 'docente' ? role : 'aluno';
+            if (targetUser.role === 'docente') {
+                targetUser.docenteAprovado = docenteAprovado;
+            } else {
+                targetUser.docenteAprovado = true;
+            }
 
             if (password) {
                 targetUser.password = await bcrypt.hash(password, 10);

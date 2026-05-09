@@ -9,6 +9,10 @@ block content
       .w3-panel.w3-red.w3-margin
         p= error
 
+    if notice
+      .w3-panel.w3-blue.w3-margin
+        p= notice
+
     form.w3-container.w3-padding-16(method='POST' action='/auth/login')
       label Username ou Email
       input.w3-input.w3-round.w3-margin-bottom(type='text' name='identifier' required)

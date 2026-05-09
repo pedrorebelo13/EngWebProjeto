@@ -465,7 +465,6 @@ const ucController = {
             const sortOrder = req.query.order === 'desc' ? -1 : 1;
 
             const searchValue = (req.query.search || '').trim();
-            const docenteValue = (req.query.docente || '').trim();
             const anoValue = (req.query.ano || '').trim();
 
             const searchFilters = [];
@@ -475,17 +474,6 @@ const ucController = {
                     $or: [
                         { sigla: searchRegex },
                         { titulo: searchRegex }
-                    ]
-                });
-            }
-
-            if (docenteValue) {
-                const docenteRegex = new RegExp(docenteValue, 'i');
-                searchFilters.push({
-                    $or: [
-                        { 'docentes.nome': docenteRegex },
-                        { 'docentes.email': docenteRegex },
-                        { 'docentes.filiacao': docenteRegex }
                     ]
                 });
             }
@@ -527,7 +515,6 @@ const ucController = {
                 currentSort: sortField, 
                 currentOrder: req.query.order || 'asc',
                 search: searchValue,
-                filterDocente: docenteValue,
                 filterAno: anoValue,
                 success: req.query.success === 'true', // Para sabermos se acabámos de criar algo
                 deleted: req.query.deleted === 'true',  // Para sabermos se apagámos algo
@@ -815,6 +802,37 @@ const ucController = {
                     foto: doc.foto || existingUC.docentes[idx]?.foto
                 }));
             }
+            const rawWebsite = (() => {
+                if (req.body.website && typeof req.body.website === 'object') {
+                    return req.body.website;
+                }
+                if (req.body.website) {
+                    return { tipo: req.body.website };
+                }
+                const tipo = req.body['website[tipo]'];
+                const corPrincipal = req.body['website[corPrincipal]'];
+                if (tipo || corPrincipal) {
+                    return { tipo, corPrincipal };
+                }
+                return undefined;
+            })();
+
+            const normalizedWebsite = normalizeWebsite(rawWebsite);
+            if (normalizedWebsite && Object.keys(normalizedWebsite).length > 0) {
+                const baseWebsite = existingUC.website
+                    ? (typeof existingUC.website.toObject === 'function' ? existingUC.website.toObject() : existingUC.website)
+                    : {};
+                const nextWebsite = { ...baseWebsite, ...normalizedWebsite };
+                if (nextWebsite.tipo) {
+                    req.body['website.tipo'] = nextWebsite.tipo;
+                }
+                if (nextWebsite.corPrincipal) {
+                    req.body['website.corPrincipal'] = nextWebsite.corPrincipal;
+                }
+            }
+            delete req.body.website;
+            delete req.body['website[tipo]'];
+            delete req.body['website[corPrincipal]'];
             const updatedUC = await ucModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
            if (!updatedUC) {
                 res.status(404).json({ error: "UC não encontrada" });

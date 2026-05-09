@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
     filiacao: { type: String, default: '' },
     password: { type: String, required: true },
     role: { type: String, enum: ['admin', 'docente', 'aluno'], default: 'aluno' },
+    docenteAprovado: { type: Boolean, default: true },
     dataRegisto: { type: Date, default: Date.now },
     dataUltimoAcesso: { type: Date },
     apiKey: { type: String, unique: true, sparse: true }

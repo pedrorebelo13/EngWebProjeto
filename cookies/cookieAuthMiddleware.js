@@ -14,14 +14,30 @@ async function attachUserFromCookie(req, res, next) {
 
         if (token) {
             const decoded = jwt.verify(token, JWT_SECRET);
-            req.user = {
-                id: decoded.sub,
-                username: decoded.username,
-                email: decoded.email,
-                name: decoded.name,
-                role: decoded.role
-            };
-            res.locals.user = req.user;
+            if (decoded.role === 'docente') {
+                const user = await userModel.findById(decoded.sub);
+                if (!user || user.docenteAprovado === false) {
+                    res.clearCookie('token');
+                } else {
+                    req.user = {
+                        id: decoded.sub,
+                        username: decoded.username,
+                        email: decoded.email,
+                        name: decoded.name,
+                        role: decoded.role
+                    };
+                    res.locals.user = req.user;
+                }
+            } else {
+                req.user = {
+                    id: decoded.sub,
+                    username: decoded.username,
+                    email: decoded.email,
+                    name: decoded.name,
+                    role: decoded.role
+                };
+                res.locals.user = req.user;
+            }
         }
     } catch (error) {
         // Invalid or expired token.
@@ -33,7 +49,7 @@ async function attachUserFromCookie(req, res, next) {
             const apiKey = req.get('x-api-key');
             if (apiKey) {
                 const user = await userModel.findOne({ apiKey });
-                if (user) {
+                if (user && !(user.role === 'docente' && user.docenteAprovado === false)) {
                     req.user = {
                         id: user._id.toString(),
                         username: user.username,

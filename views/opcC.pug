@@ -1,115 +1,159 @@
-// Header com cor principal
-div(style=`background-color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; color: white; padding: 25px; margin-top: 20px;`)
-  h1(style='margin: 0 0 8px 0; font-size: 32px;')= uc.sigla
-  p(style='margin: 0; font-size: 14px; opacity: 0.95;')= uc.titulo
+style.
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Outfit:wght@300;400;600&display=swap');
+  .uc-c-root { --accent: #ef6c4d; --ink: #201b17; font-family: 'Outfit', sans-serif; color: var(--ink); display: flex; flex-direction: column; gap: 16px; }
+  .uc-c-surface { position: relative; overflow: hidden; background: #fbf6ef; border: 1px solid #eadfd2; border-radius: 28px; padding: 22px; box-shadow: 0 18px 40px rgba(20, 20, 20, 0.08); }
+  .uc-c-surface::before { content: ''; position: absolute; width: 240px; height: 240px; background: var(--accent); opacity: 0.14; border-radius: 50%; top: -90px; left: -70px; }
+  .uc-c-surface::after { content: ''; position: absolute; width: 320px; height: 320px; background: #1a2633; opacity: 0.08; border-radius: 50%; bottom: -180px; right: -140px; }
+  .uc-c-hero { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; }
+  .uc-c-eyebrow { font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; opacity: 0.65; }
+  .uc-c-title { margin: 6px 0 8px; font-family: 'Fraunces', serif; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.1; }
+  .uc-c-subtitle { margin: 0; font-size: 14px; opacity: 0.75; }
+  .uc-c-meta { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+  .uc-c-chip { background: #fff; border: 1px solid #efe3d6; border-radius: 999px; padding: 8px 14px; font-size: 12px; display: flex; align-items: center; gap: 6px; box-shadow: 0 6px 12px rgba(0,0,0,0.06); }
+  .uc-c-chip-label { text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; }
+  .uc-c-chip-value { font-weight: 600; }
+  .uc-c-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(230px, 320px) minmax(0, 1fr); gap: 18px; margin-top: 18px; }
+  .uc-c-card { background: #fff; border: 1px solid #efe3d6; border-radius: 18px; padding: 16px; box-shadow: 0 8px 20px rgba(26, 18, 12, 0.08); }
+  .uc-c-card-title { margin: 0 0 12px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #8a7768; }
+  .uc-c-kv { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 0; font-size: 14px; }
+  .uc-c-kv-label { text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: #8a7768; }
+  .uc-c-kv-value { font-weight: 600; }
+  .uc-c-list { list-style: none; padding: 0; margin: 0; }
+  .uc-c-list li { position: relative; padding-left: 16px; margin: 8px 0; font-size: 13px; color: #3b332b; }
+  .uc-c-list li::before { content: '•'; position: absolute; left: 0; top: 0; color: var(--accent); font-size: 16px; line-height: 1; }
+  .uc-c-person { padding: 10px 0; border-top: 1px dashed #f0e1d2; }
+  .uc-c-person:first-child { border-top: 0; padding-top: 0; }
+  .uc-c-person-name { font-weight: 600; font-size: 14px; }
+  .uc-c-person-meta { font-size: 12px; color: #7a6a5e; }
+  .uc-c-aulas { background: #fff; border: 1px solid #efe3d6; border-radius: 20px; padding: 16px; box-shadow: 0 12px 24px rgba(26, 18, 12, 0.08); }
+  .uc-c-aulas-title { margin: 0 0 12px; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #8a7768; }
+  .uc-c-aula-item { display: grid; grid-template-columns: 70px 1fr; gap: 12px; padding: 12px 0; border-top: 1px solid #f3e7db; }
+  .uc-c-aula-item:first-child { border-top: 0; padding-top: 0; }
+  .uc-c-aula-date { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #8a7768; }
+  .uc-c-aula-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: #fff; border-radius: 999px; padding: 4px 10px; font-size: 11px; font-weight: 600; }
+  .uc-c-aula-body strong { display: block; font-size: 14px; margin-bottom: 4px; }
+  .uc-c-aula-body small { color: #7a6a5e; font-size: 12px; }
+  .uc-c-aula-notes { margin-top: 6px; font-size: 12px; color: #4b4036; line-height: 1.4; }
+  .uc-c-anim { animation: ucCfade 0.6s ease both; }
+  .uc-c-delay-1 { animation-delay: 0.05s; }
+  .uc-c-delay-2 { animation-delay: 0.12s; }
+  .uc-c-delay-3 { animation-delay: 0.2s; }
+  .uc-c-delay-4 { animation-delay: 0.28s; }
+  .uc-c-delay-5 { animation-delay: 0.36s; }
+  @keyframes ucCfade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 900px) {
+    .uc-c-hero { grid-template-columns: 1fr; }
+    .uc-c-meta { justify-content: flex-start; }
+    .uc-c-grid { grid-template-columns: 1fr; }
+  }
 
-// Layout 3 colunas
-div(style='display: grid; grid-template-columns: 220px 1fr 280px; gap: 25px; margin-top: 25px;')
-  // Coluna Esquerda - Info
-  div(style='background-color: #f9f9f9; padding: 20px; height: fit-content;')
-    h4(style=`margin: 0 0 20px 0; color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; text-transform: uppercase; font-size: 12px; font-weight: bold; padding-bottom: 10px; border-bottom: 2px solid ${getColor(uc.website.corPrincipal) || '#17a2b8'};`) Informação
-    
-    div(style='margin-bottom: 20px;')
-      div(style=`display: flex; align-items: center; gap: 8px; color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; font-weight: bold; margin-bottom: 8px;`)
-        span 📋
-        | Código
-      div(style='color: #333; font-size: 14px; font-weight: bold;')= uc.sigla
 
-    div
-      div(style=`display: flex; align-items: center; gap: 8px; color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; font-weight: bold; margin-bottom: 8px;`)
-        span 📅
-        | Ano
-      div(style='color: #333; font-size: 14px;')= uc.ano
-
-  // Coluna Centro - Conteúdo Principal
-  div(style='display: flex; flex-direction: column; gap: 25px;')
-    // Horário
-    if uc.horario && (uc.horario.teoricas || uc.horario.praticas)
+div.uc-c-root(style=`--accent: ${getColor(uc.website && uc.website.corPrincipal) || '#ef6c4d'};`)
+  .uc-c-surface
+    .uc-c-hero.uc-c-anim.uc-c-delay-1
       div
-        h4(style=`color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; font-size: 14px; margin: 0 0 12px 0; font-weight: bold; text-transform: uppercase;`) Horário
-        div(style='display: grid; grid-template-columns: 1fr 1fr; gap: 20px;')
-          if uc.horario.teoricas && uc.horario.teoricas.length > 0
-            div
-              strong(style='color: #333; display: block; margin-bottom: 8px;') Aulas Teóricas
-              ul(style='margin: 0; padding-left: 20px; color: #666; font-size: 13px;')
+        span.uc-c-eyebrow= uc.sigla
+        h1.uc-c-title= uc.titulo
+        p.uc-c-subtitle Plano detalhado da unidade curricular
+      .uc-c-meta
+        span.uc-c-chip
+          span.uc-c-chip-label Ano
+          span.uc-c-chip-value= uc.ano
+        span.uc-c-chip
+          span.uc-c-chip-label Sigla
+          span.uc-c-chip-value= uc.sigla
+
+    .uc-c-grid
+      .uc-c-rail
+        section.uc-c-card.uc-c-anim.uc-c-delay-2
+          h4.uc-c-card-title Informação
+          div.uc-c-kv
+            span.uc-c-kv-label Ano
+            span.uc-c-kv-value= uc.ano
+          div.uc-c-kv
+            span.uc-c-kv-label Sigla
+            span.uc-c-kv-value= uc.sigla
+
+        if uc.docentes && uc.docentes.length > 0
+          section.uc-c-card.uc-c-anim.uc-c-delay-3
+            h4.uc-c-card-title Docentes
+            each docente in uc.docentes
+              div.uc-c-person
+                div.uc-c-person-name= docente.nome
+                if docente.categoria
+                  div.uc-c-person-meta= docente.categoria
+                if docente.email
+                  div.uc-c-person-meta= docente.email
+
+        if uc.avaliacao && uc.avaliacao.length > 0
+          - var evalItems = (uc.avaliacao || []).slice();
+          - if (evalItems.length === 1 && evalItems[0] && /,\s*\d/.test(evalItems[0])) {
+          -   evalItems = evalItems[0].split(/,(?=\s*\d)/).map(function(item) { return item.trim(); }).filter(Boolean);
+          - }
+          section.uc-c-card.uc-c-anim.uc-c-delay-4
+            h4.uc-c-card-title Avaliação
+            ul.uc-c-list
+              each item in evalItems
+                li= item
+
+        if uc.datas
+          section.uc-c-card.uc-c-anim.uc-c-delay-4
+            h4.uc-c-card-title Datas importantes
+            if uc.datas.teste
+              div.uc-c-kv
+                span.uc-c-kv-label Teste
+                span.uc-c-kv-value= new Date(uc.datas.teste).toLocaleDateString('pt-PT')
+            if uc.datas.exame
+              div.uc-c-kv
+                span.uc-c-kv-label Exame
+                span.uc-c-kv-value= new Date(uc.datas.exame).toLocaleDateString('pt-PT')
+            if uc.datas.projeto
+              div.uc-c-kv
+                span.uc-c-kv-label Projeto
+                span.uc-c-kv-value= new Date(uc.datas.projeto).toLocaleDateString('pt-PT')
+
+      .uc-c-main
+        if uc.horario
+          section.uc-c-card.uc-c-anim.uc-c-delay-3
+            h4.uc-c-card-title Horário
+            if uc.horario.teoricas && uc.horario.teoricas.length > 0
+              div.uc-c-person-name Teóricas
+              ul.uc-c-list
                 each aula in uc.horario.teoricas
-                  li(style='margin-bottom: 4px;')= aula
-          if uc.horario.praticas && uc.horario.praticas.length > 0
-            div
-              strong(style='color: #333; display: block; margin-bottom: 8px;') Aulas Práticas
-              ul(style='margin: 0; padding-left: 20px; color: #666; font-size: 13px;')
+                  li= aula
+            if uc.horario.praticas && uc.horario.praticas.length > 0
+              div.uc-c-person-name Práticas
+              ul.uc-c-list
                 each aula in uc.horario.praticas
-                  li(style='margin-bottom: 4px;')= aula
+                  li= aula
 
-    // Avaliação
-    if uc.avaliacao && uc.avaliacao.length > 0
-      div
-        h4(style=`color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; font-size: 14px; margin: 0 0 12px 0; font-weight: bold; text-transform: uppercase;`) Avaliação
-        ul(style='margin: 0; padding-left: 20px; color: #666; font-size: 13px;')
-          each item in uc.avaliacao
-            li(style='margin-bottom: 6px;')= item
-
-    // Datas Importantes
-    if uc.datas && (uc.datas.teste || uc.datas.exame || uc.datas.projeto)
-      div
-        h4(style=`color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; font-size: 14px; margin: 0 0 12px 0; font-weight: bold; text-transform: uppercase;`) Datas Importantes
-        div(style='display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 13px;')
-          if uc.datas.teste
-            div
-              strong(style='color: #333; display: block; margin-bottom: 4px;') Teste escrito
-              span(style='color: #999;')= uc.datas.teste ? new Date(uc.datas.teste).toLocaleDateString('pt-PT') : '-'
-          if uc.datas.exame
-            div
-              strong(style='color: #333; display: block; margin-bottom: 4px;') Exame
-              span(style='color: #999;')= uc.datas.exame ? new Date(uc.datas.exame).toLocaleDateString('pt-PT') : '-'
-          if uc.datas.projeto
-            div
-              strong(style='color: #333; display: block; margin-bottom: 4px;') Entrega do projeto
-              span(style='color: #999;')= uc.datas.projeto ? new Date(uc.datas.projeto).toLocaleDateString('pt-PT') : '-'
-
-    // Aulas
-    if uc.aulas && uc.aulas.length > 0
-      div(style='border-top: 1px solid #ddd; padding-top: 20px;')
-        h4(style=`color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; font-size: 14px; margin: 0 0 12px 0; font-weight: bold; text-transform: uppercase;`) Aulas
-        div(style='max-height: 400px; overflow-y: auto;')
-          each aula in uc.aulas
-            div(style='display: flex; gap: 12px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #eee;')
-              span.w3-tag(style=`background-color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; color: white; padding: 6px 10px; font-weight: bold; min-width: 40px; text-align: center; height: fit-content;`)
-                if aula.tipo == 'T'
-                  | T
-                else if aula.tipo == 'TP'
-                  | TP
-                else if aula.tipo == 'PL'
-                  | PL
-                else
-                  = aula.tipo
-              div(style='flex: 1;')
-                div(style='font-size: 12px; color: #999; margin-bottom: 4px;')= aula.data ? new Date(aula.data).toLocaleDateString('pt-PT') : '-'
-                strong(style='color: #333; display: block; margin-bottom: 4px; font-size: 13px;')= aula.tema || 'Sem tema'
-                small(style='color: #666; display: block; line-height: 1.4; font-size: 12px;')
-                  each sumario in aula.sumario
-                    div= sumario
-
-  // Coluna Direita - Docentes
-  div(style='background-color: #f9f9f9; padding: 20px; height: fit-content;')
-    h4(style=`margin: 0 0 20px 0; color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; text-transform: uppercase; font-size: 12px; font-weight: bold; padding-bottom: 10px; border-bottom: 2px solid ${getColor(uc.website.corPrincipal) || '#17a2b8'};`) Docentes
-    
-    if uc.docentes && uc.docentes.length > 0
-      each docente in uc.docentes
-        div(style='text-align: center; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #ddd;')
-          if docente.foto
-            img(src=`/docentes-fotos/${docente.foto}` alt=docente.nome style='width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;')
+        .uc-c-aulas.uc-c-anim.uc-c-delay-5
+          h3.uc-c-aulas-title Aulas
+          if uc.aulas && uc.aulas.length > 0
+            each aula in uc.aulas
+              - var aulaDate = aula.data ? new Date(aula.data).toLocaleDateString('pt-PT') : '-';
+              .uc-c-aula-item
+                div.uc-c-aula-date= aulaDate
+                .uc-c-aula-body
+                  span.uc-c-aula-tag
+                    if aula.tipo == 'T'
+                      | T
+                    else if aula.tipo == 'TP'
+                      | TP
+                    else if aula.tipo == 'PL'
+                      | PL
+                    else
+                      = aula.tipo
+                  strong= aula.tema || 'Sem tema'
+                  if aula.sumario && aula.sumario.length > 0
+                    div.uc-c-aula-notes
+                      each sumario in aula.sumario
+                        div= sumario
           else
-            div(style=`width: 80px; height: 80px; border-radius: 50%; background-color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 36px;`)
-              span 👤
-          div(style='font-weight: bold; color: #333; font-size: 13px;')= docente.nome
-          div(style=`color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; font-size: 11px; font-weight: bold; margin-bottom: 6px;`)= docente.categoria || 'Docente'
-          if docente.email
-            a(href=`mailto:${docente.email}` style=`color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; font-size: 10px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 4px;`)
-              span 📧
-              = docente.email
+            div(style='text-align: center; color: #8a7768; padding: 10px 0;')
+              p Sem aulas registadas
 
-// Botões de ação
+
 div(style='margin-top: 16px; display: flex; gap: 10px; padding: 12px 0; position: sticky; bottom: 0; background-color: #fff; border-top: 1px solid #eee; z-index: 2;')
   a.w3-button.w3-teal.w3-round(href='/uc/ucs' style='padding: 10px 20px;') Voltar
   if user && (user.role === 'admin' || user.role === 'docente')

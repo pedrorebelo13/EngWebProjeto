@@ -81,6 +81,7 @@ const authController = {
                 return res.status(409).render('register', { error: 'Já existe um utilizador com esse email ou username.' });
             }
 
+            const normalizedRole = role === 'docente' ? 'docente' : 'aluno';
             const apiKey = crypto.randomBytes(24).toString('hex');
             const hashedPassword = await bcrypt.hash(password, 10);
             const newUser = new userModel({
@@ -89,11 +90,24 @@ const authController = {
                 email: normalizedEmail,
                 filiacao: (filiacao || '').trim(),
                 password: hashedPassword,
-                role: role === 'docente' ? 'docente' : 'aluno',
+                role: normalizedRole,
+                docenteAprovado: normalizedRole === 'docente' ? false : true,
                 apiKey
             });
 
             await newUser.save();
+
+            if (normalizedRole === 'docente') {
+                const message = 'Registo efetuado. Aguardas aprovação do administrador.';
+                if (wantsJsonResponse) {
+                    return res.status(201).json({
+                        message,
+                        pendingApproval: true
+                    });
+                }
+
+                return res.status(200).render('login', { notice: message });
+            }
 
             const token = createToken(newUser);
             res.cookie('token', token, authCookieOptions());
@@ -156,6 +170,14 @@ const authController = {
                     return res.status(401).json({ error: 'Credenciais inválidas.' });
                 }
                 return res.status(401).render('login', { error: 'Credenciais inválidas.' });
+            }
+
+            if (user.role === 'docente' && user.docenteAprovado === false) {
+                const message = 'Conta docente pendente de aprovação pelo administrador.';
+                if (wantsJsonResponse) {
+                    return res.status(403).json({ error: message });
+                }
+                return res.status(403).render('login', { error: message });
             }
 
             user.dataUltimoAcesso = new Date();

@@ -28,6 +28,7 @@ block content
             th Email
             th Filiação
             th Role
+            th Aprovado
             th Registado em
             th Último Acesso
             th Ações
@@ -40,6 +41,11 @@ block content
               td= u.filiacao || '-'
               td
                 span.w3-tag(class=u.role === 'admin' ? 'w3-red' : u.role === 'docente' ? 'w3-orange' : 'w3-blue')= u.role
+              td
+                if u.role === 'docente'
+                  span.w3-tag(class=u.docenteAprovado === false ? 'w3-red' : 'w3-green')= u.docenteAprovado === false ? 'Não' : 'Sim'
+                else
+                  span -
               td= new Date(u.dataRegisto).toLocaleDateString('pt-PT') + ' ' + new Date(u.dataRegisto).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })
               td= u.dataUltimoAcesso ? new Date(u.dataUltimoAcesso).toLocaleDateString('pt-PT') + ' ' + new Date(u.dataUltimoAcesso).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' }) : '-'
               td

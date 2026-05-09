@@ -24,6 +24,12 @@ block content
         option(value='docente' selected=targetUser.role === 'docente') Docente
         option(value='admin' selected=targetUser.role === 'admin') Admin
 
+      label Docente aprovado
+      div.w3-margin-bottom
+        label.w3-margin-right
+          input.w3-check(type='checkbox' name='docenteAprovado' checked=(targetUser.docenteAprovado !== false))
+          span.w3-margin-left Aprovado para acesso (aplica-se apenas a docentes)
+
       label Password (opcional)
       input.w3-input.w3-round.w3-margin-bottom(type='password' name='password' placeholder='Deixa vazio para manter a password atual')
 

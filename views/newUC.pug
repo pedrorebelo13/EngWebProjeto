@@ -179,7 +179,34 @@ block content
       div.uc-tab-panel(data-tab='avaliacao')
         fieldset
           legend Avaliação
-          input.w3-input.w3-round(type="text" name="avaliacao[]" placeholder="Métodos de avaliação (ex: Teste Final, Projeto)" value=(uc && uc.avaliacao && uc.avaliacao.length > 0) ? uc.avaliacao.join(', ') : "" required)
+          - var avaliacaoItems = (uc && uc.avaliacao && uc.avaliacao.length > 0) ? uc.avaliacao.slice() : [''];
+          - if (avaliacaoItems.length === 1 && avaliacaoItems[0] && /,\s*\d/.test(avaliacaoItems[0])) {
+          -   avaliacaoItems = avaliacaoItems[0].split(/,(?=\s*\d)/).map(function(item) { return item.trim(); }).filter(Boolean);
+          - }
+          #avaliacao-container
+            each item, index in avaliacaoItems
+              - var hasValue = item && String(item).trim();
+              .w3-border.w3-padding.w3-margin-bottom.avaliacao-item(data-required=(!hasValue))
+                h6 Avaliação ##{index + 1}
+                  if index > 0
+                    button.w3-btn.w3-red.w3-small.w3-right(type="button" onclick="this.parentElement.parentElement.remove()") X
+                .w3-row-padding
+                  .w3-col.s12.m6.l6
+                    label Descrição
+                    input.w3-input.w3-round.avaliacao-desc(type="text" placeholder="Ex: Trabalhos de casa" data-field='desc' required=(!hasValue))
+                  .w3-col.s12.m6.l2
+                    label Percentagem
+                    input.w3-input.w3-round.avaliacao-peso(type="number" min="0" max="100" step="1" placeholder="%" data-field='peso' required=(!hasValue))
+                  .w3-col.s12.m6.l2
+                    label Nota mínima
+                    select.w3-select.w3-round.avaliacao-minreq(data-field='minreq')
+                      option(value='nao') Não
+                      option(value='sim') Sim
+                  .w3-col.s12.m6.l2
+                    label Valor mínimo
+                    input.w3-input.w3-round.avaliacao-minnota(type="number" min="0" max="20" step="1" placeholder="10" data-field='minnota')
+                input(type="hidden" name="avaliacao[]" value=item || '' data-original=item || '')
+          button.w3-btn.w3-light-grey.w3-margin-bottom(type="button" onclick="addAvaliacao()") + Adicionar Avaliação
 
       div.uc-tab-panel(data-tab='datas')
         fieldset
@@ -255,8 +282,7 @@ block content
             each aula, index in uc.aulas
               .w3-border.w3-padding.w3-margin-bottom
                 h6 Aula ##{index + 1}
-                  if index > 0
-                    button.w3-btn.w3-red.w3-small.w3-right(type="button" onclick="this.parentElement.parentElement.remove()") X
+                  button.w3-btn.w3-red.w3-small.w3-right(type="button" onclick="this.parentElement.parentElement.remove()") X
                 label Tipo da Aula
                 .aula-type-picker.w3-margin-bottom
                   label.w3-margin-right
@@ -272,20 +298,8 @@ block content
                 input.w3-input.w3-round(type="text" name=`aulas[${index}][sumario][]` value=(aula.sumario ? aula.sumario.join(', ') : "") placeholder="Sumário da Aula" required)
           else
             .w3-border.w3-padding.w3-margin-bottom
-              h6 Registo da Primeira Aula
-              label Tipo da Aula
-              .aula-type-picker.w3-margin-bottom
-                label.w3-margin-right
-                  input.w3-radio(type="radio" name="aulas[0][tipo]" value="T" required)
-                  span.w3-margin-left T
-                label.w3-margin-right
-                  input.w3-radio(type="radio" name="aulas[0][tipo]" value="TP" required)
-                  span.w3-margin-left TP
-                label
-                  input.w3-radio(type="radio" name="aulas[0][tipo]" value="PL" required)
-                  span.w3-margin-left PL
-              input.w3-input.w3-round.w3-margin-bottom(type="text" name="aulas[0][data]" placeholder="Data (ex: 2024-02-12)" required)
-              input.w3-input.w3-round(type="text" name="aulas[0][sumario][]" placeholder="Sumário da Aula" required)
+              h6 Sem aulas registadas
+              p Podes adicionar aulas mais tarde se quiseres.
         button.w3-btn.w3-light-grey.w3-margin-bottom(type="button" onclick="addAula()") + Adicionar Outra Aula
 
       div.uc-tab-panel(data-tab='website')
@@ -330,7 +344,7 @@ block content
       docenteCount++;
     }
 
-    let aulaCount = #{uc && uc.aulas ? uc.aulas.length : 1};
+    let aulaCount = #{uc && uc.aulas ? uc.aulas.length : 0};
     function addAula() {
       const container = document.getElementById('aulas-container');
       const html = `
@@ -420,6 +434,122 @@ block content
       }
 
       return { dia, inicio, fim, sala };
+    }
+
+    function formatAvaliacaoString(data) {
+      const desc = data.desc || '';
+      const peso = data.peso || '';
+      const minreq = data.minreq === 'sim';
+      const minnota = data.minnota || '';
+      if (!desc || !peso) {
+        return '';
+      }
+      let result = `${desc} (${peso}%)`;
+      if (minreq && minnota) {
+        result += ` [nota minima de ${minnota} val.]`;
+      }
+      return result;
+    }
+
+    function parseAvaliacaoString(text) {
+      if (!text) {
+        return { desc: '', peso: '', minreq: 'nao', minnota: '' };
+      }
+      const raw = String(text);
+      const percentMatch = raw.match(/\((\d+(?:[.,]\d+)?)\s*%\)/);
+      const peso = percentMatch ? percentMatch[1].replace(',', '.') : '';
+      const minMatch = raw.match(/nota\s*minim[aá]\s*de\s*(\d+(?:[.,]\d+)?)/i);
+      const minnota = minMatch ? minMatch[1].replace(',', '.') : '';
+      const minreq = minnota ? 'sim' : 'nao';
+
+      let desc = raw;
+      desc = desc.replace(/\(.*?%\)/g, '');
+      desc = desc.replace(/\[.*?\]/g, '');
+      desc = desc.replace(/\s+/g, ' ').trim();
+      desc = desc.replace(/[\-–,;:.]+$/g, '').trim();
+
+      return { desc, peso, minreq, minnota };
+    }
+
+    function updateAvaliacaoItem(item) {
+      const desc = item.querySelector('[data-field="desc"]').value.trim();
+      const peso = item.querySelector('[data-field="peso"]').value.trim();
+      const minreq = item.querySelector('[data-field="minreq"]').value;
+      const minnotaInput = item.querySelector('[data-field="minnota"]');
+      const minnota = minnotaInput.value.trim();
+      const hidden = item.querySelector('input[type="hidden"]');
+      const original = hidden.getAttribute('data-original') || '';
+      const mustComplete = item.getAttribute('data-required') === 'true';
+
+      minnotaInput.required = minreq === 'sim';
+
+      const value = formatAvaliacaoString({ desc, peso, minreq, minnota });
+      if (value) {
+        hidden.value = value;
+      } else if (!mustComplete && original) {
+        hidden.value = original;
+      } else {
+        hidden.value = '';
+      }
+    }
+
+    function initAvaliacaoItem(item) {
+      const hidden = item.querySelector('input[type="hidden"]');
+      const original = hidden.value || hidden.getAttribute('data-original') || '';
+      if (original) {
+        const parsed = parseAvaliacaoString(original);
+        item.querySelector('[data-field="desc"]').value = parsed.desc || '';
+        item.querySelector('[data-field="peso"]').value = parsed.peso || '';
+        item.querySelector('[data-field="minreq"]').value = parsed.minreq || 'nao';
+        item.querySelector('[data-field="minnota"]').value = parsed.minnota || '';
+      }
+      const inputs = item.querySelectorAll('[data-field]');
+      inputs.forEach(input => {
+        input.addEventListener('input', () => updateAvaliacaoItem(item));
+        input.addEventListener('change', () => updateAvaliacaoItem(item));
+      });
+      updateAvaliacaoItem(item);
+    }
+
+    function initAvaliacaoEditors() {
+      document.querySelectorAll('.avaliacao-item').forEach(item => initAvaliacaoItem(item));
+    }
+
+    function addAvaliacao() {
+      const container = document.getElementById('avaliacao-container');
+      const index = container.querySelectorAll('.avaliacao-item').length + 1;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'w3-border w3-padding w3-margin-bottom avaliacao-item';
+      wrapper.setAttribute('data-required', 'true');
+      wrapper.innerHTML = `
+        <h6>Avaliação #${index}
+          <button type="button" class="w3-btn w3-red w3-small w3-right" onclick="this.parentElement.parentElement.remove()">X</button>
+        </h6>
+        <div class="w3-row-padding">
+          <div class="w3-col s12 m6 l6">
+            <label>Descrição</label>
+            <input class="w3-input w3-round avaliacao-desc" type="text" placeholder="Ex: Trabalhos de casa" data-field="desc" required>
+          </div>
+          <div class="w3-col s12 m6 l2">
+            <label>Percentagem</label>
+            <input class="w3-input w3-round avaliacao-peso" type="number" min="0" max="100" step="1" placeholder="%" data-field="peso" required>
+          </div>
+          <div class="w3-col s12 m6 l2">
+            <label>Nota mínima</label>
+            <select class="w3-select w3-round avaliacao-minreq" data-field="minreq">
+              <option value="nao">Não</option>
+              <option value="sim">Sim</option>
+            </select>
+          </div>
+          <div class="w3-col s12 m6 l2">
+            <label>Valor mínimo</label>
+            <input class="w3-input w3-round avaliacao-minnota" type="number" min="0" max="20" step="1" placeholder="10" data-field="minnota">
+          </div>
+        </div>
+        <input type="hidden" name="avaliacao[]" value="" data-original="">
+      `;
+      container.appendChild(wrapper);
+      initAvaliacaoItem(wrapper);
     }
 
     function updateHorarioItem(item) {
@@ -569,6 +699,7 @@ block content
       if (form) {
         form.addEventListener('submit', function(event) {
           document.querySelectorAll('.horario-item').forEach(item => updateHorarioItem(item));
+          document.querySelectorAll('.avaliacao-item').forEach(item => updateAvaliacaoItem(item));
           if (!form.checkValidity()) {
             event.preventDefault();
             event.stopPropagation();
@@ -600,4 +731,5 @@ block content
       }
 
       initHorarioEditors();
+      initAvaliacaoEditors();
     });

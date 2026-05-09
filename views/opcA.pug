@@ -1,90 +1,118 @@
-div(style=`display: flex; gap: 20px; height: 100%; min-height: 0; margin-top: 0; overflow: hidden;`)
+style.
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,600&family=Space+Grotesk:wght@400;600&display=swap');
+  .uc-a-root { display: flex; gap: 20px; height: 100%; min-height: 0; overflow: hidden; font-family: 'Space Grotesk', sans-serif; }
+  .uc-a-sidebar { flex: 0 0 34%; background: linear-gradient(180deg, #f8f6f2 0%, #ffffff 60%); border: 1px solid #e6e0d8; border-radius: 18px; padding: 18px; overflow: auto; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+  .uc-a-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+  .uc-a-hero { border-radius: 14px; padding: 16px; color: #fff; margin-bottom: 16px; }
+  .uc-a-hero h2 { margin: 0; font-family: 'Newsreader', serif; font-size: 26px; letter-spacing: 0.3px; }
+  .uc-a-hero p { margin: 6px 0 0; opacity: 0.9; font-size: 13px; }
+  .uc-a-card { background: #fff; border: 1px solid #eee7df; border-radius: 14px; padding: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+  .uc-a-card-title { margin: 0 0 10px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #6b645e; }
+  .uc-a-person { display: flex; gap: 12px; align-items: center; padding: 10px 0; border-top: 1px solid #f0ebe4; }
+  .uc-a-person:first-child { border-top: 0; padding-top: 0; }
+  .uc-a-avatar { width: 48px; height: 48px; border-radius: 12px; object-fit: cover; }
+  .uc-a-avatar-fallback { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px; }
+  .uc-a-person-name { font-weight: 600; font-size: 14px; color: #2f2a25; }
+  .uc-a-person-meta { font-size: 12px; color: #7b736b; }
+  .uc-a-kv { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 0; }
+  .uc-a-kv-label { font-size: 12px; color: #7b736b; text-transform: uppercase; letter-spacing: 0.08em; }
+  .uc-a-kv-value { font-size: 16px; font-weight: 600; color: #2f2a25; }
+  .uc-a-subhead { font-size: 12px; font-weight: 600; color: #3e3a35; margin: 8px 0 4px; }
+  .uc-a-bullets { list-style: disc; padding-left: 18px; margin: 0; }
+  .uc-a-bullets li { padding: 6px 0; color: #4a4540; font-size: 13px; }
+  .uc-a-date { display: flex; justify-content: space-between; gap: 8px; padding: 6px 0; color: #4a4540; font-size: 13px; }
+  .uc-a-date span { color: #7b736b; font-size: 12px; }
+  .uc-a-main { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+  .uc-a-main-header { border-radius: 14px; padding: 14px 16px; color: #fff; margin-bottom: 12px; }
+  .uc-a-main-header h3 { margin: 0; font-size: 18px; }
+  .uc-a-table-wrap { flex: 1; min-height: 0; overflow: auto; border-radius: 14px; border: 1px solid #eee7df; background: #fff; }
+  .uc-a-table { width: 100%; margin: 0; }
+  .uc-a-table th { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+  @media (max-width: 900px) {
+    .uc-a-root { flex-direction: column; }
+    .uc-a-sidebar { flex: 1 1 auto; }
+  }
+
+div.uc-a-root
   // Sidebar Esquerda
-  div(style='flex: 0 0 35%; padding: 20px; background-color: #f5f5f5; overflow-y: auto;')
+  aside.uc-a-sidebar
     // Header com cor principal
-    div(style=`background-color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; color: white; padding: 15px; margin: -20px -20px 15px -20px;`)
-      h2(style='margin: 0; font-size: 24px;')= uc.sigla
+    div.uc-a-hero(style=`background: linear-gradient(135deg, ${getColor(uc.website.corPrincipal) || '#17a2b8'} 0%, rgba(0,0,0,0.25) 100%);`)
+      h2= uc.sigla
+      p= uc.titulo
       
-    // Docentes
-    if uc.docentes && uc.docentes.length > 0
-      div(style='margin-bottom: 20px;')
-        h4(style='margin: 10px 0; display: flex; align-items: center; gap: 8px;')
-          span 👤
-          | Docentes
-        ul(style='list-style: none; padding: 0; margin: 10px 0;')
+    div.uc-a-grid
+      // Docentes
+      if uc.docentes && uc.docentes.length > 0
+        section.uc-a-card
+          h4.uc-a-card-title Docentes
           each docente in uc.docentes
-            li(style='padding: 12px 0; border-bottom: 1px solid #ddd; display: flex; gap: 10px; align-items: flex-start;')
+            div.uc-a-person
               if docente.foto
-                img(src=`/docentes-fotos/${docente.foto}` alt=docente.nome style='width: 50px; height: 50px; border-radius: 50%; object-fit: cover; flex-shrink: 0;')
+                img.uc-a-avatar(src=`/docentes-fotos/${docente.foto}` alt=docente.nome)
               else
-                div(style=`width: 50px; height: 50px; border-radius: 50%; background-color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;`)
+                div.uc-a-avatar-fallback(style=`background-color: ${getColor(uc.website.corPrincipal) || '#17a2b8'};`)
                   span 👤
-              div(style='flex: 1;')
-                strong(style='display: block;')= docente.nome
+              div
+                div.uc-a-person-name= docente.nome
                 if docente.email
-                  small(style='color: #666; display: block; word-break: break-word;')= docente.email
+                  div.uc-a-person-meta= docente.email
 
-    // Departamento/Filiação
-    div(style='margin-bottom: 20px;')
-      h4(style='margin: 10px 0; display: flex; align-items: center; gap: 8px;')
-        span 🏢
-        | Informação
-      p(style='margin: 5px 0; color: #666;')
-        strong Ano:
-        | #{uc.ano}
+      // Informação
+      section.uc-a-card
+        h4.uc-a-card-title Informação
+        div.uc-a-kv
+          span.uc-a-kv-label Ano
+          span.uc-a-kv-value= uc.ano
 
-    // Horário
-    if uc.horario
-      div(style='margin-bottom: 20px;')
-        h4(style='margin: 10px 0; display: flex; align-items: center; gap: 8px;')
-          span 🕐
-          | Horário
-        if uc.horario.teoricas && uc.horario.teoricas.length > 0
-          p(style='margin: 8px 0;')
-            strong Aula(s) Teórica(s):
-            ul(style='margin: 5px 0; padding-left: 20px;')
+      // Horário
+      if uc.horario
+        section.uc-a-card
+          h4.uc-a-card-title Horário
+          if uc.horario.teoricas && uc.horario.teoricas.length > 0
+            div.uc-a-subhead Teóricas
+            ul.uc-a-bullets
               each aula in uc.horario.teoricas
                 li= aula
-        if uc.horario.praticas && uc.horario.praticas.length > 0
-          p(style='margin: 8px 0;')
-            strong Aula(s) Prática(s):
-            ul(style='margin: 5px 0; padding-left: 20px;')
+          if uc.horario.praticas && uc.horario.praticas.length > 0
+            div.uc-a-subhead Práticas
+            ul.uc-a-bullets
               each aula in uc.horario.praticas
                 li= aula
 
-    // Avaliação
-    if uc.avaliacao && uc.avaliacao.length > 0
-      div(style='margin-bottom: 20px;')
-        h4(style='margin: 10px 0; display: flex; align-items: center; gap: 8px;')
-          span 📊
-          | Avaliação
-        ul(style='list-style: none; padding: 0; margin: 0;')
-          each item in uc.avaliacao
-            li(style='padding: 6px 0; color: #555;')= item
+      // Avaliação
+      if uc.avaliacao && uc.avaliacao.length > 0
+        - var evalItems = (uc.avaliacao || []).slice();
+        - if (evalItems.length === 1 && evalItems[0] && /,\s*\d/.test(evalItems[0])) {
+        -   evalItems = evalItems[0].split(/,(?=\s*\d)/).map(function(item) { return item.trim(); }).filter(Boolean);
+        - }
+        section.uc-a-card
+          h4.uc-a-card-title Avaliação
+          ul.uc-a-bullets
+            each item in evalItems
+              li= item
 
-    // Datas Importantes
-    if uc.datas
-      div(style='margin-bottom: 20px;')
-        h4(style='margin: 10px 0; display: flex; align-items: center; gap: 8px;')
-          span 📅
-          | Datas Importantes
-        if uc.datas.teste
-          p(style='margin: 6px 0; color: #555;')
-            strong Teste:
-            | #{new Date(uc.datas.teste).toLocaleDateString('pt-PT')}
-        if uc.datas.projeto
-          p(style='margin: 6px 0; color: #555;')
-            strong Projeto:
-            | #{new Date(uc.datas.projeto).toLocaleDateString('pt-PT')}
+      // Datas Importantes
+      if uc.datas
+        section.uc-a-card
+          h4.uc-a-card-title Datas importantes
+          if uc.datas.teste
+            div.uc-a-date
+              span Teste
+              div= new Date(uc.datas.teste).toLocaleDateString('pt-PT')
+          if uc.datas.projeto
+            div.uc-a-date
+              span Projeto
+              div= new Date(uc.datas.projeto).toLocaleDateString('pt-PT')
 
   // Conteúdo Direita - Aulas
-  div(style='flex: 1; display: flex; flex-direction: column; overflow: hidden;')
-    div(style=`background-color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; color: white; padding: 12px 15px; flex-shrink: 0;`)
-      h3(style='margin: 0; font-size: 18px;') Aulas
+  section.uc-a-main
+    div.uc-a-main-header(style=`background: linear-gradient(135deg, ${getColor(uc.website.corPrincipal) || '#17a2b8'} 0%, rgba(0,0,0,0.25) 100%);`)
+      h3 Aulas
     
-    div(style='flex: 1; overflow-y: auto; background-color: white;')
+    div.uc-a-table-wrap
       if uc.aulas && uc.aulas.length > 0
-        table.w3-table-all(style='margin-top: 0; width: 100%;')
+        table.w3-table-all.uc-a-table
           thead(style=`background-color: ${getColor(uc.website.corPrincipal) || '#17a2b8'}; color: white; position: sticky; top: 0;`)
             tr
               th(style='width: 100px;') Tipo
