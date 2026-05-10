@@ -355,17 +355,34 @@ async function main() {
 
     const existingCount = await ucModel.countDocuments();
     if (existingCount > 0) {
-        console.log(`Coleção ucs já contém ${existingCount} documentos. Seed ignorado.`);
+        console.log(`Coleção ucs já contém ${existingCount} documentos. Vou adicionar apenas as UCs em falta.`);
+    }
+
+    const rawCombined = loadJson('ucs.json');
+    const rawUcs = Array.isArray(rawCombined)
+        ? rawCombined
+        : (Array.isArray(rawCombined.ucs) ? rawCombined.ucs : []);
+
+    if (rawUcs.length === 0) {
+        console.log('Nenhuma UC encontrada em data/ucs.json.');
         await mongoose.disconnect();
         return;
     }
 
-    const files = ['metaATP2023.json', 'metaENGWEB2024.json', 'metaRPCW2024.json'];
-    const ucs = files.map(fileName => normalizeUc(loadJson(fileName)));
+    const ucs = rawUcs.map(entry => normalizeUc(entry));
+    const operations = ucs.map(uc => ({
+        updateOne: {
+            filter: { _id: uc._id },
+            update: { $setOnInsert: uc },
+            upsert: true
+        }
+    }));
 
-    await ucModel.insertMany(ucs);
+    const result = await ucModel.bulkWrite(operations, { ordered: false });
+    const insertedCount = result.upsertedCount || 0;
+    const matchedCount = result.matchedCount || 0;
 
-    console.log(`Inseridas ${ucs.length} UCs na coleção ucs.`);
+    console.log(`Seed terminado. Inseridas ${insertedCount} UCs novas. Ja existentes: ${matchedCount}.`);
     await mongoose.disconnect();
 }
 
