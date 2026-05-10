@@ -401,14 +401,16 @@ const appendArray = (current, incoming) => {
 const ucController = {
     createUC: async function(req, res) {
         try {
-            if (!canCreateUc(req.user)) {
+            const existingUC = await ucModel.findById(req.params.id);
+            if (!existingUC) {
+                return res.status(404).json({ error: "UC não encontrada" });
+            }
+            if (!canManageUc(req.user, existingUC)) {
                 return denyAccess(req, res, 'Acesso negado.');
             }
 
-            // Ponto 2: Atribuir a sigla ao _id automaticamente
-            req.body._id = req.body.sigla;
-            req.body.createdBy = req.user.id;
-
+            await existingUC.deleteOne();
+            return res.json({ message: "UC apagada com sucesso" });
             if (typeof req.body.isPublic !== 'undefined') {
                 const rawValue = String(req.body.isPublic).toLowerCase();
                 req.body.isPublic = rawValue === 'true' || rawValue === 'on';
@@ -447,12 +449,14 @@ const ucController = {
         try {
             const uc = await ucModel.findById(req.params.id);
             if (!uc) {
-                res.status(404).json({ error: "UC não encontrada" });
+                return res.status(404).json({ error: "UC não encontrada" });
             }
-        
-            else {
-                 res.render('newUC', { uc: uc });
+
+            if (!canManageUc(req.user, uc)) {
+                return denyAccess(req, res, 'Acesso negado.');
             }
+
+            return res.render('newUC', { uc: uc, user: req.user });
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
@@ -766,6 +770,9 @@ const ucController = {
             if (!existingUC) {
                 return res.status(404).json({ error: "UC não encontrada" });
             }
+            if (!canManageUc(req.user, existingUC)) {
+                return denyAccess(req, res, 'Acesso negado.');
+            }
 
             if (req.body.horario) {
                 req.body.horario = normalizeHorario(req.body.horario);
@@ -838,7 +845,7 @@ const ucController = {
                 res.status(404).json({ error: "UC não encontrada" });
             }
             else {
-                res.render('ucID', { uc: updatedUC });
+                res.render('ucID', { uc: updatedUC, user: req.user });
             }
         } catch (error) {
             res.status(400).json({ error: error.message });

@@ -144,9 +144,10 @@ div.uc-a-root
     
     div(style='flex-shrink: 0; padding: 12px 15px; background-color: #f9f9f9; border-top: 1px solid #ddd; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;')
       a.w3-button.w3-teal.w3-round(href='/uc/ucs') Voltar
-      if user && (user.role === 'admin' || user.role === 'docente')
+      if canManage
         a.w3-button.w3-blue.w3-round(href=`/uc/ucs/${uc.id}/edit`) Editar
         button.w3-button.w3-red.w3-round(onclick=`deleteUC('${uc.id}')`) Apagar
+      if user && (user.role === 'admin' || user.role === 'docente')
         a.w3-button.w3-border.w3-round(href=`/uc/ucs/${uc.id}/export/docentes`) Exportar Docentes
         a.w3-button.w3-border.w3-round(href=`/uc/ucs/${uc.id}/export/aulas`) Exportar Aulas
         a.w3-button.w3-border.w3-round(href=`/uc/ucs/${uc.id}/export/full`) Exportar UC

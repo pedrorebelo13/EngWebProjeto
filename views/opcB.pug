@@ -121,9 +121,10 @@ div.uc-b-root(style=`--accent: ${getColor(uc.website.corPrincipal) || '#17a2b8'}
 
 div(style='margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 12px 0; position: sticky; bottom: 0; background-color: #fff; border-top: 1px solid #eee; z-index: 2;')
   a.w3-button.w3-teal.w3-round(href='/uc/ucs' style='padding: 10px 20px;') Voltar
-  if user && (user.role === 'admin' || user.role === 'docente')
+  if canManage
     a.w3-button.w3-blue.w3-round(href=`/uc/ucs/${uc.id}/edit` style='padding: 10px 20px;') Editar
     button.w3-button.w3-red.w3-round(onclick=`deleteUC('${uc.id}')` style='padding: 10px 20px;') Apagar
+  if user && (user.role === 'admin' || user.role === 'docente')
     a.w3-button.w3-border.w3-round(href=`/uc/ucs/${uc.id}/export/docentes` style='padding: 10px 16px;') Exportar Docentes
     a.w3-button.w3-border.w3-round(href=`/uc/ucs/${uc.id}/export/aulas` style='padding: 10px 16px;') Exportar Aulas
     a.w3-button.w3-border.w3-round(href=`/uc/ucs/${uc.id}/export/full` style='padding: 10px 16px;') Exportar UC
