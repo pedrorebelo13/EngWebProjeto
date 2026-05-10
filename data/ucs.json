@@ -1310,5 +1310,3055 @@
                         "tipo":  "C",
                         "cor principal":  "gray"
                     }
+    },
+    {
+        "sigla":  "UCN001",
+        "titulo":  "Unidade Curricular 001",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 001 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente001a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 001 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente001b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.01"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.06"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-01",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-02",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "A",
+                        "cor principal":  "blue"
+                    }
+    },
+    {
+        "sigla":  "UCN002",
+        "titulo":  "Unidade Curricular 002",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 002 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente002a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 002 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente002b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.02"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.07"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-02",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-03",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "B",
+                        "cor principal":  "red"
+                    }
+    },
+    {
+        "sigla":  "UCN003",
+        "titulo":  "Unidade Curricular 003",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 003 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente003a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 003 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente003b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.03"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.08"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-03",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-04",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "C",
+                        "cor principal":  "teal"
+                    }
+    },
+    {
+        "sigla":  "UCN004",
+        "titulo":  "Unidade Curricular 004",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 004 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente004a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 004 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente004b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.04"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.09"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-04",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-05",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "A",
+                        "cor principal":  "indigo"
+                    }
+    },
+    {
+        "sigla":  "UCN005",
+        "titulo":  "Unidade Curricular 005",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 005 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente005a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 005 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente005b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.05"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.10"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-05",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-06",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "B",
+                        "cor principal":  "orange"
+                    }
+    },
+    {
+        "sigla":  "UCN006",
+        "titulo":  "Unidade Curricular 006",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 006 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente006a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 006 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente006b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.06"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.11"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-06",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-07",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "C",
+                        "cor principal":  "brown"
+                    }
+    },
+    {
+        "sigla":  "UCN007",
+        "titulo":  "Unidade Curricular 007",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 007 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente007a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 007 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente007b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.07"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.12"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-07",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-08",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "A",
+                        "cor principal":  "light-green"
+                    }
+    },
+    {
+        "sigla":  "UCN008",
+        "titulo":  "Unidade Curricular 008",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 008 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente008a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 008 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente008b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.08"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.13"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-08",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-09",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "B",
+                        "cor principal":  "gray"
+                    }
+    },
+    {
+        "sigla":  "UCN009",
+        "titulo":  "Unidade Curricular 009",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 009 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente009a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 009 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente009b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.09"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.14"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-09",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-10",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "C",
+                        "cor principal":  "blue"
+                    }
+    },
+    {
+        "sigla":  "UCN010",
+        "titulo":  "Unidade Curricular 010",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 010 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente010a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 010 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente010b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.10"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.15"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-10",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-11",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "A",
+                        "cor principal":  "red"
+                    }
+    },
+    {
+        "sigla":  "UCN011",
+        "titulo":  "Unidade Curricular 011",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 011 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente011a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 011 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente011b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.11"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.16"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-11",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-12",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "B",
+                        "cor principal":  "teal"
+                    }
+    },
+    {
+        "sigla":  "UCN012",
+        "titulo":  "Unidade Curricular 012",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 012 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente012a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 012 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente012b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.12"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.17"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-12",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-13",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "C",
+                        "cor principal":  "indigo"
+                    }
+    },
+    {
+        "sigla":  "UCN013",
+        "titulo":  "Unidade Curricular 013",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 013 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente013a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 013 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente013b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.13"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.18"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-13",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-14",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "A",
+                        "cor principal":  "orange"
+                    }
+    },
+    {
+        "sigla":  "UCN014",
+        "titulo":  "Unidade Curricular 014",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 014 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente014a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 014 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente014b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.14"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.19"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-14",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-15",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "B",
+                        "cor principal":  "brown"
+                    }
+    },
+    {
+        "sigla":  "UCN015",
+        "titulo":  "Unidade Curricular 015",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 015 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente015a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 015 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente015b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.15"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.20"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-15",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-16",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "C",
+                        "cor principal":  "light-green"
+                    }
+    },
+    {
+        "sigla":  "UCN016",
+        "titulo":  "Unidade Curricular 016",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 016 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente016a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 016 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente016b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.16"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.01"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-16",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-17",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "A",
+                        "cor principal":  "gray"
+                    }
+    },
+    {
+        "sigla":  "UCN017",
+        "titulo":  "Unidade Curricular 017",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 017 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente017a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 017 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente017b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.17"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.02"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-17",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-18",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "B",
+                        "cor principal":  "blue"
+                    }
+    },
+    {
+        "sigla":  "UCN018",
+        "titulo":  "Unidade Curricular 018",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 018 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente018a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 018 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente018b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.18"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.03"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-18",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-19",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "C",
+                        "cor principal":  "red"
+                    }
+    },
+    {
+        "sigla":  "UCN019",
+        "titulo":  "Unidade Curricular 019",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 019 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente019a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 019 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente019b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.19"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.04"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-19",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-20",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "A",
+                        "cor principal":  "teal"
+                    }
+    },
+    {
+        "sigla":  "UCN020",
+        "titulo":  "Unidade Curricular 020",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 020 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente020a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 020 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente020b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.20"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.05"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-20",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-21",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "B",
+                        "cor principal":  "indigo"
+                    }
+    },
+    {
+        "sigla":  "UCN021",
+        "titulo":  "Unidade Curricular 021",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 021 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente021a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 021 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente021b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.01"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.06"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-21",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-22",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "C",
+                        "cor principal":  "orange"
+                    }
+    },
+    {
+        "sigla":  "UCN022",
+        "titulo":  "Unidade Curricular 022",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 022 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente022a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 022 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente022b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.02"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.07"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-22",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-23",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "A",
+                        "cor principal":  "brown"
+                    }
+    },
+    {
+        "sigla":  "UCN023",
+        "titulo":  "Unidade Curricular 023",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 023 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente023a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 023 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente023b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.03"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.08"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-23",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-24",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "B",
+                        "cor principal":  "light-green"
+                    }
+    },
+    {
+        "sigla":  "UCN024",
+        "titulo":  "Unidade Curricular 024",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 024 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente024a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 024 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente024b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.04"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.09"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-24",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-25",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "C",
+                        "cor principal":  "gray"
+                    }
+    },
+    {
+        "sigla":  "UCN025",
+        "titulo":  "Unidade Curricular 025",
+        "ano":  2024,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 025 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente025a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 025 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente025b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.05"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.10"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2024-03-25",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2024-03-26",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "A",
+                        "cor principal":  "blue"
+                    }
+    },
+    {
+        "sigla":  "UCN026",
+        "titulo":  "Unidade Curricular 026",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 026 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente026a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 026 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente026b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.06"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.11"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-26",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-27",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "B",
+                        "cor principal":  "red"
+                    }
+    },
+    {
+        "sigla":  "UCN027",
+        "titulo":  "Unidade Curricular 027",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 027 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente027a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 027 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente027b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.07"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.12"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-27",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-28",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "C",
+                        "cor principal":  "teal"
+                    }
+    },
+    {
+        "sigla":  "UCN028",
+        "titulo":  "Unidade Curricular 028",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 028 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente028a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 028 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente028b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.08"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.13"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-28",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-01",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "A",
+                        "cor principal":  "indigo"
+                    }
+    },
+    {
+        "sigla":  "UCN029",
+        "titulo":  "Unidade Curricular 029",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 029 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente029a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 029 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente029b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.09"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.14"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-01",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-02",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "B",
+                        "cor principal":  "orange"
+                    }
+    },
+    {
+        "sigla":  "UCN030",
+        "titulo":  "Unidade Curricular 030",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 030 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente030a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 030 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente030b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.10"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.15"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-02",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-03",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "C",
+                        "cor principal":  "brown"
+                    }
+    },
+    {
+        "sigla":  "UCN031",
+        "titulo":  "Unidade Curricular 031",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 031 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente031a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 031 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente031b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.11"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.16"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-03",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-04",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "A",
+                        "cor principal":  "light-green"
+                    }
+    },
+    {
+        "sigla":  "UCN032",
+        "titulo":  "Unidade Curricular 032",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 032 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente032a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 032 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente032b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.12"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.17"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-04",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-05",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "B",
+                        "cor principal":  "gray"
+                    }
+    },
+    {
+        "sigla":  "UCN033",
+        "titulo":  "Unidade Curricular 033",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 033 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente033a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 033 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente033b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.13"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.18"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-05",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-06",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "C",
+                        "cor principal":  "blue"
+                    }
+    },
+    {
+        "sigla":  "UCN034",
+        "titulo":  "Unidade Curricular 034",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 034 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente034a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 034 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente034b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.14"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.19"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-06",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-07",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "A",
+                        "cor principal":  "red"
+                    }
+    },
+    {
+        "sigla":  "UCN035",
+        "titulo":  "Unidade Curricular 035",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 035 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente035a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 035 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente035b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.15"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.20"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-07",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-08",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "B",
+                        "cor principal":  "teal"
+                    }
+    },
+    {
+        "sigla":  "UCN036",
+        "titulo":  "Unidade Curricular 036",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 036 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente036a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 036 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente036b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.16"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.01"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-08",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-09",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "C",
+                        "cor principal":  "indigo"
+                    }
+    },
+    {
+        "sigla":  "UCN037",
+        "titulo":  "Unidade Curricular 037",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 037 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente037a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 037 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente037b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.17"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.02"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-09",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-10",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "A",
+                        "cor principal":  "orange"
+                    }
+    },
+    {
+        "sigla":  "UCN038",
+        "titulo":  "Unidade Curricular 038",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 038 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente038a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 038 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente038b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.18"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.03"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-10",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-11",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "B",
+                        "cor principal":  "brown"
+                    }
+    },
+    {
+        "sigla":  "UCN039",
+        "titulo":  "Unidade Curricular 039",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 039 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente039a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 039 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente039b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.19"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.04"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-11",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-12",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "C",
+                        "cor principal":  "light-green"
+                    }
+    },
+    {
+        "sigla":  "UCN040",
+        "titulo":  "Unidade Curricular 040",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 040 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente040a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 040 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente040b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.20"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.05"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-12",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-13",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "A",
+                        "cor principal":  "gray"
+                    }
+    },
+    {
+        "sigla":  "UCN041",
+        "titulo":  "Unidade Curricular 041",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 041 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente041a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 041 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente041b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.01"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.06"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-13",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-14",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "B",
+                        "cor principal":  "blue"
+                    }
+    },
+    {
+        "sigla":  "UCN042",
+        "titulo":  "Unidade Curricular 042",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 042 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente042a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 042 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente042b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.02"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.07"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-14",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-15",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "C",
+                        "cor principal":  "red"
+                    }
+    },
+    {
+        "sigla":  "UCN043",
+        "titulo":  "Unidade Curricular 043",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 043 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente043a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 043 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente043b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.03"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.08"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-15",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-16",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "A",
+                        "cor principal":  "teal"
+                    }
+    },
+    {
+        "sigla":  "UCN044",
+        "titulo":  "Unidade Curricular 044",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 044 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente044a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 044 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente044b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.04"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.09"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-16",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-17",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "B",
+                        "cor principal":  "indigo"
+                    }
+    },
+    {
+        "sigla":  "UCN045",
+        "titulo":  "Unidade Curricular 045",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 045 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente045a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 045 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente045b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.05"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.10"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-17",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-18",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "C",
+                        "cor principal":  "orange"
+                    }
+    },
+    {
+        "sigla":  "UCN046",
+        "titulo":  "Unidade Curricular 046",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 046 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente046a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 046 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente046b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.06"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.11"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-18",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-19",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "A",
+                        "cor principal":  "brown"
+                    }
+    },
+    {
+        "sigla":  "UCN047",
+        "titulo":  "Unidade Curricular 047",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 047 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente047a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 047 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente047b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.07"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.12"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-19",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-20",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "B",
+                        "cor principal":  "light-green"
+                    }
+    },
+    {
+        "sigla":  "UCN048",
+        "titulo":  "Unidade Curricular 048",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 048 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente048a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 048 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente048b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.08"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.13"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-20",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-21",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "C",
+                        "cor principal":  "gray"
+                    }
+    },
+    {
+        "sigla":  "UCN049",
+        "titulo":  "Unidade Curricular 049",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 049 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente049a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 049 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente049b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.09"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.14"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-21",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-22",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "A",
+                        "cor principal":  "blue"
+                    }
+    },
+    {
+        "sigla":  "UCN050",
+        "titulo":  "Unidade Curricular 050",
+        "ano":  2025,
+        "docentes":  [
+                         {
+                             "nome":  "Docente 050 A",
+                             "categoria":  "Professor/Investigador",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente050a@di.uminho.pt",
+                             "webpage":  ""
+                         },
+                         {
+                             "nome":  "Docente 050 B",
+                             "categoria":  "Professor Convidado",
+                             "filiacao":  "Dep. Informatica - Universidade do Minho",
+                             "email":  "docente050b@di.uminho.pt",
+                             "webpage":  ""
+                         }
+                     ],
+        "horario":  {
+                        "teoricas":  [
+                                         "segunda das 10h as 12h, sala Ed.2 - 0.10"
+                                     ],
+                        "praticas":  [
+                                         "quarta das 14h as 16h, sala Ed.1 - 1.15"
+                                     ]
+                    },
+        "avaliacao":  [
+                          "1 Projeto (40%)[nota minima de 10 val.]",
+                          "1 Teste escrito (40%)",
+                          "Trabalhos de casa (20%)"
+                      ],
+        "datas":  {
+                      "teste":  "???",
+                      "exame":  "???",
+                      "projeto":  "???"
+                  },
+        "aulas":  [
+                      {
+                          "tipo":  "T",
+                          "data":  "2025-03-22",
+                          "sumario":  [
+                                          "Apresentacao da disciplina.",
+                                          "Introducao aos conceitos base."
+                                      ]
+                      },
+                      {
+                          "tipo":  "TP",
+                          "data":  "2025-03-23",
+                          "sumario":  [
+                                          "Exercicios guiados.",
+                                          "Laboratorio pratico."
+                                      ]
+                      }
+                  ],
+        "website":  {
+                        "tipo":  "B",
+                        "cor principal":  "red"
+                    }
     }
 ]

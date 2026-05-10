@@ -370,19 +370,22 @@ async function main() {
     }
 
     const ucs = rawUcs.map(entry => normalizeUc(entry));
-    const operations = ucs.map(uc => ({
-        updateOne: {
-            filter: { _id: uc._id },
-            update: { $setOnInsert: uc },
-            upsert: true
-        }
-    }));
+    const operations = ucs.map(uc => {
+        const { _id, ...ucData } = uc;
+        return {
+            updateOne: {
+                filter: { _id },
+                update: { $set: ucData, $setOnInsert: { _id } },
+                upsert: true
+            }
+        };
+    });
 
     const result = await ucModel.bulkWrite(operations, { ordered: false });
     const insertedCount = result.upsertedCount || 0;
-    const matchedCount = result.matchedCount || 0;
+    const modifiedCount = result.modifiedCount || 0;
 
-    console.log(`Seed terminado. Inseridas ${insertedCount} UCs novas. Ja existentes: ${matchedCount}.`);
+    console.log(`Seed terminado. Inseridas ${insertedCount} UCs novas. Atualizadas: ${modifiedCount}.`);
     await mongoose.disconnect();
 }
 

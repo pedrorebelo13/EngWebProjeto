@@ -401,16 +401,14 @@ const appendArray = (current, incoming) => {
 const ucController = {
     createUC: async function(req, res) {
         try {
-            const existingUC = await ucModel.findById(req.params.id);
-            if (!existingUC) {
-                return res.status(404).json({ error: "UC não encontrada" });
-            }
-            if (!canManageUc(req.user, existingUC)) {
+            if (!canCreateUc(req.user)) {
                 return denyAccess(req, res, 'Acesso negado.');
             }
 
-            await existingUC.deleteOne();
-            return res.json({ message: "UC apagada com sucesso" });
+            // Atribuir a sigla ao _id automaticamente
+            req.body._id = req.body.sigla;
+            req.body.createdBy = req.user.id;
+
             if (typeof req.body.isPublic !== 'undefined') {
                 const rawValue = String(req.body.isPublic).toLowerCase();
                 req.body.isPublic = rawValue === 'true' || rawValue === 'on';

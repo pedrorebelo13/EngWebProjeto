@@ -1,28 +1,428 @@
 {
-  "users": [
-    {
-      "username": "admin",
-      "name": "Administrador",
-      "email": "admin@admin.com",
-      "password": "admin",
-      "role": "admin",
-      "filiacao": ""
-    },
-    {
-      "username": "aluno",
-      "name": "Aluno",
-      "email": "aluno@aluno.com",
-      "password": "aluno",
-      "role": "aluno",
-      "filiacao": ""
-    },
-    {
-      "username": "docente",
-      "name": "Docente",
-      "email": "docente@docente.com",
-      "password": "docente",
-      "role": "docente",
-      "filiacao": ""
-    }
-  ]
+    "users":  [
+                  {
+                      "username":  "admin",
+                      "name":  "Administrador",
+                      "email":  "admin@admin.com",
+                      "password":  "admin",
+                      "role":  "admin",
+                      "filiacao":  ""
+                  },
+                  {
+                      "username":  "aluno",
+                      "name":  "Aluno",
+                      "email":  "aluno@aluno.com",
+                      "password":  "aluno",
+                      "role":  "aluno",
+                      "filiacao":  ""
+                  },
+                  {
+                      "username":  "docente",
+                      "name":  "Docente",
+                      "email":  "docente@docente.com",
+                      "password":  "docente",
+                      "role":  "docente",
+                      "filiacao":  ""
+                  },
+                  {
+                      "username":  "user01",
+                      "name":  "User 01",
+                      "email":  "user01@example.com",
+                      "password":  "password01",
+                      "role":  "docente",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user02",
+                      "name":  "User 02",
+                      "email":  "user02@example.com",
+                      "password":  "password02",
+                      "role":  "docente",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user03",
+                      "name":  "User 03",
+                      "email":  "user03@example.com",
+                      "password":  "password03",
+                      "role":  "docente",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user04",
+                      "name":  "User 04",
+                      "email":  "user04@example.com",
+                      "password":  "password04",
+                      "role":  "docente",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user05",
+                      "name":  "User 05",
+                      "email":  "user05@example.com",
+                      "password":  "password05",
+                      "role":  "docente",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user06",
+                      "name":  "User 06",
+                      "email":  "user06@example.com",
+                      "password":  "password06",
+                      "role":  "docente",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user07",
+                      "name":  "User 07",
+                      "email":  "user07@example.com",
+                      "password":  "password07",
+                      "role":  "docente",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user08",
+                      "name":  "User 08",
+                      "email":  "user08@example.com",
+                      "password":  "password08",
+                      "role":  "docente",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user09",
+                      "name":  "User 09",
+                      "email":  "user09@example.com",
+                      "password":  "password09",
+                      "role":  "docente",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user10",
+                      "name":  "User 10",
+                      "email":  "user10@example.com",
+                      "password":  "password10",
+                      "role":  "docente",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user11",
+                      "name":  "User 11",
+                      "email":  "user11@example.com",
+                      "password":  "password11",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user12",
+                      "name":  "User 12",
+                      "email":  "user12@example.com",
+                      "password":  "password12",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user13",
+                      "name":  "User 13",
+                      "email":  "user13@example.com",
+                      "password":  "password13",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user14",
+                      "name":  "User 14",
+                      "email":  "user14@example.com",
+                      "password":  "password14",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user15",
+                      "name":  "User 15",
+                      "email":  "user15@example.com",
+                      "password":  "password15",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user16",
+                      "name":  "User 16",
+                      "email":  "user16@example.com",
+                      "password":  "password16",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user17",
+                      "name":  "User 17",
+                      "email":  "user17@example.com",
+                      "password":  "password17",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user18",
+                      "name":  "User 18",
+                      "email":  "user18@example.com",
+                      "password":  "password18",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user19",
+                      "name":  "User 19",
+                      "email":  "user19@example.com",
+                      "password":  "password19",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user20",
+                      "name":  "User 20",
+                      "email":  "user20@example.com",
+                      "password":  "password20",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user21",
+                      "name":  "User 21",
+                      "email":  "user21@example.com",
+                      "password":  "password21",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user22",
+                      "name":  "User 22",
+                      "email":  "user22@example.com",
+                      "password":  "password22",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user23",
+                      "name":  "User 23",
+                      "email":  "user23@example.com",
+                      "password":  "password23",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user24",
+                      "name":  "User 24",
+                      "email":  "user24@example.com",
+                      "password":  "password24",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user25",
+                      "name":  "User 25",
+                      "email":  "user25@example.com",
+                      "password":  "password25",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user26",
+                      "name":  "User 26",
+                      "email":  "user26@example.com",
+                      "password":  "password26",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user27",
+                      "name":  "User 27",
+                      "email":  "user27@example.com",
+                      "password":  "password27",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user28",
+                      "name":  "User 28",
+                      "email":  "user28@example.com",
+                      "password":  "password28",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user29",
+                      "name":  "User 29",
+                      "email":  "user29@example.com",
+                      "password":  "password29",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user30",
+                      "name":  "User 30",
+                      "email":  "user30@example.com",
+                      "password":  "password30",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user31",
+                      "name":  "User 31",
+                      "email":  "user31@example.com",
+                      "password":  "password31",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user32",
+                      "name":  "User 32",
+                      "email":  "user32@example.com",
+                      "password":  "password32",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user33",
+                      "name":  "User 33",
+                      "email":  "user33@example.com",
+                      "password":  "password33",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user34",
+                      "name":  "User 34",
+                      "email":  "user34@example.com",
+                      "password":  "password34",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user35",
+                      "name":  "User 35",
+                      "email":  "user35@example.com",
+                      "password":  "password35",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user36",
+                      "name":  "User 36",
+                      "email":  "user36@example.com",
+                      "password":  "password36",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user37",
+                      "name":  "User 37",
+                      "email":  "user37@example.com",
+                      "password":  "password37",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user38",
+                      "name":  "User 38",
+                      "email":  "user38@example.com",
+                      "password":  "password38",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user39",
+                      "name":  "User 39",
+                      "email":  "user39@example.com",
+                      "password":  "password39",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user40",
+                      "name":  "User 40",
+                      "email":  "user40@example.com",
+                      "password":  "password40",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user41",
+                      "name":  "User 41",
+                      "email":  "user41@example.com",
+                      "password":  "password41",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user42",
+                      "name":  "User 42",
+                      "email":  "user42@example.com",
+                      "password":  "password42",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user43",
+                      "name":  "User 43",
+                      "email":  "user43@example.com",
+                      "password":  "password43",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user44",
+                      "name":  "User 44",
+                      "email":  "user44@example.com",
+                      "password":  "password44",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user45",
+                      "name":  "User 45",
+                      "email":  "user45@example.com",
+                      "password":  "password45",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user46",
+                      "name":  "User 46",
+                      "email":  "user46@example.com",
+                      "password":  "password46",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user47",
+                      "name":  "User 47",
+                      "email":  "user47@example.com",
+                      "password":  "password47",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user48",
+                      "name":  "User 48",
+                      "email":  "user48@example.com",
+                      "password":  "password48",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user49",
+                      "name":  "User 49",
+                      "email":  "user49@example.com",
+                      "password":  "password49",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  },
+                  {
+                      "username":  "user50",
+                      "name":  "User 50",
+                      "email":  "user50@example.com",
+                      "password":  "password50",
+                      "role":  "aluno",
+                      "filiacao":  "Dep. Informatica - Universidade do Minho"
+                  }
+              ]
 }
