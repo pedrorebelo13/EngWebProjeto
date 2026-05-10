@@ -7,6 +7,8 @@ const authRouter = require('./routes/authRouter');
 const usersRouter = require('./routes/usersRouter');
 const { attachUserFromCookie } = require('./cookies/cookieAuthMiddleware');
 const upload = require('./config/multer');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swagger');
 const path = require('path');
 
 app.use(express.json());
@@ -28,6 +30,8 @@ mongoose.connect(mongoHost)
 app.get('/', (req, res) => {
     res.redirect('/auth/login');
 });
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use('/uc', ucRouter);
 app.use('/auth', authRouter);
